@@ -1,0 +1,29 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLang, useTranslations } from "../../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<nav
+  class="flex flex-row items-center justify-between w-full h-16 px-4 bg-transparent text-ink fixed inset-x-0 top-0 z-50"
+>
+  <h2 class="text-2xl uppercase">
+    <a href={getRelativeLocaleUrl(lang, t("path.home"))}>Valle de Arbas</a>
+  </h2>
+  <div class="flex flex-row items-center gap-4">
+    <a
+      href={getRelativeLocaleUrl(lang, t("path.home"))}
+      class="text-lg hover:underline">{t("nav.home")}</a
+    >
+    <a
+      href={getRelativeLocaleUrl(lang, t("path.routes"))}
+      class="text-lg hover:underline">{t("nav.routes")}</a
+    >
+    <a
+      href={getRelativeLocaleUrl(lang, t("path.availability"))}
+      class="text-lg hover:underline">{t("nav.availability")}</a
+    >
+  </div>
+</nav>

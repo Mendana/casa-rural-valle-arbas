@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f6f2ea;
+  --color-bg2: #ede7dc;
+  --color-ink: #2b2622;
+  --color-muted: #6d6258;
+  --color-line: #ddd4c6;
+  --color-wood: #8a6a4a;
+  --color-onwood: #fbf7f0;
+}
+
+/* `inline` porque --font-newsreader/--font-karla las inyecta el componente
+   <Font> de Astro en build, no son literales que Tailwind pueda resolver aquí. */
+@theme inline {
+  --font-serif: var(--font-newsreader);
+  --font-sans: var(--font-karla);
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}

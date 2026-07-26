@@ -1,0 +1,8 @@
+{
+  "nav.home": "The house",
+  "nav.routes": "Routes",
+  "nav.availability": "Availability",
+  "path.home": "/",
+  "path.routes": "/routes",
+  "path.availability": "/availability"
+}
