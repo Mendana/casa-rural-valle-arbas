@@ -1,22 +1,66 @@
 ---
-const { image, title, description, index, alignment } = Astro.props;
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
 
-import { getLang, useTranslations } from "../../i18n/utils";
+interface Props {
+  image: ImageMetadata;
+  image_description: string;
+  alt: string;
+  title: string;
+  description: string;
+  index: number;
+  alignment: "left" | "right";
+}
 
-const lang = getLang(Astro.currentLocale);
-const t = useTranslations(lang);
+const { image, image_description, alt, title, description, index, alignment } =
+  Astro.props;
+const orderLabel = String(index).padStart(2, "0");
+const isRight = alignment === "right";
 ---
 
-<article class="grid grid-cols-1 gap-4">
-  <Image src={image} alt={title} class="w-full h-75 object-cover" />
-  <div class="mt-4">
-    <span>
-      {index}
+<article
+  class:list={[
+    "grid grid-cols-1 gap-6 pb-12 mb-12 last:pb-0 md:grid-cols-2 md:items-center md:gap-12",
+    "not-last:border-b not-last:border-line",
+  ]}
+>
+  <div class:list={["relative", isRight && "md:order-2"]}>
+    <Image
+      src={image}
+      alt={alt}
+      width={860}
+      height={640}
+      class="h-75 w-full object-cover md:h-100"
+    />
+    <div
+      class:list={[
+        "absolute -bottom-3 -left-3 border border-wood bg-bg px-3 py-1.5 md:-bottom-4 md:px-4 md:py-2",
+        isRight && "md:left-auto md:-right-4",
+      ]}
+    >
+      <span class="font-serif text-sm text-wood md:text-base"
+        >{image_description}</span
+      >
+    </div>
+  </div>
+
+  <div class:list={["relative", isRight && "md:order-1"]}>
+    <span
+      class:list={[
+        "pointer-events-none absolute -top-20 -z-10 hidden select-none font-serif text-[8em] leading-none text-wood opacity-10 md:block lg:text-[10em]",
+        isRight ? "md:-right-2 md:text-right" : "md:right-2",
+      ]}
+      aria-hidden="true"
+    >
+      {orderLabel}
     </span>
-    <h4 class="mt-2 text-lg font-semibold text-ink">
+    <span class="font-serif text-sm uppercase tracking-widest text-wood">
+      {orderLabel}
+    </span>
+    <h4 class="mt-2 font-serif text-2xl text-ink md:text-3xl">
       {title}
     </h4>
-    <p class="mt-2 text-base text-muted">
+    <p class="mt-3 text-base text-muted md:text-lg">
       {description}
     </p>
   </div>

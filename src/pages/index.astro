@@ -6,6 +6,7 @@ import HomeHeroGallery from "../components/astro/HomeHeroGallery.astro";
 import Button from "../components/astro/Button.astro";
 import FactsTicker from "../components/astro/FactsTicker.astro";
 import HomeMainInfoSection from "../components/astro/HomeMainInfoSection.astro";
+import HomeHighlights from "../components/astro/HomeHighlights.astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -42,4 +43,5 @@ const t = useTranslations(lang);
   </main>
   <FactsTicker />
   <HomeMainInfoSection />
+  <HomeHighlights />
 </BasePageLayout>

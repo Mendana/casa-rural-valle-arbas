@@ -1,0 +1,27 @@
+---
+import { getCollection } from "astro:content";
+import { getLang } from "../../i18n/utils";
+import DetailPhotoView from "./DetailPhotoView.astro";
+
+const lang = getLang(Astro.currentLocale);
+
+const entries = (await getCollection("homeHighlights"))
+  .filter((entry) => entry.id.startsWith(`${lang}/`))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="mx-auto max-w-500 px-4 py-12 md:px-8 md:py-16">
+  {
+    entries.map((entry, i) => (
+      <DetailPhotoView
+        image={entry.data.image}
+        image_description={entry.data.image_description}
+        alt={entry.data.alt}
+        title={entry.data.title}
+        description={entry.data.description}
+        index={entry.data.order}
+        alignment={i % 2 === 0 ? "left" : "right"}
+      />
+    ))
+  }
+</section>
