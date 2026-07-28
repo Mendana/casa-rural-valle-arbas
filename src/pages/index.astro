@@ -2,9 +2,10 @@
 import BasePageLayout from "../layouts/BasePageLayout.astro";
 import { getLang, useTranslations } from "../i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
-
-import { Image } from "astro:assets";
-import casaImg from "../assets/images/casa-rural.jpg";
+import HomeHeroGallery from "../components/astro/HomeHeroGallery.astro";
+import Button from "../components/astro/Button.astro";
+import FactsTicker from "../components/astro/FactsTicker.astro";
+import HomeMainInfoSection from "../components/astro/HomeMainInfoSection.astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -14,98 +15,31 @@ const t = useTranslations(lang);
   title="Inicio"
   description="Casa rural en el Valle de Arbas, León, España."
 >
-  <main class="p-4 md:p-8">
+  <main class="p-4 md:p-8 max-w-600 mx-auto">
     <section>
-      <div>
-        <div class="hidden lg:flex lg:flex-col lg:gap-4">
-          <Image
-            src={casaImg}
-            alt={t("index.photos.left.alt")}
-            width={860}
-            height={559}
-            loading="eager"
-            class="h-150 object-cover w-full"
-          />
-          <p class="text-sm text-muted tracking-wider md:text-base">
-            {t("index.photos.left.caption")}
-          </p>
-        </div>
-        <div class="relative border border-muted border-b-2 border-b-ink">
-          <div
-            class="absolute top-4 -right-2 px-3 py-2 -rotate-10 bg-bg border border-wood z-10 md:top-6 md:-right-4 md:px-4 md:py-3"
-          >
-            <div class="flex flex-col items-center justify-center rounded-md">
-              <span
-                class="font-serif text-wood italic text-base tracking-wide md:text-lg"
-              >
-                {t("index.photos.card.since")}
-              </span>
-              <span
-                class="font-sans text-muted text-[0.7em] tracking-[0.2em] md:text-[0.8em] md:tracking-[0.25em]"
-              >
-                1.340M · León
-              </span>
-            </div>
-          </div>
-          <Image
-            src={casaImg}
-            alt={t("index.photos.main.alt")}
-            width={860}
-            height={559}
-            loading="eager"
-            class="h-150 object-cover w-full md:h-200"
-          />
-          <div
-            class="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black via-black/30 via-30% to-transparent pointer-events-none"
-          >
-          </div>
-          <span
-            class="absolute inset-x-0 bottom-2 text-center font-sans text-line text-sm tracking-[0.18em] text-shadow-sm uppercase md:text-base md:tracking-[0.2em]"
-          >
-            Cubillas de Arbas · León · 1.340M
-          </span>
-        </div>
-
-        <div class="hidden lg:flex lg:flex-col lg:gap-4">
-          <Image
-            src={casaImg}
-            alt={t("index.photos.right.alt")}
-            width={1200}
-            height={800}
-            loading="eager"
-            class="h-150 object-cover w-full md:h-200"
-          />
-          <p class="text-sm text-muted tracking-wider md:text-base">
-            {t("index.photos.right.caption")}
-          </p>
-        </div>
-      </div>
-      <div>
-        <div class="mt-2 flex flex-col gap-2 text-center sm:mt-4 md:mt-8">
-          <h1
-            class="text-5xl font-light flex flex-col items-center justify-center gap-1 sm:text-6xl md:text-8xl"
-          >
-            {t("index.mainTitle.1")}
-            <span class="text-wood italic">{t("index.mainTitle.2")}</span>
-          </h1>
-        </div>
-        <div
-          class="mt-8 flex flex-col gap-4 text-center md:mt-12 md:flex-row md:items-center md:justify-center md:gap-8"
+      <HomeHeroGallery />
+      <div class="mt-2 flex flex-col gap-2 text-center sm:mt-4 md:mt-8">
+        <h1
+          class="text-5xl font-light flex flex-col items-center justify-center gap-1 sm:text-6xl md:text-8xl"
         >
-          <div class="flex justify-center">
-            <a
-              href={getRelativeLocaleUrl(lang, t("path.book"))}
-              class="px-8 py-4 text-sm text-onwood uppercase tracking-widest bg-wood hover:bg-wood/80 hover:cursor-pointer hover:scale-105 transition-transform duration-300 md:text-base"
-            >
-              {t("index.bookNow")}
-            </a>
-          </div>
-          <p class="text-sm text-muted tracking-wider md:text-base">
-            {t("index.bookNow.footer")}
-          </p>
-          <div></div>
+          {t("index.mainTitle.1")}
+          <span class="text-wood italic">{t("index.mainTitle.2")}</span>
+        </h1>
+      </div>
+      <div
+        class="mt-8 flex flex-col gap-4 text-center md:mt-12 md:flex-row md:items-center md:justify-center md:gap-8"
+      >
+        <div class="flex justify-center">
+          <Button href={getRelativeLocaleUrl(lang, t("path.book"))}>
+            {t("index.bookNow")}
+          </Button>
         </div>
+        <p class="text-sm text-muted tracking-wider md:text-base">
+          {t("index.bookNow.footer")}
+        </p>
       </div>
     </section>
-  </main></BasePageLayout
->
+  </main>
+  <FactsTicker />
+  <HomeMainInfoSection />
+</BasePageLayout>

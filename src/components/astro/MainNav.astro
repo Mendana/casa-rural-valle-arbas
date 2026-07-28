@@ -9,11 +9,13 @@ const t = useTranslations(lang);
 <nav
   class="flex flex-row items-center justify-between w-full px-4 py-5 bg-transparent text-ink fixed inset-x-0 top-0 z-50 sm:px-8 md:px-12 md:border-b md:border-ink/20 md:backdrop-blur-lg"
 >
-  <h2 class="w-[50%] text-lg/4 uppercase tracking-[0.18em] sm:text-xl/4">
+  <h2
+    class="shrink-0 whitespace-nowrap text-sm/4 uppercase tracking-widest xs:text-lg/4 xs:tracking-[0.18em] sm:text-xl/4"
+  >
     <a href={getRelativeLocaleUrl(lang, t("path.home"))}>Valle de Arbas</a>
   </h2>
   <div
-    class="flex flex-row items-baseline gap-2 text-sm/tight uppercase tracking-wider xs:gap-4 md:text-base/tight md:gap-8"
+    class="flex flex-row items-baseline gap-1 whitespace-nowrap text-[0.65rem]/tight uppercase tracking-wider xs:gap-2 xs:text-sm/tight sm:gap-4 md:text-base/tight md:gap-8"
   >
     <a
       href={getRelativeLocaleUrl(lang, t("path.home"))}

@@ -1,0 +1,43 @@
+---
+import { getLang, useTranslations } from "../../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+const facts = t("index.ticker");
+---
+
+<div class="overflow-hidden border-y border-line bg-bg2 py-4" aria-hidden="true">
+  <div class="ticker-track flex w-max flex-nowrap items-center gap-6 whitespace-nowrap">
+    {
+      [...facts, ...facts].map((fact) => (
+        <>
+          <span class="font-sans text-sm uppercase tracking-[0.2em] text-muted">
+            {fact}
+          </span>
+          <span class="text-base text-wood" aria-hidden="true">·</span>
+        </>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .ticker-track {
+    animation: ticker-scroll 45s linear infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      animation: none;
+    }
+  }
+
+  @keyframes ticker-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+</style>

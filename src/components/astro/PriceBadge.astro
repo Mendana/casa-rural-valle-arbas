@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<div
+  class="absolute top-4 -right-2 px-3 py-2 -rotate-10 bg-bg border border-wood z-10 md:top-6 md:-right-4 md:px-4 md:py-3"
+>
+  <div class="flex flex-col items-center justify-center rounded-md">
+    <span class="font-serif text-wood italic text-base tracking-wide md:text-lg">
+      {title}
+    </span>
+    <span
+      class="font-sans text-muted text-[0.7em] tracking-[0.2em] md:text-[0.8em] md:tracking-[0.25em]"
+    >
+      {subtitle}
+    </span>
+  </div>
+</div>

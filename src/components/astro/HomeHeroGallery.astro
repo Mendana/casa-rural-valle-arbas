@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import casaImg from "../../assets/images/casa-rural.jpg";
+import { getLang, useTranslations } from "../../i18n/utils";
+import PriceBadge from "./PriceBadge.astro";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<div class="lg:grid lg:grid-cols-[1fr_2fr_1fr] lg:items-center lg:gap-4">
+  <figure class="hidden lg:flex lg:flex-col lg:gap-4">
+    <Image
+      src={casaImg}
+      alt={t("index.photos.left.alt")}
+      width={860}
+      height={559}
+      loading="lazy"
+      class="h-100 object-cover w-full 2xl:h-150"
+    />
+    <figcaption class="text-xs text-muted tracking-wider lg:text-sm">
+      {t("index.photos.left.caption")}
+    </figcaption>
+  </figure>
+  <figure class="relative border border-muted border-b-2 border-b-ink">
+    <PriceBadge title={t("index.photos.card.since")} subtitle="1.340M · León" />
+    <Image
+      src={casaImg}
+      alt={t("index.photos.main.alt")}
+      width={860}
+      height={559}
+      loading="eager"
+      class="h-150 object-cover w-full xl:h-150 2xl:h-200"
+    />
+    <div
+      class="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black via-black/30 via-30% to-transparent pointer-events-none"
+    >
+    </div>
+    <figcaption
+      class="absolute inset-x-0 bottom-2 text-center font-sans text-line text-sm tracking-[0.18em] text-shadow-sm uppercase md:text-base md:tracking-[0.2em]"
+    >
+      Cubillas de Arbas · León · 1.340M
+    </figcaption>
+  </figure>
+
+  <figure class="hidden lg:flex lg:flex-col lg:gap-4">
+    <Image
+      src={casaImg}
+      alt={t("index.photos.right.alt")}
+      width={1200}
+      height={800}
+      loading="lazy"
+      class="h-100 object-cover w-full 2xl:h-150"
+    />
+    <figcaption class="text-xs text-muted tracking-wider lg:text-sm">
+      {t("index.photos.right.caption")}
+    </figcaption>
+  </figure>
+</div>

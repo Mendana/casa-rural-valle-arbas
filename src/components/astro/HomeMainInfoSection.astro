@@ -1,0 +1,47 @@
+---
+import { getLang, useTranslations } from "../../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+const amenities = t("index.mainInfo.amenities");
+---
+
+<section class="relative overflow-hidden pt-12 md:pt-16">
+  <div
+    class="pointer-events-none absolute top-0 right-0 -z-10 hidden select-none md:block md:opacity-8"
+  >
+    <span
+      class="font-serif text-9xl tracking-widest text-wood font-normal lg:text-[14em] lg:font-light lg:tracking-normal xl:text-[18em] 2xl:text-[22em]"
+    >
+      2026
+    </span>
+  </div>
+  <div class="px-4 mt-16 pb-12 md:px-8 max-w-250">
+    <h3
+      class="text-xs font-semibold uppercase tracking-widest text-muted font-sans md:text-sm lg:text-base lg:tracking-widest lg:font-normal lg:pb-4"
+    >
+      {t("index.mainInfo.title")}
+    </h3>
+    <p
+      class="mt-4 text-2xl font-light font-serif leading-8 text-ink tracking-tight text-pretty md:text-4xl md:leading-11 lg:text-5xl lg:leading-15 lg:font-extralight"
+    >
+      {t("index.mainInfo.description")}
+    </p>
+    <p
+      class="mt-4 text-base font-sans leading-6 text-muted tracking-tight md:mt-8 md:text-lg md:leading-7"
+    >
+      {t("index.mainInfo.description2")}
+    </p>
+    <div class="mt-8 flex flex-row flex-wrap justify-start gap-3 md:mt-12">
+      {
+        amenities.map((amenity) => (
+          <span class="border-[1.5px] border-line px-3 py-2 text-xs uppercase tracking-wider text-muted md:text-sm md:tracking-widest">
+            {amenity}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+  <div class="mx-2 border-b-[1.5px] border-b-line mt-8 md:border-b-2 md:mt-16">
+  </div>
+</section>

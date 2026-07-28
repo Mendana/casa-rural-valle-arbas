@@ -14,5 +14,26 @@
   "index.mainTitle.1": "Casa Rural",
   "index.mainTitle.2": "Valle de Arbas",
   "index.bookNow": "Consultar disponibilidad",
-  "index.bookNow.footer": "Casa entera · hasta 10 personas"
+  "index.bookNow.footer": "Casa entera · hasta 10 personas",
+  "index.mainInfo.title": "La casa",
+  "index.mainInfo.description": "Construida entre 2025 y 2026 con piedra y madera de la zona, la casa combina las paredes de siempre con calefacción por suelo radiante, cocina completamente equipada, wifi de fibra y las vistas que nos hicieron quedarnos aquí.",
+  "index.mainInfo.description2": "Un proyecto familiar, pensado para que se sienta como en casa desde el primer fin de semana.",
+  "index.mainInfo.amenities": [
+    "Chimenea",
+    "Cocina equipada",
+    "Se admiten perros",
+    "Wifi",
+    "Calefacción radiante",
+    "Aparcamiento privado"
+  ],
+  "index.ticker": [
+    "Puerto Pajares a 9km",
+    "El cielo sin farolas",
+    "Chimenea de leña original",
+    "Senderos desde la puerta",
+    "Silencio de montaña",
+    "Agua de manantial",
+    "Vistas al Valle de Arbas",
+    "Estrellas sin contaminación lumínica"
+  ]
 }

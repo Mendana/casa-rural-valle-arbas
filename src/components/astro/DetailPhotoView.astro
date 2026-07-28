@@ -1,0 +1,23 @@
+---
+const { image, title, description, index, alignment } = Astro.props;
+
+import { getLang, useTranslations } from "../../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<article class="grid grid-cols-1 gap-4">
+  <Image src={image} alt={title} class="w-full h-75 object-cover" />
+  <div class="mt-4">
+    <span>
+      {index}
+    </span>
+    <h4 class="mt-2 text-lg font-semibold text-ink">
+      {title}
+    </h4>
+    <p class="mt-2 text-base text-muted">
+      {description}
+    </p>
+  </div>
+</article>
