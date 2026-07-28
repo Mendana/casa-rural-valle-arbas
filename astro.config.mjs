@@ -18,7 +18,7 @@ export default defineConfig({
       provider: fontProviders.google(),
       name: "Newsreader",
       cssVariable: "--font-newsreader",
-      weights: [400, 600],
+      weights: ["200 800"],
       styles: ["normal", "italic"],
     },
     {

@@ -1,8 +1,18 @@
 {
   "nav.home": "La casa",
   "nav.routes": "Rutas",
-  "nav.availability": "Disponibilidad",
+  "nav.book": "Reservar",
   "path.home": "/",
   "path.routes": "/rutas",
-  "path.availability": "/disponibilidad"
+  "path.book": "/reservar",
+  "index.photos.left.alt": "Vista del bosque de Arbas desde la casa rural",
+  "index.photos.left.caption": "Bosque de Arbas, a diez minutos andando desde el portal",
+  "index.photos.right.alt": "Chimenea de la casa rural en el Valle de Arbas",
+  "index.photos.right.caption": "Se enciende en octubre y no se apaga hasta mayo",
+  "index.photos.card.since": "Desde 2026",
+  "index.photos.main.alt": "La casa rural en el Valle de Arbas",
+  "index.mainTitle.1": "Casa Rural",
+  "index.mainTitle.2": "Valle de Arbas",
+  "index.bookNow": "Consultar disponibilidad",
+  "index.bookNow.footer": "Casa entera · hasta 10 personas"
 }

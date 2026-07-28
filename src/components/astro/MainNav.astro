@@ -7,23 +7,28 @@ const t = useTranslations(lang);
 ---
 
 <nav
-  class="flex flex-row items-center justify-between w-full h-16 px-4 bg-transparent text-ink fixed inset-x-0 top-0 z-50"
+  class="flex flex-row items-center justify-between w-full px-4 py-5 bg-transparent text-ink fixed inset-x-0 top-0 z-50 sm:px-8 md:px-12 md:border-b md:border-ink/20 md:backdrop-blur-lg"
 >
-  <h2 class="text-2xl uppercase">
+  <h2 class="w-[50%] text-lg/4 uppercase tracking-[0.18em] sm:text-xl/4">
     <a href={getRelativeLocaleUrl(lang, t("path.home"))}>Valle de Arbas</a>
   </h2>
-  <div class="flex flex-row items-center gap-4">
+  <div
+    class="flex flex-row items-baseline gap-2 text-sm/tight uppercase tracking-wider xs:gap-4 md:text-base/tight md:gap-8"
+  >
     <a
       href={getRelativeLocaleUrl(lang, t("path.home"))}
-      class="text-lg hover:underline">{t("nav.home")}</a
+      class="hover:underline hover:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104"
+      >{t("nav.home")}</a
     >
     <a
       href={getRelativeLocaleUrl(lang, t("path.routes"))}
-      class="text-lg hover:underline">{t("nav.routes")}</a
+      class="hover:underline hover:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104"
+      >{t("nav.routes")}</a
     >
     <a
-      href={getRelativeLocaleUrl(lang, t("path.availability"))}
-      class="text-lg hover:underline">{t("nav.availability")}</a
+      href={getRelativeLocaleUrl(lang, t("path.book"))}
+      class="hover:underline hover:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104"
+      >{t("nav.book")}</a
     >
   </div>
 </nav>

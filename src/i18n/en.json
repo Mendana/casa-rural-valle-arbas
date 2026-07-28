@@ -1,8 +1,8 @@
 {
   "nav.home": "The house",
   "nav.routes": "Routes",
-  "nav.availability": "Availability",
+  "nav.availability": "Book",
   "path.home": "/",
   "path.routes": "/routes",
-  "path.availability": "/availability"
+  "path.availability": "/book"
 }
