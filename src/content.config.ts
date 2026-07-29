@@ -25,4 +25,14 @@ const homeHighlights = defineCollection({
     }),
 });
 
-export const collections = { activities, homeHighlights };
+const seasons = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/seasons" }),
+  schema: z.object({
+    order: z.number(),
+    title: z.string(),
+    dates: z.string(),
+    description: z.string(),
+  }),
+});
+
+export const collections = { activities, homeHighlights, seasons };

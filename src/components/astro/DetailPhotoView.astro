@@ -20,47 +20,57 @@ const isRight = alignment === "right";
 
 <article
   class:list={[
-    "grid grid-cols-1 gap-6 pb-12 mb-12 last:pb-0 md:grid-cols-2 md:items-center md:gap-12",
+    "grid grid-cols-1 gap-6 pb-20 mb-20 last:pb-0 mt-8 lg:grid-cols-2 lg:items-center lg:gap-12",
     "not-last:border-b not-last:border-line",
   ]}
 >
-  <div class:list={["relative", isRight && "md:order-2"]}>
+  <div class:list={["relative", isRight && "lg:order-2"]}>
     <Image
       src={image}
       alt={alt}
       width={860}
       height={640}
-      class="h-75 w-full object-cover md:h-100"
+      class="h-100 w-full object-cover lg:h-150"
     />
     <div
       class:list={[
-        "absolute -bottom-3 -left-3 border border-wood bg-bg px-3 py-1.5 md:-bottom-4 md:px-4 md:py-2",
-        isRight && "md:left-auto md:-right-4",
+        "absolute -bottom-2 -left-2 border border-wood bg-bg px-3 py-1.5 lg:-bottom-4 lg:px-4 lg:py-2",
+        isRight && "lg:left-auto lg:-right-2",
       ]}
     >
-      <span class="font-serif text-sm text-wood md:text-base"
+      <span class="font-serif text-sm text-wood lg:text-base"
         >{image_description}</span
       >
     </div>
   </div>
 
-  <div class:list={["relative", isRight && "md:order-1"]}>
+  <div
+    class:list={[
+      "relative md:max-w-125 lg:max-w-none",
+      isRight && "md:order-1",
+      isRight ? "xl:mr-24" : "xl:ml-24",
+    ]}
+  >
     <span
       class:list={[
-        "pointer-events-none absolute -top-20 -z-10 hidden select-none font-serif text-[8em] leading-none text-wood opacity-10 md:block lg:text-[10em]",
-        isRight ? "md:-right-2 md:text-right" : "md:right-2",
+        "pointer-events-none absolute -top-25 -z-10 hidden select-none font-serif font-light text-[10em] leading-none text-wood opacity-10 lg:block xl:text-[12em]",
+        isRight ? "lg:-right-2 lg:text-right" : "lg:right-2",
       ]}
       aria-hidden="true"
     >
       {orderLabel}
     </span>
-    <span class="font-serif text-sm uppercase tracking-widest text-wood">
+    <span
+      class="font-serif text-sm uppercase tracking-widest text-wood lg:text-base lg:max-w-100"
+    >
       {orderLabel}
     </span>
-    <h4 class="mt-2 font-serif text-2xl text-ink md:text-3xl">
+    <h4
+      class="mt-2 font-serif text-3xl text-ink font-light md:text-4xl lg:text-5xl lg:max-w-100"
+    >
       {title}
     </h4>
-    <p class="mt-3 text-base text-muted md:text-lg">
+    <p class="mt-3 text-lg text-muted lg:max-w-100">
       {description}
     </p>
   </div>

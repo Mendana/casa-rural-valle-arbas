@@ -1,0 +1,27 @@
+---
+import { getLang, useTranslations } from "../../i18n/utils";
+import { getCollection } from "astro:content";
+import DetailSeasonView from "./DetailSeasonView.astro";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+
+const entries = (await getCollection("seasons"))
+  .filter((entry) => entry.id.startsWith(`${lang}/`))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+<section>
+  <h3>{t("season.title")}</h3>
+  <div>
+    {
+      entries.map((entry) => (
+        <DetailSeasonView
+          title={entry.data.title}
+          dates={entry.data.dates}
+          description={entry.data.description}
+        />
+      ))
+    }
+  </div>
+</section>
