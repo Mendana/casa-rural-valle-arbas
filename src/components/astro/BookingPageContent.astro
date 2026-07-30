@@ -2,6 +2,8 @@
 import { getLang, useTranslations } from "../../i18n/utils";
 import BookingSimulator from "../react/BookingSimulator";
 import ItemsSection from "./ItemsSection.astro";
+import HowItWorksSection from "./HowItWorksSection.astro";
+import ContactSection from "./ContactSection.astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -25,4 +27,6 @@ const t = useTranslations(lang);
     </div>
   </section>
   <ItemsSection />
+  <HowItWorksSection />
+  <ContactSection />
 </main>

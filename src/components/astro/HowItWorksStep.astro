@@ -1,0 +1,19 @@
+---
+interface Props {
+  index: number;
+  title: string;
+}
+
+const { index, title } = Astro.props;
+const label = String(index).padStart(2, "0");
+---
+
+<article class="flex flex-col gap-2 pt-4 border-t border-t-line">
+  <div class="flex flex-row items-baseline gap-4">
+    <span class="font-serif text-sm text-wood tracking-widest">{label}</span>
+    <h3 class="text-xl font-light font-serif text-ink md:text-2xl">{title}</h3>
+  </div>
+  <p class="text-sm text-muted tracking-wide leading-7 md:text-base">
+    <slot />
+  </p>
+</article>

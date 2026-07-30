@@ -1,0 +1,33 @@
+---
+import { getLang, useTranslations } from "../../i18n/utils";
+import HowItWorksStep from "./HowItWorksStep.astro";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<section class="mx-auto max-w-600 px-4 py-12 md:px-8 md:py-16">
+  <h2
+    class="font-sans text-xs font-semibold uppercase tracking-widest text-muted md:text-sm lg:text-base"
+  >
+    {t("book.howItWorks.title")}
+  </h2>
+  <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <HowItWorksStep index={1} title={t("book.howItWorks.1.title")}>
+      {t("book.howItWorks.1.description")}
+    </HowItWorksStep>
+    <HowItWorksStep index={2} title={t("book.howItWorks.2.title")}>
+      {t("book.howItWorks.2.description.prefix")}<a
+        href="#contacto"
+        class="text-wood underline decoration-wood/50 underline-offset-4 transition-colors hover:decoration-wood focus-visible:decoration-wood"
+        >{t("book.howItWorks.2.description.link")}</a
+      >{t("book.howItWorks.2.description.suffix")}
+    </HowItWorksStep>
+    <HowItWorksStep index={3} title={t("book.howItWorks.3.title")}>
+      {t("book.howItWorks.3.description")}
+    </HowItWorksStep>
+    <HowItWorksStep index={4} title={t("book.howItWorks.4.title")}>
+      {t("book.howItWorks.4.description")}
+    </HowItWorksStep>
+  </div>
+</section>

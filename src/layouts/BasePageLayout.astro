@@ -14,6 +14,8 @@ const lang = getLang(Astro.currentLocale);
   <body class="bg-bg text-ink pt-16">
     <MainNav />
     <slot />
-    <Footer />
+    <slot name="footer">
+      <Footer />
+    </slot>
   </body>
 </html>

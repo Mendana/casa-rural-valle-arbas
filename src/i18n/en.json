@@ -102,5 +102,19 @@
   "footer.location.title": "Where we are",
   "footer.location.street": "Calle Real, 12",
   "footer.location.cityLine": "24916 Valle de Arbas, León",
-  "footer.copyright": "Casa Rural Valle de Arbas · All rights reserved"
+  "footer.sections.title": "Sections",
+  "footer.copyright": "Casa Rural Valle de Arbas · All rights reserved",
+  "book.howItWorks.title": "How it works",
+  "book.howItWorks.1.title": "Simulate",
+  "book.howItWorks.1.description": "Simulate your dates on the calendar to estimate the total cost.",
+  "book.howItWorks.2.title": "Get in touch",
+  "book.howItWorks.2.description.prefix": "Contact us by ",
+  "book.howItWorks.2.description.link": "email or phone",
+  "book.howItWorks.2.description.suffix": " to tell us the dates and what you need.",
+  "book.howItWorks.3.title": "Arrival",
+  "book.howItWorks.3.description": "Check-in from 5pm, check-out before noon. We'll meet you at the door with the keys.",
+  "book.howItWorks.4.title": "Cancellation",
+  "book.howItWorks.4.description": "Full refund up to 15 days before. After that, half.",
+  "book.contact.title": "Contact",
+  "book.contact.description": "Message or call us and we'll confirm availability right away."
 }

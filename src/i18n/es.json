@@ -102,5 +102,19 @@
   "footer.location.title": "Dónde estamos",
   "footer.location.street": "Calle Real, 12",
   "footer.location.cityLine": "24916 Valle de Arbas, León",
-  "footer.copyright": "Casa Rural Valle de Arbas · Todos los derechos reservados"
+  "footer.sections.title": "Secciones",
+  "footer.copyright": "Casa Rural Valle de Arbas · Todos los derechos reservados",
+  "book.howItWorks.title": "Cómo funciona",
+  "book.howItWorks.1.title": "Simulas",
+  "book.howItWorks.1.description": "Puedes simular tus fechas en el calendario para estimar cuánto será el coste total.",
+  "book.howItWorks.2.title": "Contactas",
+  "book.howItWorks.2.description.prefix": "Contactas con nosotros vía ",
+  "book.howItWorks.2.description.link": "correo o teléfono",
+  "book.howItWorks.2.description.suffix": " para indicarnos el periodo y lo que necesites.",
+  "book.howItWorks.3.title": "Llegada",
+  "book.howItWorks.3.description": "Entrada desde las 17:00, salida antes de las 12:00. Nos vemos en la puerta con las llaves.",
+  "book.howItWorks.4.title": "Cancelación",
+  "book.howItWorks.4.description": "Devolución completa hasta 15 días antes. Después, la mitad.",
+  "book.contact.title": "Contacto",
+  "book.contact.description": "Escríbenos o llámanos y te confirmamos la disponibilidad al momento."
 }
