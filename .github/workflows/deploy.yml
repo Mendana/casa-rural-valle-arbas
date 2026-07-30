@@ -16,6 +16,9 @@ jobs:
         env:
           PUBLIC_GOOGLE_CALENDAR_KEY: ${{ secrets.GCAL_KEY }}
           PUBLIC_GOOGLE_CALENDAR_ID: ${{ vars.GCAL_ID }}
+          PUBLIC_PRICE_PER_NIGHT: ${{ vars.PRICE_PER_NIGHT }}
+          PUBLIC_CLEANING_FEE: ${{ vars.CLEANING_FEE }}
+          PUBLIC_WOOD_PRICE_PER_KG: ${{ vars.WOOD_PRICE_PER_KG }}
       - uses: actions/upload-pages-artifact@v3
         with: { path: ./dist }
 

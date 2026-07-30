@@ -1,8 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations, type Lang } from "../../i18n/utils";
 
+export interface DateRange {
+  start: string;
+  end: string | null;
+}
+
 interface Props {
   lang: Lang;
+  selectable?: boolean;
+  selectedRange?: DateRange | null;
+  onSelectedRangeChange?: (range: DateRange | null) => void;
 }
 
 type Status = "idle" | "loading" | "ready" | "error";
@@ -42,7 +50,12 @@ function buildMonthGrid(monthStart: Date): (Date | null)[] {
   return cells;
 }
 
-export default function AvailabilityCalendar({ lang }: Props) {
+export default function AvailabilityCalendar({
+  lang,
+  selectable = false,
+  selectedRange = null,
+  onSelectedRangeChange,
+}: Props) {
   const t = useTranslations(lang);
   const apiKey = import.meta.env.PUBLIC_GOOGLE_CALENDAR_KEY;
   const calendarId = import.meta.env.PUBLIC_GOOGLE_CALENDAR_ID;
@@ -134,6 +147,66 @@ export default function AvailabilityCalendar({ lang }: Props) {
     setVisibleMonth((prev) => new Date(prev.getFullYear(), prev.getMonth() + offset, 1));
   }
 
+  function hasBookedDayBetween(startKey: string, endKey: string): boolean {
+    const cursor = new Date(startKey);
+    const end = new Date(endKey);
+    while (cursor <= end) {
+      if (bookedDays.has(toDateKey(cursor))) return true;
+      cursor.setDate(cursor.getDate() + 1);
+    }
+    return false;
+  }
+
+  function handleDayClick(day: Date) {
+    if (!selectable || !onSelectedRangeChange) return;
+    const key = toDateKey(day);
+    if (day < today || bookedDays.has(key)) return;
+
+    // Sin selección: este clic es la entrada.
+    if (!selectedRange) {
+      onSelectedRangeChange({ start: key, end: null });
+      return;
+    }
+
+    // Hay entrada pero falta la salida (patrón "entrada y luego salida").
+    if (!selectedRange.end) {
+      if (key === selectedRange.start) {
+        onSelectedRangeChange(null);
+        return;
+      }
+      const [rangeStart, rangeEnd] =
+        key < selectedRange.start ? [key, selectedRange.start] : [selectedRange.start, key];
+      if (hasBookedDayBetween(rangeStart, rangeEnd)) {
+        onSelectedRangeChange({ start: key, end: null });
+        return;
+      }
+      onSelectedRangeChange({ start: rangeStart, end: rangeEnd });
+      return;
+    }
+
+    // Ya hay un rango completo.
+    if (key === selectedRange.start || key === selectedRange.end) {
+      onSelectedRangeChange(null);
+      return;
+    }
+
+    const isInsideRange = key > selectedRange.start && key < selectedRange.end;
+    if (isInsideRange) {
+      // Clic dentro del rango actual: empieza una selección nueva desde ahí.
+      onSelectedRangeChange({ start: key, end: null });
+      return;
+    }
+
+    // Clic fuera del rango actual: lo extiende (soporta ir pulsando día a día).
+    const rangeStart = key < selectedRange.start ? key : selectedRange.start;
+    const rangeEnd = key > selectedRange.end ? key : selectedRange.end;
+    if (hasBookedDayBetween(rangeStart, rangeEnd)) {
+      onSelectedRangeChange({ start: key, end: null });
+      return;
+    }
+    onSelectedRangeChange({ start: rangeStart, end: rangeEnd });
+  }
+
   if (!isConfigured) {
     return (
       <div className="border border-line bg-bg2 px-6 py-16 text-center">
@@ -185,19 +258,47 @@ export default function AvailabilityCalendar({ lang }: Props) {
               const isPast = day < today;
               const isBooked = bookedDays.has(key);
               const isToday = key === toDateKey(today);
-              return (
-                <div
-                  key={key}
-                  className={[
-                    "flex h-10 items-center justify-center border text-sm md:h-12 md:text-base",
-                    isPast
-                      ? "border-transparent text-muted/40"
+              const isEndpoint =
+                Boolean(selectedRange) &&
+                (key === selectedRange!.start || key === selectedRange!.end);
+              const isInRange =
+                Boolean(selectedRange?.end) &&
+                key > selectedRange!.start &&
+                key < (selectedRange!.end as string);
+
+              const dayClass = [
+                "flex h-10 items-center justify-center border text-sm md:h-12 md:text-base",
+                isPast
+                  ? "border-transparent text-muted/40"
+                  : isEndpoint
+                    ? "border-wood bg-wood text-onwood"
+                    : isInRange
+                      ? "border-ink/20 bg-ink/8 text-ink"
                       : isBooked
                         ? "border-line bg-wood/10 text-muted line-through"
                         : "border-line text-ink",
-                    isToday ? "border-wood" : "",
-                  ].join(" ")}
-                >
+                isToday && !isEndpoint ? "border-wood" : "",
+                selectable && !isPast && !isBooked
+                  ? "cursor-pointer transition-colors hover:border-wood focus-visible:border-wood"
+                  : "",
+              ].join(" ");
+
+              if (selectable) {
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    disabled={isPast || isBooked}
+                    onClick={() => handleDayClick(day!)}
+                    className={dayClass}
+                  >
+                    {day.getDate()}
+                  </button>
+                );
+              }
+
+              return (
+                <div key={key} className={dayClass}>
                   {day.getDate()}
                 </div>
               );
@@ -215,6 +316,12 @@ export default function AvailabilityCalendar({ lang }: Props) {
               <span className="h-3 w-3 border border-line bg-wood/10" />
               {t("calendar.legend.booked")}
             </span>
+            {selectable && (
+              <span className="flex items-center gap-2">
+                <span className="h-3 w-3 border border-wood bg-wood" />
+                {t("calendar.legend.selected")}
+              </span>
+            )}
           </div>
         </>
       )}

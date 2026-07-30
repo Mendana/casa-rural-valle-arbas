@@ -1,0 +1,35 @@
+---
+import { getLang, useTranslations } from "../../i18n/utils";
+import { getCollection } from "astro:content";
+import ItemView from "./ItemView.astro";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+
+const entries = (await getCollection("itemsInHouse")).filter((entry) =>
+  entry.id.startsWith(`${lang}/`),
+);
+---
+
+<section
+  class="px-4 py-12 bg-bg2 border-y border-y-line md:px-8 md:py-16 lg:border-y-2"
+>
+  <div class="mx-auto max-w-600">
+    <h2
+      class="font-sans text-xs font-semibold uppercase tracking-widest text-muted md:text-sm lg:text-base"
+    >
+      {t("book.itemsAvailable.title")}
+    </h2>
+    <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+      {
+        entries.map((entry) => (
+          <ItemView
+            title={entry.data.title}
+            price={entry.data.price}
+            description={entry.data.description}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -9,7 +9,7 @@ const { title, description } = Astro.props;
 const lang = getLang(Astro.currentLocale);
 ---
 
-<html lang={lang}>
+<html lang={lang} class="scroll-smooth">
   <BaseHead title={title} description={description} />
   <body class="bg-bg text-ink pt-16">
     <MainNav />

@@ -1,5 +1,6 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 const activities = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/activities" }),
@@ -55,10 +56,20 @@ const characteristics = defineCollection({
   }),
 });
 
+const itemsInHouse = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/items" }),
+  schema: z.object({
+    price: z.string(),
+    title: z.string(),
+    description: z.string(),
+  }),
+});
+
 export const collections = {
   activities,
   homeHighlights,
   seasons,
   interior,
   characteristics,
+  itemsInHouse,
 };
