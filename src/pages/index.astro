@@ -1,55 +1,12 @@
 ---
 import BasePageLayout from "../layouts/BasePageLayout.astro";
+import HomePageContent from "../components/astro/HomePageContent.astro";
 import { getLang, useTranslations } from "../i18n/utils";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import HomeHeroGallery from "../components/astro/HomeHeroGallery.astro";
-import Button from "../components/astro/Button.astro";
-import FactsTicker from "../components/astro/FactsTicker.astro";
-import HomeMainInfoSection from "../components/astro/HomeMainInfoSection.astro";
-import HomeHighlights from "../components/astro/HomeHighlights.astro";
-import SeasonSection from "../components/astro/SeasonSection.astro";
-import HomeInteriorSection from "../components/astro/HomeInteriorSection.astro";
-import HomeCharacteristics from "../components/astro/HomeCharacteristics.astro";
-import PagesSection from "../components/astro/PagesSection.astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 ---
 
-<BasePageLayout
-  title="Inicio"
-  description="Casa rural en el Valle de Arbas, León, España."
->
-  <main>
-    <section class="p-4 md:p-8 max-w-600 mx-auto">
-      <HomeHeroGallery />
-      <div class="mt-2 flex flex-col gap-2 text-center sm:mt-4 md:mt-8">
-        <h1
-          class="text-5xl font-light flex flex-col items-center justify-center gap-1 sm:text-6xl md:text-8xl"
-        >
-          {t("index.mainTitle.1")}
-          <span class="text-wood italic">{t("index.mainTitle.2")}</span>
-        </h1>
-      </div>
-      <div
-        class="mt-8 flex flex-col gap-4 text-center md:mt-12 md:flex-row md:items-center md:justify-center md:gap-8"
-      >
-        <div class="flex justify-center">
-          <Button href={getRelativeLocaleUrl(lang, t("path.book"))}>
-            {t("index.bookNow")}
-          </Button>
-        </div>
-        <p class="text-sm text-muted tracking-wider md:text-base">
-          {t("index.bookNow.footer")}
-        </p>
-      </div>
-    </section>
-    <FactsTicker />
-    <HomeMainInfoSection />
-    <HomeHighlights />
-    <SeasonSection />
-    <HomeInteriorSection />
-    <HomeCharacteristics />
-    <PagesSection />
-  </main>
+<BasePageLayout title={t("meta.home.title")} description={t("meta.home.description")}>
+  <HomePageContent />
 </BasePageLayout>

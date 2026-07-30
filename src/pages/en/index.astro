@@ -1,8 +1,12 @@
 ---
 import BasePageLayout from "../../layouts/BasePageLayout.astro";
+import HomePageContent from "../../components/astro/HomePageContent.astro";
+import { getLang, useTranslations } from "../../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 ---
 
-<BasePageLayout
-  title="Home"
-  description="Rural house in Valle de Arbas, León, Spain."
-/>
+<BasePageLayout title={t("meta.home.title")} description={t("meta.home.description")}>
+  <HomePageContent />
+</BasePageLayout>

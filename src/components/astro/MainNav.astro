@@ -1,9 +1,18 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { getLang, useTranslations } from "../../i18n/utils";
+import { getLang, useTranslations, getAlternatePath } from "../../i18n/utils";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
+
+const otherLang = lang === "es" ? "en" : "es";
+const alternatePath = getAlternatePath(
+  lang,
+  otherLang,
+  Astro.url.pathname,
+  import.meta.env.BASE_URL,
+);
+const switchHref = getRelativeLocaleUrl(otherLang, alternatePath);
 ---
 
 <nav
@@ -31,6 +40,14 @@ const t = useTranslations(lang);
       href={getRelativeLocaleUrl(lang, t("path.book"))}
       class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.book")}</a
+    >
+    <a
+      href={switchHref}
+      lang={otherLang}
+      hreflang={otherLang}
+      onclick={`try { localStorage.setItem('lang', '${otherLang}') } catch (e) {}`}
+      class="border-l border-ink/20 pl-1 hover:text-wood focus-visible:text-wood xs:pl-2 md:pl-4"
+      >{otherLang.toUpperCase()}</a
     >
   </div>
 </nav>
