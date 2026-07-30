@@ -1,0 +1,146 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLang, useTranslations } from "../../i18n/utils";
+import Button from "./Button.astro";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+
+const seasonMonths = {
+  winter: [11, 0, 1],
+  spring: [2, 3, 4],
+  summer: [5, 6, 7],
+  autumn: [8, 9, 10],
+} as const;
+
+const seasonCopy = {
+  winter: {
+    article: t("footer.season.winter.article"),
+    label: t("footer.season.winter.label"),
+  },
+  spring: {
+    article: t("footer.season.spring.article"),
+    label: t("footer.season.spring.label"),
+  },
+  summer: {
+    article: t("footer.season.summer.article"),
+    label: t("footer.season.summer.label"),
+  },
+  autumn: {
+    article: t("footer.season.autumn.article"),
+    label: t("footer.season.autumn.label"),
+  },
+} as const;
+
+const currentMonth = new Date().getMonth();
+const currentSeason =
+  (Object.keys(seasonMonths) as (keyof typeof seasonMonths)[]).find((key) =>
+    (seasonMonths[key] as readonly number[]).includes(currentMonth),
+  ) ?? "winter";
+const initial = seasonCopy[currentSeason];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-bg text-ink">
+  <div
+    class="mx-auto grid max-w-600 grid-cols-1 gap-12 px-4 py-16 md:grid-cols-3 md:px-8"
+  >
+    <div>
+      <p class="font-serif text-3xl font-light md:text-4xl">
+        <span
+          id="footer-season"
+          data-current={currentSeason}
+          data-winter-article={seasonCopy.winter.article}
+          data-winter-label={seasonCopy.winter.label}
+          data-spring-article={seasonCopy.spring.article}
+          data-spring-label={seasonCopy.spring.label}
+          data-summer-article={seasonCopy.summer.article}
+          data-summer-label={seasonCopy.summer.label}
+          data-autumn-article={seasonCopy.autumn.article}
+          data-autumn-label={seasonCopy.autumn.label}
+        >
+          {t("footer.cta.prefix")}{" "}
+          <span id="footer-season-article" class="text-wood italic"
+            >{initial.article}</span
+          >{" "}
+          <span id="footer-season-label" class="text-wood italic"
+            >{initial.label}?</span
+          >
+        </span>
+      </p>
+      <div class="mt-6">
+        <Button href={getRelativeLocaleUrl(lang, t("path.book"))}>
+          {t("index.bookNow")}
+        </Button>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="font-sans text-sm uppercase tracking-widest text-muted">
+        {t("footer.contact.title")}
+      </h4>
+      <div class="mt-4 flex flex-col gap-2 font-sans text-base">
+        <a
+          href={`tel:${t("footer.contact.phone").replace(/\s/g, "")}`}
+          class="transition-colors hover:text-wood"
+        >
+          {t("footer.contact.phone")}
+        </a>
+        <a
+          href={`mailto:${t("footer.contact.email")}`}
+          class="transition-colors hover:text-wood"
+        >
+          {t("footer.contact.email")}
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <h4 class="font-sans text-sm uppercase tracking-widest text-muted">
+        {t("footer.location.title")}
+      </h4>
+      <div class="mt-4 flex flex-col gap-2 font-sans text-base">
+        <span>{t("footer.location.street")}</span>
+        <span>{t("footer.location.cityLine")}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-600 px-4 md:px-8">
+    <div class="border-t border-line"></div>
+  </div>
+
+  <div
+    class="mx-auto max-w-600 px-4 py-6 font-sans text-sm text-muted md:px-8"
+  >
+    &copy; {currentYear} {t("footer.copyright")}
+  </div>
+</footer>
+
+<script>
+  const seasonMonths: Record<string, number[]> = {
+    winter: [11, 0, 1],
+    spring: [2, 3, 4],
+    summer: [5, 6, 7],
+    autumn: [8, 9, 10],
+  };
+
+  const container = document.querySelector<HTMLElement>("#footer-season");
+  if (container) {
+    const month = new Date().getMonth();
+    const season =
+      Object.keys(seasonMonths).find((key) =>
+        seasonMonths[key].includes(month),
+      ) ?? "winter";
+
+    if (season !== container.dataset.current) {
+      const article = container.dataset[`${season}Article`];
+      const label = container.dataset[`${season}Label`];
+      const articleEl = document.querySelector("#footer-season-article");
+      const labelEl = document.querySelector("#footer-season-label");
+      if (articleEl && article) articleEl.textContent = article;
+      if (labelEl && label) labelEl.textContent = `${label}?`;
+    }
+  }
+</script>

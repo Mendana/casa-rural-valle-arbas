@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/astro/BaseHead.astro";
 import MainNav from "../components/astro/MainNav.astro";
+import Footer from "../components/astro/Footer.astro";
 import "../styles/global.css";
 import { getLang } from "../i18n/utils";
 
@@ -13,5 +14,6 @@ const lang = getLang(Astro.currentLocale);
   <body class="bg-bg text-ink pt-16">
     <MainNav />
     <slot />
+    <Footer />
   </body>
 </html>

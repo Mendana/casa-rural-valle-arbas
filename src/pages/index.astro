@@ -8,6 +8,9 @@ import FactsTicker from "../components/astro/FactsTicker.astro";
 import HomeMainInfoSection from "../components/astro/HomeMainInfoSection.astro";
 import HomeHighlights from "../components/astro/HomeHighlights.astro";
 import SeasonSection from "../components/astro/SeasonSection.astro";
+import HomeInteriorSection from "../components/astro/HomeInteriorSection.astro";
+import HomeCharacteristics from "../components/astro/HomeCharacteristics.astro";
+import PagesSection from "../components/astro/PagesSection.astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -45,5 +48,8 @@ const t = useTranslations(lang);
     <HomeMainInfoSection />
     <HomeHighlights />
     <SeasonSection />
+    <HomeInteriorSection />
+    <HomeCharacteristics />
+    <PagesSection />
   </main>
 </BasePageLayout>

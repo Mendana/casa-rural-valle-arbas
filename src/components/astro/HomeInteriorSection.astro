@@ -1,0 +1,123 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { getLang, useTranslations } from "../../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+
+const entries = (await getCollection("interior"))
+  .filter((entry) => entry.id.startsWith(`${lang}/`))
+  .sort((a, b) => a.data.order - b.data.order);
+
+const variants = {
+  normal: {
+    wrapper: "",
+    image: "h-83 w-64 sm:h-92 sm:w-74 md:h-130 md:w-100 lg:h-150 lg:w-115",
+    caption: "max-w-64 sm:max-w-74 md:max-w-100 lg:max-w-115",
+  },
+  raised: {
+    wrapper: "-translate-y-4 md:-translate-y-8",
+    image: "h-83 w-64 sm:h-92 sm:w-74 md:h-130 md:w-100 lg:h-150 lg:w-115",
+    caption: "max-w-64 sm:max-w-74 md:max-w-100 lg:max-w-115",
+  },
+  lowered: {
+    wrapper: "translate-y-4 md:translate-y-6",
+    image: "h-83 w-64 sm:h-92 sm:w-74 md:h-130 md:w-100 lg:h-150 lg:w-115",
+    caption: "max-w-64 sm:max-w-74 md:max-w-100 lg:max-w-115",
+  },
+  small: {
+    wrapper: "translate-y-4 md:translate-y-6",
+    image: "h-69 w-51 sm:h-78 sm:w-60 md:h-104 md:w-80 lg:h-120 lg:w-92",
+    caption: "max-w-51 sm:max-w-60 md:max-w-80 lg:max-w-92",
+  },
+} as const;
+
+const defaultCycle = ["normal", "raised", "small", "lowered"] as const;
+---
+
+<section class="mx-auto mt-12 max-w-500 px-4 py-12 md:px-8 md:py-16">
+  <div class="flex items-end justify-between gap-4">
+    <h3
+      class="font-serif text-3xl font-light text-muted md:text-4xl lg:text-5xl"
+    >
+      {t("interior.title.0")}
+      <span class="text-wood italic font-medium lg:font-light"
+        >{t("interior.title.1")}</span
+      >
+    </h3>
+    <div class="flex shrink-0 gap-2">
+      <button
+        id="interior-prev"
+        type="button"
+        aria-label={t("interior.prev.alt")}
+        class="flex h-10 w-10 items-center justify-center border border-line text-ink transition-colors hover:border-wood hover:text-wood"
+      >
+        ‹
+      </button>
+      <button
+        id="interior-next"
+        type="button"
+        aria-label={t("interior.next.alt")}
+        class="flex h-10 w-10 items-center justify-center border border-line text-ink transition-colors hover:border-wood hover:text-wood"
+      >
+        ›
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="interior-scroll"
+    class="no-scrollbar mt-12 flex items-start snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden scroll-smooth pt-6 pb-6 md:mt-16 md:gap-8 md:pt-10 md:pb-8"
+  >
+    {
+      entries.map((entry, i) => {
+        const variant =
+          variants[entry.data.layout ?? defaultCycle[i % defaultCycle.length]];
+        return (
+          <div class:list={["shrink-0 snap-start", variant.wrapper]}>
+            <Image
+              src={entry.data.image}
+              alt={entry.data.alt}
+              width={480}
+              height={600}
+              class:list={["object-cover", variant.image]}
+            />
+            <div
+              class:list={["mt-3 flex items-baseline gap-2", variant.caption]}
+            >
+              <span class="font-mono text-sm text-wood tracking-wide">
+                {String(entry.data.order).padStart(2, "0")}
+              </span>
+              <span class="text-sm text-muted">{entry.data.description}</span>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>
+
+<style>
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  const container = document.querySelector<HTMLElement>("#interior-scroll");
+  const prevBtn = document.querySelector<HTMLElement>("#interior-prev");
+  const nextBtn = document.querySelector<HTMLElement>("#interior-next");
+  const scrollAmount = 320;
+
+  prevBtn?.addEventListener("click", () => {
+    container?.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  });
+  nextBtn?.addEventListener("click", () => {
+    container?.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  });
+</script>

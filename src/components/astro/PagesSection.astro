@@ -1,0 +1,95 @@
+---
+import { getLang, useTranslations } from "../../i18n/utils";
+import { Image } from "astro:assets";
+import casaImg from "../../assets/images/casa-rural.jpg";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<section class="mx-auto flex max-w-600 flex-col md:flex-row">
+  <article
+    class="relative flex-1 border-b border-b-line md:border-r border-r-line"
+  >
+    <div class="absolute top-0 right-0 z-10 bg-wood px-2 py-1">
+      <span class="font-sans text-sm uppercase tracking-widest text-onwood">
+        {t("pagesSection.1.badge")}
+      </span>
+    </div>
+    <a
+      href={t("path.routes")}
+      class="group block p-6 transition-colors hover:bg-ink/5"
+    >
+      <div class="flex flex-col gap-2">
+        <div class="overflow-hidden">
+          <Image
+            src={casaImg}
+            alt={t("pagesSection.1.alt")}
+            width={860}
+            height={559}
+            loading="lazy"
+            class="h-65 w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-75"
+          />
+        </div>
+        <h3 class="mt-6 text-3xl font-serif font-light text-ink md:text-4xl">
+          {t("pagesSection.1.title")}
+        </h3>
+        <p
+          class="text-base font-sans text-muted tracking-wide leading-6 md:text-lg"
+        >
+          {t("pagesSection.1.description")}
+        </p>
+        <span
+          class="mt-4 inline-flex items-center gap-2 text-wood text-sm font-sans uppercase tracking-widest md:text-base"
+        >
+          {t("pagesSection.1.link")}
+          <span
+            class="transition-transform duration-300 group-hover:translate-x-1"
+          >
+            →
+          </span>
+        </span>
+      </div>
+    </a>
+  </article>
+  <article class="relative flex-1 border-b border-b-line">
+    <div class="absolute top-0 right-0 z-10 bg-wood px-2 py-1">
+      <span class="font-sans text-sm uppercase tracking-widest text-onwood">
+        {t("pagesSection.2.badge")}
+      </span>
+    </div>
+    <a
+      href={t("path.book")}
+      class="group block p-6 transition-colors hover:bg-ink/5"
+    >
+      <div class="flex flex-col gap-2">
+        <div class="overflow-hidden">
+          <Image
+            src={casaImg}
+            alt={t("pagesSection.2.alt")}
+            width={860}
+            height={559}
+            loading="lazy"
+            class="h-65 w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-75"
+          />
+        </div>
+        <h3 class="mt-6 text-3xl font-serif font-light text-ink md:text-4xl">
+          {t("pagesSection.2.title")}
+        </h3>
+        <p class="text-base font-sans text-muted tracking-wide leading-6">
+          {t("pagesSection.2.description")}
+        </p>
+        <span
+          class="mt-4 inline-flex items-center gap-2 text-wood text-sm font-sans uppercase tracking-widest md:text-base"
+        >
+          {t("pagesSection.2.link")}
+          <span
+            class="transition-transform duration-300 group-hover:translate-x-1"
+          >
+            →
+          </span>
+        </span>
+      </div>
+    </a>
+  </article>
+</section>

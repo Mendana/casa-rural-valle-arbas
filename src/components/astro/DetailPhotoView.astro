@@ -30,7 +30,7 @@ const isRight = alignment === "right";
       alt={alt}
       width={860}
       height={640}
-      class="h-100 w-full object-cover lg:h-150"
+      class="h-100 w-full object-cover lg:h-150 xl:h-175 2xl:h-200"
     />
     <div
       class:list={[
@@ -38,7 +38,7 @@ const isRight = alignment === "right";
         isRight && "lg:left-auto lg:-right-2",
       ]}
     >
-      <span class="font-serif text-sm text-wood lg:text-base"
+      <span class="font-serif text-sm text-wood lg:text-base 2xl:text-lg"
         >{image_description}</span
       >
     </div>
@@ -53,7 +53,7 @@ const isRight = alignment === "right";
   >
     <span
       class:list={[
-        "pointer-events-none absolute -top-25 -z-10 hidden select-none font-serif font-light text-[10em] leading-none text-wood opacity-10 lg:block xl:text-[12em]",
+        "pointer-events-none absolute -top-25 -z-10 hidden select-none font-serif font-light text-[10em] leading-none text-wood opacity-10 lg:block xl:text-[12em] 2xl:text-[16em]",
         isRight ? "lg:-right-2 lg:text-right" : "lg:right-2",
       ]}
       aria-hidden="true"
@@ -61,16 +61,16 @@ const isRight = alignment === "right";
       {orderLabel}
     </span>
     <span
-      class="font-serif text-sm uppercase tracking-widest text-wood lg:text-base lg:max-w-100"
+      class="font-serif text-sm uppercase tracking-widest text-wood lg:text-base lg:max-w-150"
     >
       {orderLabel}
     </span>
     <h4
-      class="mt-2 font-serif text-3xl text-ink font-light md:text-4xl lg:text-5xl lg:max-w-100"
+      class="mt-2 font-serif text-3xl text-ink font-light md:text-4xl lg:text-5xl lg:max-w-150 2xl:text-6xl"
     >
       {title}
     </h4>
-    <p class="mt-3 text-lg text-muted lg:max-w-100">
+    <p class="mt-3 text-lg text-muted lg:max-w-150">
       {description}
     </p>
   </div>

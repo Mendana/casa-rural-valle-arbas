@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import { getLang, useTranslations } from "../../i18n/utils";
+import CharacteristicView from "./CharacteristicView.astro";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+const characteristics = (await getCollection("characteristics")).filter(
+  (entry) => entry.id.startsWith(`${lang}/`),
+);
+---
+
+<section
+  class="relative z-0 overflow-hidden bg-ink px-4 py-16 md:py-24 md:px-8"
+>
+  <div
+    class="pointer-events-none absolute -bottom-12 left-20 -z-10 hidden select-none lg:block lg:opacity-8 xl:-bottom-16"
+  >
+    <span
+      class="font-serif text-[10em] leading-none tracking-wider italic text-line font-light xl:text-[13em] 2xl:text-[16em]"
+    >
+      Arbas
+    </span>
+  </div>
+  <h3 class="font-sans uppercase tracking-[0.18rem] text-line/70">
+    {t("characteristics.title")}
+  </h3>
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-8 pt-8">
+    {
+      characteristics.map((entry) => (
+        <CharacteristicView label={entry.data.label} value={entry.data.value} />
+      ))
+    }
+  </div>
+</section>
