@@ -23,7 +23,10 @@ const t = useTranslations(lang);
     </figcaption>
   </figure>
   <figure class="relative border border-muted border-b-2 border-b-ink">
-    <PriceBadge title={t("index.photos.card.since")} subtitle="1.340M · León" />
+    <PriceBadge
+      title={t("index.photos.card.since")}
+      subtitle={t("index.photos.card.subtitle")}
+    />
     <Image
       src={casaImg}
       alt={t("index.photos.main.alt")}
@@ -39,7 +42,7 @@ const t = useTranslations(lang);
     <figcaption
       class="absolute inset-x-0 bottom-2 text-center font-sans text-line text-sm tracking-[0.18em] text-shadow-sm uppercase md:text-base md:tracking-[0.2em]"
     >
-      Cubillas de Arbas · León · 1.340M
+      {t("index.photos.main.caption")}
     </figcaption>
   </figure>
 

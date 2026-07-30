@@ -38,20 +38,20 @@ const defaultCycle = ["normal", "raised", "small", "lowered"] as const;
 
 <section class="mx-auto mt-12 max-w-500 px-4 py-12 md:px-8 md:py-16">
   <div class="flex items-end justify-between gap-4">
-    <h3
-      class="font-serif text-3xl font-light text-muted md:text-4xl lg:text-5xl"
+    <h2
+      class="font-serif text-3xl font-light text-ink md:text-4xl lg:text-5xl"
     >
       {t("interior.title.0")}
       <span class="text-wood italic font-medium lg:font-light"
         >{t("interior.title.1")}</span
       >
-    </h3>
+    </h2>
     <div class="flex shrink-0 gap-2">
       <button
         id="interior-prev"
         type="button"
         aria-label={t("interior.prev.alt")}
-        class="flex h-10 w-10 items-center justify-center border border-line text-ink transition-colors hover:border-wood hover:text-wood"
+        class="flex h-10 w-10 items-center justify-center border border-line text-ink transition-colors hover:border-wood hover:text-wood focus-visible:border-wood focus-visible:text-wood"
       >
         ‹
       </button>
@@ -59,7 +59,7 @@ const defaultCycle = ["normal", "raised", "small", "lowered"] as const;
         id="interior-next"
         type="button"
         aria-label={t("interior.next.alt")}
-        class="flex h-10 w-10 items-center justify-center border border-line text-ink transition-colors hover:border-wood hover:text-wood"
+        class="flex h-10 w-10 items-center justify-center border border-line text-ink transition-colors hover:border-wood hover:text-wood focus-visible:border-wood focus-visible:text-wood"
       >
         ›
       </button>

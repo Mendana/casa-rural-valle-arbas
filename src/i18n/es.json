@@ -1,4 +1,5 @@
 {
+  "nav.brand": "Valle de Arbas",
   "nav.home": "La casa",
   "nav.routes": "Rutas",
   "nav.book": "Reservar",
@@ -10,7 +11,9 @@
   "index.photos.right.alt": "Chimenea de la casa rural en el Valle de Arbas",
   "index.photos.right.caption": "Se enciende en octubre y no se apaga hasta mayo",
   "index.photos.card.since": "Desde 2026",
+  "index.photos.card.subtitle": "1.340M · León",
   "index.photos.main.alt": "La casa rural en el Valle de Arbas",
+  "index.photos.main.caption": "Cubillas de Arbas · León · 1.340M",
   "index.mainTitle.1": "Casa Rural",
   "index.mainTitle.2": "Valle de Arbas",
   "index.bookNow": "Consultar disponibilidad",

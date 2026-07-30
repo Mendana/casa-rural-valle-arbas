@@ -77,19 +77,19 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div>
-      <h4 class="font-sans text-sm uppercase tracking-widest text-muted">
+      <h3 class="font-sans text-sm uppercase tracking-widest text-muted">
         {t("footer.contact.title")}
-      </h4>
+      </h3>
       <div class="mt-4 flex flex-col gap-2 font-sans text-base">
         <a
           href={`tel:${t("footer.contact.phone").replace(/\s/g, "")}`}
-          class="transition-colors hover:text-wood"
+          class="transition-colors hover:text-wood focus-visible:text-wood"
         >
           {t("footer.contact.phone")}
         </a>
         <a
           href={`mailto:${t("footer.contact.email")}`}
-          class="transition-colors hover:text-wood"
+          class="transition-colors hover:text-wood focus-visible:text-wood"
         >
           {t("footer.contact.email")}
         </a>
@@ -97,9 +97,9 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <div>
-      <h4 class="font-sans text-sm uppercase tracking-widest text-muted">
+      <h3 class="font-sans text-sm uppercase tracking-widest text-muted">
         {t("footer.location.title")}
-      </h4>
+      </h3>
       <div class="mt-4 flex flex-col gap-2 font-sans text-base">
         <span>{t("footer.location.street")}</span>
         <span>{t("footer.location.cityLine")}</span>

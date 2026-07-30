@@ -9,27 +9,27 @@ const t = useTranslations(lang);
 <nav
   class="flex flex-row items-center justify-between w-full px-4 py-5 bg-transparent text-ink fixed inset-x-0 top-0 z-50 border-b border-ink/20 backdrop-blur-lg sm:px-8 md:px-12"
 >
-  <h2
+  <p
     class="shrink-0 whitespace-nowrap text-sm/4 uppercase tracking-widest xs:text-lg/4 xs:tracking-[0.18em] sm:text-xl/4"
   >
-    <a href={getRelativeLocaleUrl(lang, t("path.home"))}>Valle de Arbas</a>
-  </h2>
+    <a href={getRelativeLocaleUrl(lang, t("path.home"))}>{t("nav.brand")}</a>
+  </p>
   <div
     class="flex flex-row items-baseline gap-1 whitespace-nowrap text-[0.65rem]/tight uppercase tracking-wider xs:gap-2 xs:text-sm/tight sm:gap-4 md:text-base/tight md:gap-8"
   >
     <a
       href={getRelativeLocaleUrl(lang, t("path.home"))}
-      class="hover:underline hover:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104"
+      class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.home")}</a
     >
     <a
       href={getRelativeLocaleUrl(lang, t("path.routes"))}
-      class="hover:underline hover:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104"
+      class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.routes")}</a
     >
     <a
       href={getRelativeLocaleUrl(lang, t("path.book"))}
-      class="hover:underline hover:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104"
+      class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.book")}</a
     >
   </div>

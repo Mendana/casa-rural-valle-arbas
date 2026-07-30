@@ -9,7 +9,7 @@ const { href, class: className = "" } = Astro.props;
 
 <a
   href={href}
-  class={`px-8 py-4 text-sm text-onwood uppercase tracking-widest bg-wood hover:bg-wood/80 hover:cursor-pointer hover:scale-105 transition-transform duration-300 md:text-base ${className}`}
+  class={`px-8 py-4 text-sm text-onwood uppercase tracking-widest bg-wood hover:bg-wood/80 hover:cursor-pointer hover:scale-105 focus-visible:bg-wood/80 focus-visible:scale-105 transition-transform duration-300 md:text-base ${className}`}
 >
   <slot />
 </a>

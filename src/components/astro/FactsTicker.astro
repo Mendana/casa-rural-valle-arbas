@@ -6,6 +6,9 @@ const t = useTranslations(lang);
 const facts = t("index.ticker");
 ---
 
+<ul class="sr-only">
+  {facts.map((fact) => <li>{fact}</li>)}
+</ul>
 <div class="overflow-hidden border-y border-line bg-bg2 py-4" aria-hidden="true">
   <div class="ticker-track flex w-max flex-nowrap items-center gap-6 whitespace-nowrap">
     {

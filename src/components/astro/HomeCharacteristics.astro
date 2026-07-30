@@ -22,9 +22,11 @@ const characteristics = (await getCollection("characteristics")).filter(
       Arbas
     </span>
   </div>
-  <h3 class="font-sans uppercase tracking-[0.18rem] text-line/70">
+  <h2
+    class="font-sans text-xs font-semibold uppercase tracking-widest text-line/70 md:text-sm lg:text-base"
+  >
     {t("characteristics.title")}
-  </h3>
+  </h2>
   <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-8 pt-8">
     {
       characteristics.map((entry) => (

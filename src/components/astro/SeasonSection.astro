@@ -11,13 +11,15 @@ const entries = (await getCollection("seasons"))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section class="px-4 py-16 bg-bg2 border-y border-y-line md:px-8 lg:border-y-2">
+<section
+  class="px-4 py-12 bg-bg2 border-y border-y-line md:px-8 md:py-16 lg:border-y-2"
+>
   <div class="mx-auto max-w-600">
-    <h3
-      class="font-sans uppercase tracking-widest text-muted text-sm md:text-base"
+    <h2
+      class="font-sans text-xs font-semibold uppercase tracking-widest text-muted md:text-sm lg:text-base"
     >
       {t("season.title")}
-    </h3>
+    </h2>
     <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
       {
         entries.map((entry) => (
