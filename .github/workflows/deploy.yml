@@ -15,6 +15,7 @@ jobs:
       - run: npm run build
         env:
           PUBLIC_GOOGLE_CALENDAR_KEY: ${{ secrets.GCAL_KEY }}
+          PUBLIC_GOOGLE_CALENDAR_ID: ${{ vars.GCAL_ID }}
       - uses: actions/upload-pages-artifact@v3
         with: { path: ./dist }
 

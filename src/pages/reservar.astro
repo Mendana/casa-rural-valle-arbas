@@ -1,0 +1,12 @@
+---
+import BasePageLayout from "../layouts/BasePageLayout.astro";
+import BookingPageContent from "../components/astro/BookingPageContent.astro";
+import { getLang, useTranslations } from "../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<BasePageLayout title={t("meta.book.title")} description={t("meta.book.description")}>
+  <BookingPageContent />
+</BasePageLayout>

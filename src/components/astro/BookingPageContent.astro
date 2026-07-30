@@ -1,0 +1,21 @@
+---
+import { getLang, useTranslations } from "../../i18n/utils";
+import AvailabilityCalendar from "../react/AvailabilityCalendar";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<main>
+  <section class="mx-auto max-w-600 px-4 py-12 md:px-8 md:py-16">
+    <h1 class="font-serif text-4xl font-light text-ink md:text-5xl">
+      {t("book.title")}
+    </h1>
+    <p class="mt-2 text-base text-muted md:text-lg">
+      {t("book.description")}
+    </p>
+    <div class="mt-12">
+      <AvailabilityCalendar lang={lang} client:load />
+    </div>
+  </section>
+</main>
