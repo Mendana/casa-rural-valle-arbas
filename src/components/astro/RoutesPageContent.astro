@@ -10,7 +10,16 @@ const t = useTranslations(lang);
 ---
 
 <main>
-  <section class="mx-auto max-w-600 px-4 py-12 md:px-8 md:py-16">
+  <section class="relative overflow-x-hidden mx-auto max-w-600 px-4 py-12 md:px-8 md:py-16">
+    <div
+      class="pointer-events-none absolute top-0 right-0 -z-10 hidden select-none md:block md:opacity-8"
+    >
+      <span
+        class="font-serif text-9xl tracking-widest text-wood font-normal lg:text-[14em] lg:font-light lg:tracking-normal xl:text-[18em] 2xl:text-[24em]"
+      >
+        Arbas
+      </span>
+    </div>
     <p class="font-sans text-sm text-muted uppercase tracking-[0.2em]">
       {t("routes.suptitle")}
     </p>
