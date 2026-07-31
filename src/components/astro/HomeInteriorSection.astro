@@ -68,7 +68,10 @@ const defaultCycle = ["normal", "raised", "small", "lowered"] as const;
 
   <div
     id="interior-scroll"
-    class="no-scrollbar mt-12 flex items-start snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden scroll-smooth pt-6 pb-6 md:mt-16 md:gap-8 md:pt-10 md:pb-8"
+    tabindex="0"
+    role="group"
+    aria-label={t("interior.title.0") + t("interior.title.1")}
+    class="no-scrollbar mt-12 flex items-start snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden scroll-smooth pt-6 pb-6 focus-visible:outline-2 focus-visible:outline-wood focus-visible:outline-offset-4 md:mt-16 md:gap-8 md:pt-10 md:pb-8"
   >
     {
       entries.map((entry, i) => {

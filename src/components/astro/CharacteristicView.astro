@@ -7,13 +7,11 @@ interface Props {
 const { label, value } = Astro.props;
 ---
 
-<article class="flex flex-col gap-2 pt-4 border-t border-t-line/70">
-  <h3
-    class="text-5xl font-serif font-light text-onwood lg:text-6xl xl:text-7xl"
-  >
-    {value}
-  </h3>
-  <p class="text-sm text-line/70 uppercase tracking-wider md:text-base">
+<dl class="flex flex-col-reverse gap-2 pt-4 border-t border-t-line/70">
+  <dt class="text-sm text-line/70 uppercase tracking-wider md:text-base">
     {label}
-  </p>
-</article>
+  </dt>
+  <dd class="text-5xl font-serif font-light text-onwood lg:text-6xl xl:text-7xl">
+    {value}
+  </dd>
+</dl>

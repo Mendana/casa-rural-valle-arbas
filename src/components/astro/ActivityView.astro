@@ -48,7 +48,7 @@ const meta = [
 <details
   class="border-t border-t-line py-4 [&_summary::-webkit-details-marker]:hidden"
 >
-  <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+  <summary class="group flex cursor-pointer list-none items-center justify-between gap-4">
     <div class="flex items-center gap-4">
       {
         image && (
@@ -66,13 +66,13 @@ const meta = [
         <span class="text-xs uppercase tracking-widest text-wood md:text-sm">
           {type}
         </span>
-        <h3 class="font-serif text-2xl font-light text-ink md:text-3xl">
+        <h3 class="font-serif text-2xl font-light text-ink transition-colors duration-300 group-hover:text-wood md:text-3xl">
           {title}
         </h3>
       </div>
     </div>
     <span
-      class="activity-chevron flex h-8 w-8 shrink-0 items-center justify-center border border-line text-lg text-ink transition-transform duration-300"
+      class="activity-chevron flex h-8 w-8 shrink-0 items-center justify-center border border-line text-lg text-ink transition-[transform,color,border-color] duration-300 group-hover:border-wood group-hover:text-wood"
       aria-hidden="true"
     >
       +

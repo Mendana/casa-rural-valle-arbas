@@ -1,4 +1,5 @@
 {
+  "a11y.skipToContent": "Skip to content",
   "meta.home.title": "Home",
   "meta.home.description": "Rural house in Valle de Arbas, León, Spain.",
   "meta.book.title": "Book",
@@ -15,6 +16,9 @@
   "calendar.prev.alt": "Previous month",
   "calendar.next.alt": "Next month",
   "calendar.legend.selected": "Selected",
+  "calendar.today": "today",
+  "calendar.selected.start": "selected, check-in",
+  "calendar.selected.end": "selected, check-out",
   "book.simulator.eyebrow": "Your stay",
   "book.simulator.chooseDates": "Choose your dates",
   "book.simulator.disclaimer": "Price simulation · contact us to confirm",

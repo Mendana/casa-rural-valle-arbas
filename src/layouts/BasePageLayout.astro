@@ -3,15 +3,21 @@ import BaseHead from "../components/astro/BaseHead.astro";
 import MainNav from "../components/astro/MainNav.astro";
 import Footer from "../components/astro/Footer.astro";
 import "../styles/global.css";
-import { getLang } from "../i18n/utils";
+import { getLang, useTranslations } from "../i18n/utils";
 
 const { title, description } = Astro.props;
 const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 ---
 
 <html lang={lang} class="scroll-smooth">
   <BaseHead title={title} description={description} />
   <body class="bg-bg text-ink pt-16">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:bg-wood focus:px-4 focus:py-2 focus:text-sm focus:text-onwood focus:uppercase focus:tracking-widest"
+      >{t("a11y.skipToContent")}</a
+    >
     <MainNav />
     <slot />
     <slot name="footer">

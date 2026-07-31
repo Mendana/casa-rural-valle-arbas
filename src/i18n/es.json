@@ -1,4 +1,5 @@
 {
+  "a11y.skipToContent": "Saltar al contenido",
   "meta.home.title": "Inicio",
   "meta.home.description": "Casa rural en el Valle de Arbas, León, España.",
   "meta.book.title": "Reserva",
@@ -15,6 +16,9 @@
   "calendar.prev.alt": "Mes anterior",
   "calendar.next.alt": "Mes siguiente",
   "calendar.legend.selected": "Seleccionado",
+  "calendar.today": "hoy",
+  "calendar.selected.start": "seleccionado, entrada",
+  "calendar.selected.end": "seleccionado, salida",
   "book.simulator.eyebrow": "Tu estancia",
   "book.simulator.chooseDates": "Elige tus fechas",
   "book.simulator.disclaimer": "Simulación de precio · contacta para confirmar",

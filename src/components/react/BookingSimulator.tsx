@@ -37,7 +37,10 @@ function NumberStepper({
       >
         −
       </button>
-      <span className="w-8 text-center font-serif text-lg text-ink">
+      <span
+        aria-live="polite"
+        className="w-8 text-center font-serif text-lg text-ink"
+      >
         {value}
       </span>
       <button
@@ -182,7 +185,7 @@ export default function BookingSimulator({ lang }: Props) {
 
         <a
           href="#contacto"
-          className="mt-8 inline-flex items-center gap-2 text-sm uppercase tracking-widest text-wood transition-colors hover:text-wood/80 focus-visible:text-wood/80 md:text-base"
+          className="mt-8 inline-flex items-center gap-2 text-sm uppercase tracking-widest text-wood transition-colors hover:text-wood/95 focus-visible:text-wood/95 md:text-base"
         >
           {t("book.simulator.goToContact")}
           <span>→</span>

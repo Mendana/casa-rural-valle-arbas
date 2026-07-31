@@ -21,24 +21,28 @@ const switchHref = getRelativeLocaleUrl(otherLang, alternatePath);
   <p
     class="shrink-0 whitespace-nowrap text-sm/4 uppercase tracking-widest xs:text-lg/4 xs:tracking-[0.18em] sm:text-xl/4"
   >
-    <a href={getRelativeLocaleUrl(lang, t("path.home"))}>{t("nav.brand")}</a>
+    <a
+      href={getRelativeLocaleUrl(lang, t("path.home"))}
+      class="transition-colors hover:text-wood focus-visible:text-wood"
+      >{t("nav.brand")}</a
+    >
   </p>
   <div
     class="flex flex-row items-baseline gap-1 whitespace-nowrap text-[0.65rem]/tight uppercase tracking-wider xs:gap-2 xs:text-sm/tight sm:gap-4 md:text-base/tight md:gap-8"
   >
     <a
       href={getRelativeLocaleUrl(lang, t("path.home"))}
-      class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104 md:focus-visible:scale-104"
+      class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.home")}</a
     >
     <a
       href={getRelativeLocaleUrl(lang, t("path.routes"))}
-      class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104 md:focus-visible:scale-104"
+      class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.routes")}</a
     >
     <a
       href={getRelativeLocaleUrl(lang, t("path.book"))}
-      class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition-transform duration-300 md:hover:scale-104 md:focus-visible:scale-104"
+      class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.book")}</a
     >
     <a
@@ -46,7 +50,7 @@ const switchHref = getRelativeLocaleUrl(otherLang, alternatePath);
       lang={otherLang}
       hreflang={otherLang}
       onclick={`try { localStorage.setItem('lang', '${otherLang}') } catch (e) {}`}
-      class="border-l border-ink/20 pl-1 hover:text-wood focus-visible:text-wood xs:pl-2 md:pl-4"
+      class="border-l border-ink/20 pl-1 transition-colors hover:text-wood focus-visible:text-wood xs:pl-2 md:pl-4"
       >{otherLang.toUpperCase()}</a
     >
   </div>

@@ -138,6 +138,16 @@ export default function AvailabilityCalendar({
       }).format(visibleMonth),
     [visibleMonth, lang],
   );
+  const dayFormatter = useMemo(
+    () =>
+      new Intl.DateTimeFormat(lang === "es" ? "es-ES" : "en-US", {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }),
+    [lang],
+  );
 
   const isCurrentMonth =
     visibleMonth.getFullYear() === today.getFullYear() &&
@@ -229,7 +239,10 @@ export default function AvailabilityCalendar({
         >
           ‹
         </button>
-        <span className="font-serif text-2xl font-light capitalize text-ink md:text-3xl xl:text-4xl">
+        <span
+          aria-live="polite"
+          className="font-serif text-2xl font-light capitalize text-ink md:text-3xl xl:text-4xl"
+        >
           {monthLabel}
         </span>
         <button
@@ -266,6 +279,21 @@ export default function AvailabilityCalendar({
                 key > selectedRange!.start &&
                 key < (selectedRange!.end as string);
 
+              const dayLabel = [
+                dayFormatter.format(day),
+                isBooked && t("calendar.legend.booked"),
+                !isBooked && isEndpoint && selectedRange!.end
+                  ? key === selectedRange!.start
+                    ? t("calendar.selected.start")
+                    : t("calendar.selected.end")
+                  : !isBooked && isEndpoint
+                    ? t("calendar.selected.start")
+                    : null,
+                isToday && t("calendar.today"),
+              ]
+                .filter(Boolean)
+                .join(", ");
+
               const dayClass = [
                 "flex h-10 items-center justify-center border text-sm md:h-12 md:text-base xl:h-16 xl:text-lg 2xl:h-20 2xl:text-xl",
                 isPast
@@ -288,6 +316,8 @@ export default function AvailabilityCalendar({
                   <button
                     key={key}
                     type="button"
+                    aria-label={dayLabel}
+                    aria-pressed={isEndpoint}
                     disabled={isPast || isBooked}
                     onClick={() => handleDayClick(day!)}
                     className={dayClass}
