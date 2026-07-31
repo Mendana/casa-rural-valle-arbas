@@ -1,0 +1,59 @@
+---
+import { Image } from "astro:assets";
+import { getLang, useTranslations } from "../../i18n/utils";
+import mapaValle from "../../assets/images/mapa-valle.svg";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+
+const distances = [
+  { label: t("routes.map.distance.leon"), value: "45 km" },
+  { label: t("routes.map.distance.pajares"), value: "10 km" },
+  { label: t("routes.map.distance.colegiata"), value: "5 min" },
+  { label: t("routes.map.distance.station"), value: "30 min" },
+];
+---
+
+<section class="bg-ink px-4 py-16 md:py-24 md:px-8">
+  <div class="mx-auto max-w-600">
+    <h2
+      class="font-sans text-base font-light text-line/70 uppercase tracking-widest lg:text-lg"
+    >
+      {t("routes.map.title")}
+    </h2>
+    <p
+      class="mt-2 font-serif text-4xl font-light text-onwood md:text-4xl md:mt-4"
+    >
+      {t("routes.map.subtitle")}
+    </p>
+    <p class="mt-4 text-lg text-line leading-7 md:text-base">
+      {t("routes.map.description")}
+    </p>
+
+    <div class="mt-8 grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-8">
+      {
+        distances.map((item) => (
+          <div class="flex flex-col gap-2 border-t border-t-line/20 pt-4">
+            <span class="text-onwood text-2xl font-serif md:text-4xl lg:text-5xl md:font-light">
+              {item.value}
+            </span>
+            <span class="font-sans text-sm text-line/70 uppercase tracking-wider md:text-base lg:text-lg">
+              {item.label}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-10 border border-line/20">
+      <Image
+        src={mapaValle}
+        alt={t("routes.map.imageAlt")}
+        width={1200}
+        height={800}
+        loading="lazy"
+        class="h-auto w-full object-cover"
+      />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+---
+import BasePageLayout from "../../layouts/BasePageLayout.astro";
+import RoutesPageContent from "../../components/astro/RoutesPageContent.astro";
+import BookingFooter from "../../components/astro/BookingFooter.astro";
+import { getLang, useTranslations } from "../../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<BasePageLayout title={t("meta.routes.title")} description={t("meta.routes.description")}>
+  <RoutesPageContent />
+  <BookingFooter slot="footer" />
+</BasePageLayout>

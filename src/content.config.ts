@@ -4,13 +4,21 @@ import { z } from "astro/zod";
 
 const activities = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/activities" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    distance: z.string().optional(),
-    difficulty: z.enum(["fácil", "media", "difícil"]).optional(),
-    image: z.string(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      order: z.number(),
+      title: z.string(),
+      type: z.string(),
+      category: z.enum(["route", "other"]),
+      description: z.string(),
+      distance: z.string().optional(),
+      duration: z.string().optional(),
+      elevationGain: z.string().optional(),
+      travelTime: z.string().optional(),
+      difficulty: z.enum(["fácil", "media", "difícil"]).optional(),
+      image: image().optional(),
+      alt: z.string().optional(),
+    }),
 });
 
 const homeHighlights = defineCollection({

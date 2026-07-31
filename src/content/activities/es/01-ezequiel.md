@@ -1,6 +1,9 @@
 ---
 order: 1
 title: "Ezequiel"
-type: "gastronomia"
-description: "Restaurante especializado en embutido a 20 minutos en coche. Ubicado en Villamanín"
+type: "Gastronomía"
+category: "other"
+image: "../../../assets/images/casa-rural.jpg"
+travelTime: "20 min en coche"
+description: "Restaurante especializado en embutido, ubicado en Villamanín."
 ---

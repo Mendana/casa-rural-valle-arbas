@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import { getLang, useTranslations } from "../../i18n/utils";
+import ActivityView from "./ActivityView.astro";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+
+const routes = (await getCollection("activities"))
+  .filter(
+    (entry) => entry.id.startsWith(`${lang}/`) && entry.data.category === "route",
+  )
+  .sort((a, b) => a.data.order - b.data.order);
+
+const labels = {
+  distance: t("routes.field.distance"),
+  duration: t("routes.field.duration"),
+  elevationGain: t("routes.field.elevationGain"),
+  travelTime: t("routes.field.travelTime"),
+  difficulty: t("routes.field.difficulty"),
+};
+---
+
+<section class="mx-auto max-w-600 px-4 pb-12 md:px-8 md:pb-16">
+  <h2 class="font-sans text-xs font-semibold uppercase tracking-widest text-muted md:text-sm">
+    {t("routes.mountainSection.title")}
+  </h2>
+  <div class="mt-6 flex flex-col">
+    {
+      routes.map((entry) => (
+        <ActivityView
+          title={entry.data.title}
+          type={entry.data.type}
+          description={entry.data.description}
+          image={entry.data.image}
+          alt={entry.data.alt}
+          distance={entry.data.distance}
+          duration={entry.data.duration}
+          elevationGain={entry.data.elevationGain}
+          travelTime={entry.data.travelTime}
+          difficulty={entry.data.difficulty}
+          labels={labels}
+        />
+      ))
+    }
+  </div>
+</section>

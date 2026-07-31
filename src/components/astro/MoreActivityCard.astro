@@ -1,0 +1,94 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  title: string;
+  type: string;
+  description: string;
+  image?: ImageMetadata;
+  alt?: string;
+  distance?: string;
+  duration?: string;
+  elevationGain?: string;
+  travelTime?: string;
+  difficulty?: string;
+  labels: {
+    distance: string;
+    duration: string;
+    elevationGain: string;
+    travelTime: string;
+    difficulty: string;
+  };
+}
+
+const {
+  title,
+  type,
+  description,
+  image,
+  alt,
+  distance,
+  duration,
+  elevationGain,
+  travelTime,
+  difficulty,
+  labels,
+} = Astro.props;
+
+const meta = [
+  distance && { label: labels.distance, value: distance },
+  duration && { label: labels.duration, value: duration },
+  elevationGain && { label: labels.elevationGain, value: elevationGain },
+  travelTime && { label: labels.travelTime, value: travelTime },
+  difficulty && { label: labels.difficulty, value: difficulty },
+].filter(Boolean) as { label: string; value: string }[];
+---
+
+<article class="flex flex-col gap-4">
+  {
+    image && (
+      <div class="relative overflow-hidden">
+        <div class="pointer-events-none absolute top-0 left-0 z-10 bg-wood px-2 py-1">
+          <span class="font-sans text-xs uppercase tracking-widest text-onwood">
+            {type}
+          </span>
+        </div>
+        <Image
+          src={image}
+          alt={alt ?? title}
+          width={860}
+          height={559}
+          loading="lazy"
+          class="h-65 w-full object-cover"
+        />
+      </div>
+    )
+  }
+  <div class="flex flex-col gap-2">
+    {
+      !image && (
+        <span class="text-xs uppercase tracking-widest text-wood md:text-sm">
+          {type}
+        </span>
+      )
+    }
+    <h3 class="font-serif text-2xl font-light text-ink md:text-3xl">
+      {title}
+    </h3>
+    {
+      meta.length > 0 && (
+        <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-widest text-muted md:text-sm">
+          {meta.map((item) => (
+            <span>
+              <span class="text-ink">{item.value}</span> · {item.label}
+            </span>
+          ))}
+        </div>
+      )
+    }
+    <p class="text-sm text-muted tracking-wide leading-7 md:text-base">
+      {description}
+    </p>
+  </div>
+</article>
