@@ -8,7 +8,7 @@ const { index, title } = Astro.props;
 const label = String(index).padStart(2, "0");
 ---
 
-<article class="flex flex-col gap-2 pt-4 border-t border-t-line">
+<article data-reveal class="flex flex-col gap-2 pt-4 border-t border-t-line">
   <div class="flex flex-col items-baseline gap-2">
     <span class="font-mono text-sm text-wood tracking-widest">{label}</span>
     <h3 class="text-2xl font-light font-serif text-ink md:text-3xl">{title}</h3>

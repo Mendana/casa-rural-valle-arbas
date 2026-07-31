@@ -1,5 +1,6 @@
 ---
 import { getLang, useTranslations } from "../../i18n/utils";
+import SplitWords from "./SplitWords.astro";
 import MountainRoutesSection from "./MountainRoutesSection.astro";
 import AreaMapSection from "./AreaMapSection.astro";
 import MoreActivitiesSection from "./MoreActivitiesSection.astro";
@@ -10,8 +11,9 @@ const t = useTranslations(lang);
 ---
 
 <main id="main-content">
-  <section class="relative overflow-x-hidden mx-auto max-w-600 px-4 py-12 md:px-8 md:py-16">
+  <section class="relative overflow-x-clip mx-auto max-w-600 px-4 py-12 md:px-8 md:py-16">
     <div
+      data-par="0.045"
       class="pointer-events-none absolute top-0 right-0 -z-10 hidden select-none md:block md:opacity-8"
       aria-hidden="true"
     >
@@ -25,8 +27,10 @@ const t = useTranslations(lang);
       {t("routes.suptitle")}
     </p>
     <h1 class="font-serif text-5xl font-light text-ink mt-6 md:text-6xl">
-      {t("routes.title.0")}
-      <span class="text-wood italic">{t("routes.title.1")}</span>
+      <SplitWords text={t("routes.title.0")} />{" "}
+      <span class="text-wood italic">
+        <SplitWords text={t("routes.title.1")} />
+      </span>
     </h1>
     <p
       class="mt-2 font-serif text-xl text-ink font-light leading-8 md:text-2xl"

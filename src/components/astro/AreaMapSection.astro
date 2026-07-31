@@ -14,7 +14,7 @@ const distances = [
 ];
 ---
 
-<section class="bg-ink px-4 py-16 md:py-24 md:px-8">
+<section data-reveal class="bg-ink px-4 py-16 md:py-24 md:px-8">
   <div class="mx-auto max-w-600">
     <h2
       class="font-sans text-xs font-semibold uppercase tracking-widest text-line/70 md:text-sm lg:text-base"
@@ -47,6 +47,7 @@ const distances = [
 
     <div class="mt-10 border border-line/20">
       <Image
+        data-wipe
         src={mapaValle}
         alt={t("routes.map.imageAlt")}
         width={1200}

@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import gsap from "gsap";
 import { useTranslations, type Lang } from "../../i18n/utils";
 
 export interface DateRange {
@@ -73,6 +74,23 @@ export default function AvailabilityCalendar({
     now.setHours(0, 0, 0, 0);
     return now;
   }, []);
+
+  const gridRef = useRef<HTMLDivElement>(null);
+  const isFirstMonthRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstMonthRender.current) {
+      isFirstMonthRender.current = false;
+      return;
+    }
+    if (!gridRef.current) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    gsap.fromTo(
+      gridRef.current,
+      { opacity: 0, y: 8 },
+      { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" },
+    );
+  }, [visibleMonth]);
 
   useEffect(() => {
     if (!isConfigured) return;
@@ -264,7 +282,7 @@ export default function AvailabilityCalendar({
               <span key={label}>{label}</span>
             ))}
           </div>
-          <div className="mt-2 grid grid-cols-7 gap-1 xl:gap-2">
+          <div ref={gridRef} className="mt-2 grid grid-cols-7 gap-1 xl:gap-2">
             {cells.map((day, i) => {
               if (!day) return <div key={i} />;
               const key = toDateKey(day);

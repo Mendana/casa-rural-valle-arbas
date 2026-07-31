@@ -9,32 +9,36 @@ const t = useTranslations(lang);
 ---
 
 <div class="lg:grid lg:grid-cols-[1fr_2fr_1fr] lg:items-center lg:gap-4">
-  <figure class="hidden lg:flex lg:flex-col lg:gap-4">
-    <Image
-      src={casaImg}
-      alt={t("index.photos.left.alt")}
-      width={860}
-      height={559}
-      loading="lazy"
-      class="h-100 object-cover w-full 2xl:h-150"
-    />
-    <figcaption class="text-xs text-muted tracking-wider lg:text-sm">
-      {t("index.photos.left.caption")}
-    </figcaption>
+  <figure data-par="-0.1" class="hidden lg:block">
+    <div data-reveal-wipe class="flex flex-col gap-4">
+      <Image
+        src={casaImg}
+        alt={t("index.photos.left.alt")}
+        width={860}
+        height={559}
+        loading="lazy"
+        class="h-100 object-cover w-full 2xl:h-150"
+      />
+      <figcaption class="text-xs text-muted tracking-wider lg:text-sm">
+        {t("index.photos.left.caption")}
+      </figcaption>
+    </div>
   </figure>
-  <figure class="relative border border-muted border-b-2 border-b-ink">
+  <figure data-reveal-wipe class="relative">
     <PriceBadge
       title={t("index.photos.card.since")}
       subtitle={t("index.photos.card.subtitle")}
     />
-    <Image
-      src={casaImg}
-      alt={t("index.photos.main.alt")}
-      width={860}
-      height={559}
-      loading="eager"
-      class="h-150 object-cover w-full xl:h-150 2xl:h-200"
-    />
+    <div data-par="0.02" class="overflow-hidden">
+      <Image
+        src={casaImg}
+        alt={t("index.photos.main.alt")}
+        width={860}
+        height={559}
+        loading="eager"
+        class="hero-breathe h-150 object-cover w-full xl:h-150 2xl:h-200"
+      />
+    </div>
     <div
       class="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black via-black/30 via-30% to-transparent pointer-events-none"
     >
@@ -46,17 +50,19 @@ const t = useTranslations(lang);
     </figcaption>
   </figure>
 
-  <figure class="hidden lg:flex lg:flex-col lg:gap-4">
-    <Image
-      src={casaImg}
-      alt={t("index.photos.right.alt")}
-      width={1200}
-      height={800}
-      loading="lazy"
-      class="h-100 object-cover w-full 2xl:h-150"
-    />
-    <figcaption class="text-xs text-muted tracking-wider lg:text-sm">
-      {t("index.photos.right.caption")}
-    </figcaption>
+  <figure data-par="-0.18" class="hidden lg:block">
+    <div data-reveal-wipe class="flex flex-col gap-4">
+      <Image
+        src={casaImg}
+        alt={t("index.photos.right.alt")}
+        width={1200}
+        height={800}
+        loading="lazy"
+        class="h-100 object-cover w-full 2xl:h-150"
+      />
+      <figcaption class="text-xs text-muted tracking-wider lg:text-sm">
+        {t("index.photos.right.caption")}
+      </figcaption>
+    </div>
   </figure>
 </div>

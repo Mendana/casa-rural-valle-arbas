@@ -2,6 +2,7 @@
 import { getLang, useTranslations } from "../../i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import HomeHeroGallery from "./HomeHeroGallery.astro";
+import SplitWords from "./SplitWords.astro";
 import Button from "./Button.astro";
 import FactsTicker from "./FactsTicker.astro";
 import HomeMainInfoSection from "./HomeMainInfoSection.astro";
@@ -10,20 +11,24 @@ import SeasonSection from "./SeasonSection.astro";
 import HomeInteriorSection from "./HomeInteriorSection.astro";
 import HomeCharacteristics from "./HomeCharacteristics.astro";
 import PagesSection from "./PagesSection.astro";
+import ScrollRail from "./ScrollRail.astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 ---
 
 <main id="main-content">
-  <section class="p-4 md:p-8 max-w-600 mx-auto">
+  <ScrollRail />
+  <section class="hero p-4 md:p-8 max-w-600 mx-auto">
     <HomeHeroGallery />
     <div class="mt-2 flex flex-col gap-2 text-center sm:mt-4 md:mt-8">
       <h1
         class="text-5xl font-light flex flex-col items-center justify-center gap-1 sm:text-6xl md:text-8xl"
       >
-        {t("index.mainTitle.1")}
-        <span class="text-wood italic">{t("index.mainTitle.2")}</span>
+        <SplitWords text={t("index.mainTitle.1")} />
+        <span class="text-wood italic">
+          <SplitWords text={t("index.mainTitle.2")} />
+        </span>
       </h1>
     </div>
     <div

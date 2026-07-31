@@ -36,7 +36,11 @@ const variants = {
 const defaultCycle = ["normal", "raised", "small", "lowered"] as const;
 ---
 
-<section class="mx-auto mt-12 max-w-500 px-4 py-12 md:px-8 md:py-16">
+<section
+  data-reveal
+  data-sec={t("interior.title.0") + t("interior.title.1")}
+  class="mx-auto mt-12 max-w-500 px-4 py-12 md:px-8 md:py-16"
+>
   <div class="flex items-end justify-between gap-4">
     <h2
       class="font-serif text-3xl font-light text-ink md:text-4xl lg:text-5xl"

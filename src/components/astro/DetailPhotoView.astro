@@ -24,8 +24,12 @@ const isRight = alignment === "right";
     "not-last:border-b not-last:border-line",
   ]}
 >
-  <div class:list={["relative", isRight && "lg:order-2"]}>
+  <div
+    data-row-photo={isRight ? "right" : "left"}
+    class:list={["relative", isRight && "lg:order-2"]}
+  >
     <Image
+      data-wipe
       src={image}
       alt={alt}
       width={860}
@@ -45,6 +49,7 @@ const isRight = alignment === "right";
   </div>
 
   <div
+    data-row-text={isRight ? "right" : "left"}
     class:list={[
       "relative md:max-w-125 lg:max-w-none",
       isRight && "md:order-1",
@@ -52,6 +57,7 @@ const isRight = alignment === "right";
     ]}
   >
     <span
+      data-par="0.045"
       class:list={[
         "pointer-events-none absolute -top-25 -z-10 hidden select-none font-serif font-light text-[10em] leading-none text-wood opacity-10 lg:block xl:text-[12em] 2xl:text-[16em]",
         isRight ? "lg:-right-2 lg:text-right" : "lg:right-2",

@@ -6,8 +6,13 @@ const t = useTranslations(lang);
 const amenities = t("index.mainInfo.amenities");
 ---
 
-<section class="relative overflow-hidden pt-12 max-w-600 mx-auto md:pt-16">
+<section
+  data-reveal
+  data-sec={t("index.mainInfo.title")}
+  class="relative overflow-hidden pt-12 max-w-600 mx-auto md:pt-16"
+>
   <div
+    data-par="0.045"
     class="pointer-events-none absolute top-0 right-0 -z-10 hidden select-none md:block md:opacity-8"
     aria-hidden="true"
   >
