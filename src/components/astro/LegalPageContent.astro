@@ -1,0 +1,112 @@
+---
+import { getLang, useTranslations } from "../../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<main id="main-content">
+  <section class="mx-auto max-w-600 px-4 py-12 md:px-8 md:py-16">
+    <p class="font-sans text-sm text-muted uppercase tracking-[0.2em]">
+      {t("legal.suptitle")}
+    </p>
+    <h1 class="font-serif text-5xl font-light text-ink mt-6 md:text-6xl">
+      {t("legal.title")}
+    </h1>
+    <p class="mt-6 max-w-3xl font-serif text-lg font-light leading-8 text-ink md:text-xl">
+      {t("legal.intro")}
+    </p>
+
+    <div class="mt-12 flex flex-col gap-10 border-t border-t-line pt-10">
+      <article>
+        <h2 class="font-serif text-2xl font-light text-ink md:text-3xl">
+          {t("legal.section.1.title")}
+        </h2>
+        <dl class="mt-4 flex flex-col gap-2 text-base text-muted leading-7 md:text-lg">
+          <div class="flex flex-col gap-1 sm:flex-row sm:gap-2">
+            <dt class="shrink-0 font-medium text-ink sm:w-56">{t("legal.section.1.owner")}</dt>
+            <dd>{t("legal.owner")}</dd>
+          </div>
+          <div class="flex flex-col gap-1 sm:flex-row sm:gap-2">
+            <dt class="shrink-0 font-medium text-ink sm:w-56">{t("legal.section.1.nif")}</dt>
+            <dd>{t("legal.nif")}</dd>
+          </div>
+          <div class="flex flex-col gap-1 sm:flex-row sm:gap-2">
+            <dt class="shrink-0 font-medium text-ink sm:w-56">{t("legal.section.1.address")}</dt>
+            <dd>{t("footer.location.street")}, {t("footer.location.cityLine")}</dd>
+          </div>
+          <div class="flex flex-col gap-1 sm:flex-row sm:gap-2">
+            <dt class="shrink-0 font-medium text-ink sm:w-56">{t("legal.section.1.registry")}</dt>
+            <dd>{t("legal.touristRegistry")}</dd>
+          </div>
+          <div class="flex flex-col gap-1 sm:flex-row sm:gap-2">
+            <dt class="shrink-0 font-medium text-ink sm:w-56">{t("legal.section.1.email")}</dt>
+            <dd>{t("footer.contact.email")}</dd>
+          </div>
+          <div class="flex flex-col gap-1 sm:flex-row sm:gap-2">
+            <dt class="shrink-0 font-medium text-ink sm:w-56">{t("legal.section.1.phone")}</dt>
+            <dd>{t("footer.contact.phone")}</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article>
+        <h2 class="font-serif text-2xl font-light text-ink md:text-3xl">
+          {t("legal.section.2.title")}
+        </h2>
+        <p class="mt-4 whitespace-pre-line text-base text-muted leading-7 md:text-lg">
+          {t("legal.section.2.body")}
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-serif text-2xl font-light text-ink md:text-3xl">
+          {t("legal.section.3.title")}
+        </h2>
+        <p class="mt-4 whitespace-pre-line text-base text-muted leading-7 md:text-lg">
+          {t("legal.section.3.body")}
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-serif text-2xl font-light text-ink md:text-3xl">
+          {t("legal.section.4.title")}
+        </h2>
+        <p class="mt-4 whitespace-pre-line text-base text-muted leading-7 md:text-lg">
+          {t("legal.section.4.body")}
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-serif text-2xl font-light text-ink md:text-3xl">
+          {t("legal.section.5.title")}
+        </h2>
+        <p class="mt-4 whitespace-pre-line text-base text-muted leading-7 md:text-lg">
+          {t("legal.section.5.body")}
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-serif text-2xl font-light text-ink md:text-3xl">
+          {t("legal.section.6.title")}
+        </h2>
+        <p class="mt-4 whitespace-pre-line text-base text-muted leading-7 md:text-lg">
+          {t("legal.section.6.body")}
+        </p>
+      </article>
+
+      <article>
+        <h2 class="font-serif text-2xl font-light text-ink md:text-3xl">
+          {t("legal.section.7.title")}
+        </h2>
+        <p class="mt-4 whitespace-pre-line text-base text-muted leading-7 md:text-lg">
+          {t("legal.section.7.body")}
+        </p>
+      </article>
+    </div>
+
+    <p class="mt-12 border-t border-t-line pt-6 font-sans text-sm text-muted/70 italic">
+      {t("legal.placeholderNotice")}
+    </p>
+  </section>
+</main>

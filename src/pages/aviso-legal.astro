@@ -1,0 +1,12 @@
+---
+import BasePageLayout from "../layouts/BasePageLayout.astro";
+import LegalPageContent from "../components/astro/LegalPageContent.astro";
+import { getLang, useTranslations } from "../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<BasePageLayout title={t("meta.legal.title")} description={t("meta.legal.description")}>
+  <LegalPageContent />
+</BasePageLayout>

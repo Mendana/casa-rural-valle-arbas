@@ -1,0 +1,19 @@
+{
+  "name": "Casa Rural Valle de Arbas",
+  "short_name": "Valle de Arbas",
+  "description": "Casa rural en el Valle de Arbas, León, España.",
+  "start_url": "/casa-rural-valle-arbas/",
+  "scope": "/casa-rural-valle-arbas/",
+  "display": "standalone",
+  "lang": "es",
+  "background_color": "#f8f1e7",
+  "theme_color": "#8c543f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

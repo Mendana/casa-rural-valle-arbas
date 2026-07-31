@@ -68,8 +68,14 @@ const currentYear = new Date().getFullYear();
   </div>
 
   <div
-    class="mx-auto max-w-600 px-4 py-6 font-sans text-sm text-muted md:px-8"
+    class="mx-auto flex max-w-600 flex-col gap-2 px-4 py-6 font-sans text-sm text-muted sm:flex-row sm:items-center sm:justify-between md:px-8"
   >
-    &copy; {currentYear} {t("footer.copyright")}
+    <span>&copy; {currentYear} {t("footer.copyright")}</span>
+    <a
+      href={getRelativeLocaleUrl(lang, t("path.legal"))}
+      class="transition-colors hover:text-wood focus-visible:text-wood"
+    >
+      {t("footer.legal.link")}
+    </a>
   </div>
 </footer>

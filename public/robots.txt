@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mendana.github.io/casa-rural-valle-arbas/sitemap-index.xml

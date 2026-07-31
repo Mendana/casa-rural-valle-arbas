@@ -1,17 +1,23 @@
 ---
-import { Font } from "astro:assets";
+import { Font, getImage } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { getLang, getAlternatePath } from "../../i18n/utils";
+import { getLang, getAlternatePath, useTranslations } from "../../i18n/utils";
+import casaImg from "../../assets/images/casa-rural.jpg";
 
 const { title, description } = Astro.props;
 
 const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 const locales = { es: "es_ES", en: "en_US" } as const;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : null;
+
+const ogImage = await getImage({ src: casaImg, width: 1200, height: 630, format: "jpg" });
 const ogImageURL = Astro.site
-  ? new URL('/ms-icon-310x310.png', Astro.site).toString()
-  : '/ms-icon-310x310.png';
+  ? new URL(ogImage.src, Astro.site).toString()
+  : ogImage.src;
+
 const fullTitle = "Casa Rural - Valle de Arbas | " + title;
 
 const esPath = getAlternatePath(lang, "es", Astro.url.pathname, import.meta.env.BASE_URL);
@@ -20,6 +26,42 @@ const esHref = getRelativeLocaleUrl("es", esPath);
 const enHref = getRelativeLocaleUrl("en", enPath);
 const esAlternateURL = Astro.site ? new URL(esHref, Astro.site).toString() : esHref;
 const enAlternateURL = Astro.site ? new URL(enHref, Astro.site).toString() : enHref;
+
+const siteURL = Astro.site ? new URL(`${base}/`, Astro.site).toString() : `${base}/`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LodgingBusiness",
+      name: "Casa Rural Valle de Arbas",
+      description,
+      image: ogImageURL,
+      url: canonicalURL,
+      telephone: t("footer.contact.phone"),
+      email: t("footer.contact.email"),
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: t("footer.location.street"),
+        addressLocality: "Valle de Arbas",
+        addressRegion: "León",
+        addressCountry: "ES",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 42.928722,
+        longitude: -5.80608,
+      },
+    },
+    {
+      "@type": "WebSite",
+      name: "Casa Rural Valle de Arbas",
+      url: siteURL,
+      description: "Casa rural en el Valle de Arbas, León, España",
+      inLanguage: lang === "es" ? "es-ES" : "en-US",
+    },
+  ],
+};
 ---
 
 <head>
@@ -61,32 +103,12 @@ const enAlternateURL = Astro.site ? new URL(enHref, Astro.site).toString() : enH
 	<meta name="geo.placename" content="Valle de Arbas, León, España" />
 	<meta name="geo.position" content="42.928722;-5.806080" />
 
-  <!-- TODO: Añadir imágenes -->
 	<!-- Global Metadata -->
-	<link rel="icon" href="/favicon.ico" />
-	<link rel="apple-touch-icon" href="/images/icon/192x192.png" />
-	<link rel="manifest" href="/manifest.webmanifest" />
+	<link rel="icon" href={`${base}/favicon.ico`} sizes="32x32" />
+	<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+	<link rel="manifest" href={`${base}/manifest.webmanifest`} />
 	<meta name="google" content="notranslate" />
-	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
-	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
-	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
-	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
-	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png" />
-	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png" />
-	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png" />
-	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
-	<link
-		rel="icon"
-		type="image/png"
-		sizes="192x192"
-		href="/android-icon-192x192.png"
-	/>
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-	<meta name="msapplication-TileColor" content="#2b5797" />
-	<meta name="theme-color" content="#ffffff" />
+	<meta name="theme-color" content="#f8f1e7" />
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:locale" content={locales[lang]} />
@@ -96,8 +118,8 @@ const enAlternateURL = Astro.site ? new URL(enHref, Astro.site).toString() : enH
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={ogImageURL} />
 	<meta property="og:image:alt" content={title} />
-	<meta property="og:image:width" content="310" />
-	<meta property="og:image:height" content="310" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
 	<meta property="og:site_name" content="Casa Rural Valle de Arbas" />
 
 	<!-- Twitter -->
@@ -107,55 +129,14 @@ const enAlternateURL = Astro.site ? new URL(enHref, Astro.site).toString() : enH
 	<meta name="twitter:image" content={ogImageURL} />
 	<meta name="twitter:image:alt" content={title} />
 
-	<link rel="sitemap" href="/sitemap-index.xml" type="application/xml" />
+	<link rel="sitemap" href={`${base}/sitemap-index.xml`} type="application/xml" />
 
 	<Font cssVariable="--font-newsreader" preload />
 	<Font cssVariable="--font-karla" preload />
 
-  <!-- TODO: Revisar contenido -->
 	<!-- JSON-LD Schema -->
-	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@graph": [
-				{
-					"@type": "SportsEventCasa rural ",
-					"name": "Casa Rural Valle de Arbas",
-					"description": "Casa rural en el Valle de Arbas, León, España",
-					"image": ogImageURL,
-					"location": {
-						"@type": "Place",
-						"name": "Valle de Arbas",
-						"address": {
-							"@type": "PostalAddress",
-							"addressLocality": "Valle de Arbas",
-							"addressRegion": "León",
-							"addressCountry": "ES"
-						},
-						"geo": {
-							"@type": "GeoCoordinates",
-							"latitude": "42.928722",
-							"longitude": "-5.806080"
-						}
-					},
-					"organizer": {
-						"@type": "SportsOrganization",
-						"name": "Trail Valle de Arbas",
-						"url": canonicalURL
-					},
-					"sport": "Trail Running"
-				},
-				{
-					"@type": "WebSite",
-					"name": "Trail Valle de Arbas",
-					"url": Astro.site?.toString(),
-					"description": "Sitio oficial del Trail Valle de Arbas",
-					"inLanguage": "es-ES"
-				}
-			]
-		}
-	</script>
-	
+	<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
 	<!-- Script de animaciones -->
 	<script src="../../scripts/scroll-effects.ts"></script>
 </head>
