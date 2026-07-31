@@ -44,7 +44,7 @@ const currentYear = new Date().getFullYear();
 
 <footer class="bg-bg text-ink">
   <div
-    class="mx-auto grid max-w-600 grid-cols-1 gap-12 px-4 py-16 md:grid-cols-3 md:px-8"
+    class="mx-auto grid max-w-600 grid-cols-1 gap-12 px-4 py-16 md:grid-cols-3 md:px-8 2xl:grid-cols-4"
   >
     <div>
       <p class="font-serif text-3xl font-light md:text-4xl">
@@ -105,16 +105,35 @@ const currentYear = new Date().getFullYear();
         <span>{t("footer.location.cityLine")}</span>
       </div>
     </div>
+
+    <div class="hidden 2xl:block">
+      <h3 class="font-sans text-sm uppercase tracking-widest text-muted">
+        {t("footer.sections.title")}
+      </h3>
+      <div class="mt-4 flex flex-col gap-2 font-sans text-base">
+        <a
+          href={getRelativeLocaleUrl(lang, t("path.home"))}
+          class="transition-colors hover:text-wood focus-visible:text-wood"
+        >
+          {t("nav.home")}
+        </a>
+        <a
+          href={getRelativeLocaleUrl(lang, t("path.routes"))}
+          class="transition-colors hover:text-wood focus-visible:text-wood"
+        >
+          {t("pagesSection.1.title")}
+        </a>
+      </div>
+    </div>
   </div>
 
   <div class="mx-auto max-w-600 px-4 md:px-8">
     <div class="border-t border-line"></div>
   </div>
 
-  <div
-    class="mx-auto max-w-600 px-4 py-6 font-sans text-sm text-muted md:px-8"
-  >
-    &copy; {currentYear} {t("footer.copyright")}
+  <div class="mx-auto max-w-600 px-4 py-6 font-sans text-sm text-muted md:px-8">
+    &copy; {currentYear}
+    {t("footer.copyright")}
   </div>
 </footer>
 

@@ -116,5 +116,9 @@
   "book.howItWorks.4.title": "Cancelación",
   "book.howItWorks.4.description": "Devolución completa hasta 15 días antes. Después, la mitad.",
   "book.contact.title": "Contacto",
-  "book.contact.description": "Escríbenos o llámanos y te confirmamos la disponibilidad al momento."
+  "book.contact.description": "Escríbenos o llámanos y te confirmamos la disponibilidad al momento.",
+  "routes.suptitle": "Sección 01 · Alrededores",
+  "routes.title.0": "Rutas y ",
+  "routes.title.1": "actividades",
+  "routes.description": "Conoce el Valle de Arbas y sus alrededores. Rutas de senderismo, vía ferrata, esquí, gastronomía y mucho más."
 }

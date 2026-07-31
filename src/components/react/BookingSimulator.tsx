@@ -87,15 +87,17 @@ export default function BookingSimulator({ lang }: Props) {
   }
 
   return (
-    <div className="flex flex-col gap-8 md:gap-12">
-      <AvailabilityCalendar
-        lang={lang}
-        selectable
-        selectedRange={range}
-        onSelectedRangeChange={setRange}
-      />
+    <div className="flex flex-col gap-8 md:gap-12 lg:flex-row lg:items-start">
+      <div className="lg:flex-1">
+        <AvailabilityCalendar
+          lang={lang}
+          selectable
+          selectedRange={range}
+          onSelectedRangeChange={setRange}
+        />
+      </div>
 
-      <div className="border border-line bg-bg2 px-6 py-8 md:px-10 md:py-12">
+      <div className="border border-line bg-bg2 px-6 py-8 md:px-10 md:py-12 lg:w-96 lg:shrink-0 xl:w-md 2xl:w-lg">
         <p className="text-xs uppercase tracking-widest text-muted md:text-sm">
           {t("book.simulator.eyebrow")}
         </p>

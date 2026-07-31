@@ -229,7 +229,7 @@ export default function AvailabilityCalendar({
         >
           ‹
         </button>
-        <span className="font-serif text-2xl font-light capitalize text-ink md:text-3xl">
+        <span className="font-serif text-2xl font-light capitalize text-ink md:text-3xl xl:text-4xl">
           {monthLabel}
         </span>
         <button
@@ -246,12 +246,12 @@ export default function AvailabilityCalendar({
         <p className="mt-8 text-center text-sm text-muted">{t("calendar.error")}</p>
       ) : (
         <>
-          <div className="mt-8 grid grid-cols-7 gap-1 text-center text-xs uppercase tracking-widest text-muted md:text-sm">
+          <div className="mt-8 grid grid-cols-7 gap-1 text-center text-xs uppercase tracking-widest text-muted md:text-sm xl:text-base">
             {weekdayLabels.map((label) => (
               <span key={label}>{label}</span>
             ))}
           </div>
-          <div className="mt-2 grid grid-cols-7 gap-1">
+          <div className="mt-2 grid grid-cols-7 gap-1 xl:gap-2">
             {cells.map((day, i) => {
               if (!day) return <div key={i} />;
               const key = toDateKey(day);
@@ -267,7 +267,7 @@ export default function AvailabilityCalendar({
                 key < (selectedRange!.end as string);
 
               const dayClass = [
-                "flex h-10 items-center justify-center border text-sm md:h-12 md:text-base",
+                "flex h-10 items-center justify-center border text-sm md:h-12 md:text-base xl:h-16 xl:text-lg 2xl:h-20 2xl:text-xl",
                 isPast
                   ? "border-transparent text-muted/40"
                   : isEndpoint
