@@ -209,7 +209,20 @@ if (railFill && railDot && secEls.length > 0) {
       const name = active?.dataset.sec ?? "";
       if (name !== currentLabel && railLabel) {
         currentLabel = name;
-        railLabel.textContent = name;
+        gsap.to(railLabel, {
+          opacity: 0,
+          y: -4,
+          duration: prefersReducedMotion ? 0 : 0.18,
+          ease: "power1.in",
+          onComplete: () => {
+            railLabel.textContent = name;
+            gsap.fromTo(
+              railLabel,
+              { opacity: 0, y: 4 },
+              { opacity: 1, y: 0, duration: prefersReducedMotion ? 0 : 0.22, ease: "power1.out" },
+            );
+          },
+        });
       }
     },
   });
