@@ -73,6 +73,17 @@ const itemsInHouse = defineCollection({
   }),
 });
 
+const reviews = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/reviews" }),
+  schema: z.object({
+    order: z.number(),
+    author: z.string(),
+    origin: z.string().optional(),
+    rating: z.number().min(1).max(5).optional(),
+    text: z.string(),
+  }),
+});
+
 export const collections = {
   activities,
   homeHighlights,
@@ -80,4 +91,5 @@ export const collections = {
   interior,
   characteristics,
   itemsInHouse,
+  reviews,
 };

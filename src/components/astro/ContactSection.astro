@@ -31,5 +31,13 @@ const t = useTranslations(lang);
     >
       {t("footer.contact.email")}
     </a>
+    <a
+      href={`https://wa.me/${t("footer.contact.phone").replace(/\D/g, "")}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="font-serif text-2xl italic text-wood transition-colors hover:text-wood/80 focus-visible:text-wood/80 md:text-3xl"
+    >
+      {t("footer.contact.whatsapp")}
+    </a>
   </div>
 </section>

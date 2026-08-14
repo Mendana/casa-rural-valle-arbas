@@ -93,6 +93,14 @@ const currentYear = new Date().getFullYear();
         >
           {t("footer.contact.email")}
         </a>
+        <a
+          href={`https://wa.me/${t("footer.contact.phone").replace(/\D/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-colors hover:text-wood focus-visible:text-wood"
+        >
+          {t("footer.contact.whatsapp")}
+        </a>
       </div>
     </div>
 
@@ -122,6 +130,12 @@ const currentYear = new Date().getFullYear();
           class="transition-colors hover:text-wood focus-visible:text-wood"
         >
           {t("pagesSection.1.title")}
+        </a>
+        <a
+          href={getRelativeLocaleUrl(lang, t("path.faq"))}
+          class="transition-colors hover:text-wood focus-visible:text-wood"
+        >
+          {t("footer.faq.link")}
         </a>
       </div>
     </div>

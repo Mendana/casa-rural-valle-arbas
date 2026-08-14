@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import { getLang, useTranslations } from "../../i18n/utils";
-import mapaValle from "../../assets/images/mapa-valle.svg";
+import Button from "./Button.astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -12,6 +11,12 @@ const distances = [
   { label: t("routes.map.distance.colegiata"), value: "5 min" },
   { label: t("routes.map.distance.station"), value: "30 min" },
 ];
+
+const lat = 42.928722;
+const lon = -5.80608;
+const bbox = `${lon - 0.02},${lat - 0.012},${lon + 0.02},${lat + 0.012}`;
+const mapEmbedSrc = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}`;
+const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
 ---
 
 <section data-reveal class="bg-ink px-4 py-16 md:py-24 md:px-8">
@@ -46,15 +51,18 @@ const distances = [
     </div>
 
     <div class="mt-10 border border-line/20">
-      <Image
-        data-wipe
-        src={mapaValle}
-        alt={t("routes.map.imageAlt")}
-        width={1200}
-        height={800}
+      <iframe
+        src={mapEmbedSrc}
+        title={t("routes.map.iframeTitle")}
         loading="lazy"
-        class="h-auto w-full object-cover"
-      />
+        class="aspect-video w-full"
+      ></iframe>
+    </div>
+
+    <div class="mt-6 flex justify-center md:justify-start">
+      <Button href={directionsHref} target="_blank">
+        {t("routes.map.directions")}
+      </Button>
     </div>
   </div>
 </section>

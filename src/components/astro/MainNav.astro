@@ -46,6 +46,11 @@ const switchHref = getRelativeLocaleUrl(otherLang, alternatePath);
       >{t("nav.book")}</a
     >
     <a
+      href={getRelativeLocaleUrl(lang, t("path.faq"))}
+      class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition duration-300 md:hover:scale-104 md:focus-visible:scale-104"
+      >{t("nav.faq")}</a
+    >
+    <a
       href={switchHref}
       lang={otherLang}
       hreflang={otherLang}

@@ -52,6 +52,7 @@ export function getAlternatePath(
     [tFrom("path.routes"), tTo("path.routes")],
     [tFrom("path.book"), tTo("path.book")],
     [tFrom("path.legal"), tTo("path.legal")],
+    [tFrom("path.faq"), tTo("path.faq")],
   ];
 
   const match = routeMap.find(([from]) => normalizePath(from) === stripped);

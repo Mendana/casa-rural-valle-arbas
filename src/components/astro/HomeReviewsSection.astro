@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import { getLang, useTranslations } from "../../i18n/utils";
+import ReviewCard from "./ReviewCard.astro";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+
+const reviews = (await getCollection("reviews"))
+  .filter((entry) => entry.id.startsWith(`${lang}/`))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+
+{
+  reviews.length > 0 && (
+    <section
+      data-sec={t("reviews.eyebrow")}
+      class="bg-bg2 border-y border-y-line px-4 py-16 md:px-8 md:py-24"
+    >
+      <div class="mx-auto max-w-600">
+        <h2 class="font-sans text-xs font-semibold uppercase tracking-widest text-muted md:text-sm lg:text-base">
+          {t("reviews.eyebrow")}
+        </h2>
+        <p class="mt-4 max-w-3xl font-serif text-3xl font-light leading-9 text-ink md:text-4xl">
+          {t("reviews.heading")}
+        </p>
+        <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+          {reviews.map((entry) => (
+            <ReviewCard
+              author={entry.data.author}
+              origin={entry.data.origin}
+              rating={entry.data.rating}
+              text={entry.data.text}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

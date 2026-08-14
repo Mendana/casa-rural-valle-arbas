@@ -1,0 +1,31 @@
+---
+interface Props {
+  author: string;
+  origin?: string;
+  rating?: number;
+  text: string;
+}
+
+const { author, origin, rating, text } = Astro.props;
+---
+
+<article data-reveal class="flex flex-col gap-4 border-t border-t-line pt-6">
+  {
+    rating && (
+      <div class="flex items-center gap-1 text-wood">
+        <span aria-hidden="true" class="flex gap-0.5 text-lg leading-none">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <span>{i < rating ? "★" : "☆"}</span>
+          ))}
+        </span>
+        <span class="sr-only">{rating}/5</span>
+      </div>
+    )
+  }
+  <p class="font-serif text-lg font-light italic leading-7 text-ink md:text-xl">
+    “{text}”
+  </p>
+  <p class="text-sm uppercase tracking-widest text-muted">
+    {author}{origin ? ` · ${origin}` : ""}
+  </p>
+</article>
