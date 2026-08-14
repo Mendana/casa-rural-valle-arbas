@@ -1,6 +1,7 @@
 ---
 import BasePageLayout from "../layouts/BasePageLayout.astro";
 import PrivacyPageContent from "../components/astro/PrivacyPageContent.astro";
+import BookingFooter from "../components/astro/BookingFooter.astro";
 import { getLang, useTranslations } from "../i18n/utils";
 
 const lang = getLang(Astro.currentLocale);
@@ -9,4 +10,5 @@ const t = useTranslations(lang);
 
 <BasePageLayout title={t("meta.privacy.title")} description={t("meta.privacy.description")}>
   <PrivacyPageContent />
+  <BookingFooter slot="footer" />
 </BasePageLayout>

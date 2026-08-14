@@ -29,6 +29,14 @@ const currentYear = new Date().getFullYear();
         >
           {t("footer.contact.email")}
         </a>
+        <a
+          href={`https://wa.me/${t("footer.contact.phone").replace(/\D/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition-colors hover:text-wood focus-visible:text-wood"
+        >
+          {t("footer.contact.whatsapp")}
+        </a>
       </div>
     </div>
 
@@ -59,6 +67,18 @@ const currentYear = new Date().getFullYear();
         >
           {t("pagesSection.1.title")}
         </a>
+        <a
+          href={getRelativeLocaleUrl(lang, t("path.faq"))}
+          class="transition-colors hover:text-wood focus-visible:text-wood"
+        >
+          {t("footer.faq.link")}
+        </a>
+        <a
+          href={getRelativeLocaleUrl(lang, t("path.bookingTerms"))}
+          class="transition-colors hover:text-wood focus-visible:text-wood"
+        >
+          {t("footer.bookingTerms.link")}
+        </a>
       </div>
     </div>
   </div>
@@ -71,11 +91,19 @@ const currentYear = new Date().getFullYear();
     class="mx-auto flex max-w-600 flex-col gap-2 px-4 py-6 font-sans text-sm text-muted sm:flex-row sm:items-center sm:justify-between md:px-8"
   >
     <span>&copy; {currentYear} {t("footer.copyright")}</span>
-    <a
-      href={getRelativeLocaleUrl(lang, t("path.legal"))}
-      class="transition-colors hover:text-wood focus-visible:text-wood"
-    >
-      {t("footer.legal.link")}
-    </a>
+    <div class="flex flex-col gap-2 sm:flex-row sm:gap-4">
+      <a
+        href={getRelativeLocaleUrl(lang, t("path.legal"))}
+        class="transition-colors hover:text-wood focus-visible:text-wood"
+      >
+        {t("footer.legal.link")}
+      </a>
+      <a
+        href={getRelativeLocaleUrl(lang, t("path.privacy"))}
+        class="transition-colors hover:text-wood focus-visible:text-wood"
+      >
+        {t("footer.privacy.link")}
+      </a>
+    </div>
   </div>
 </footer>

@@ -1,6 +1,7 @@
 ---
 import BasePageLayout from "../../layouts/BasePageLayout.astro";
 import FaqPageContent from "../../components/astro/FaqPageContent.astro";
+import BookingFooter from "../../components/astro/BookingFooter.astro";
 import { getLang, useTranslations } from "../../i18n/utils";
 
 const lang = getLang(Astro.currentLocale);
@@ -9,4 +10,5 @@ const t = useTranslations(lang);
 
 <BasePageLayout title={t("meta.faq.title")} description={t("meta.faq.description")}>
   <FaqPageContent />
+  <BookingFooter slot="footer" />
 </BasePageLayout>

@@ -1,6 +1,7 @@
 ---
 import BasePageLayout from "../layouts/BasePageLayout.astro";
 import BookingTermsPageContent from "../components/astro/BookingTermsPageContent.astro";
+import BookingFooter from "../components/astro/BookingFooter.astro";
 import { getLang, useTranslations } from "../i18n/utils";
 
 const lang = getLang(Astro.currentLocale);
@@ -12,4 +13,5 @@ const t = useTranslations(lang);
   description={t("meta.bookingTerms.description")}
 >
   <BookingTermsPageContent />
+  <BookingFooter slot="footer" />
 </BasePageLayout>
