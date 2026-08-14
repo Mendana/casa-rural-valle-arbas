@@ -316,13 +316,11 @@ export default function AvailabilityCalendar({
                 "flex h-10 items-center justify-center border text-sm md:h-12 md:text-base xl:h-16 xl:text-lg 2xl:h-20 2xl:text-xl",
                 isPast
                   ? "border-transparent text-muted/40"
-                  : isEndpoint
+                  : isEndpoint || isInRange
                     ? "border-wood bg-wood text-onwood"
-                    : isInRange
-                      ? "border-ink/20 bg-ink/8 text-ink"
-                      : isBooked
-                        ? "border-line bg-wood/10 text-muted line-through"
-                        : "border-line text-ink",
+                    : isBooked
+                      ? "border-line bg-wood/10 text-muted line-through"
+                      : "border-line text-ink",
                 isToday && !isEndpoint ? "border-wood" : "",
                 selectable && !isPast && !isBooked
                   ? "cursor-pointer transition-colors hover:border-wood focus-visible:border-wood"
