@@ -9,7 +9,7 @@ interface Props {
 const { author, origin, rating, text } = Astro.props;
 ---
 
-<article data-reveal class="flex flex-col gap-4 border-t border-t-line pt-6">
+<article data-reveal class="flex flex-col gap-4 border-t border-t-line/70 pt-6">
   {
     rating && (
       <div class="flex items-center gap-1 text-wood">
@@ -22,10 +22,10 @@ const { author, origin, rating, text } = Astro.props;
       </div>
     )
   }
-  <p class="font-serif text-lg font-light italic leading-7 text-ink md:text-xl">
-    “{text}”
+  <p class="font-serif text-lg font-light italic leading-7 text-onwood md:text-xl">
+    "{text}"
   </p>
-  <p class="text-sm uppercase tracking-widest text-muted">
+  <p class="text-sm uppercase tracking-widest text-line/70">
     {author}{origin ? ` · ${origin}` : ""}
   </p>
 </article>
