@@ -150,32 +150,44 @@ if (!prefersReducedMotion) {
     const chevron = summary?.querySelector<HTMLElement>(".activity-chevron");
     if (!summary || !panel) return;
 
+    let isAnimating = false;
+
     summary.addEventListener("click", (e) => {
       e.preventDefault();
+      if (isAnimating) return;
+      isAnimating = true;
+      gsap.killTweensOf([panel, chevron]);
+
       if (details.open) {
-        if (chevron) gsap.to(chevron, { rotate: 0, duration: 0.35, ease: "power2.inOut" });
+        if (chevron) gsap.to(chevron, { rotate: 0, duration: 0.3, ease: "power2.in" });
+        gsap.set(panel, { height: panel.scrollHeight, overflow: "hidden" });
         gsap.to(panel, {
           height: 0,
           opacity: 0,
-          duration: 0.35,
-          ease: "power2.inOut",
+          duration: 0.32,
+          ease: "power2.in",
           onComplete: () => {
             details.open = false;
-            gsap.set(panel, { clearProps: "height,opacity" });
+            isAnimating = false;
+            gsap.set(panel, { clearProps: "height,opacity,overflow" });
           },
         });
       } else {
         details.open = true;
-        if (chevron) gsap.to(chevron, { rotate: 45, duration: 0.4, ease: "power2.inOut" });
+        const targetHeight = panel.scrollHeight;
+        if (chevron) gsap.to(chevron, { rotate: 45, duration: 0.4, ease: "power3.out" });
         gsap.fromTo(
           panel,
-          { height: 0, opacity: 0 },
+          { height: 0, opacity: 0, overflow: "hidden" },
           {
-            height: "auto",
+            height: targetHeight,
             opacity: 1,
-            duration: 0.4,
-            ease: "power2.inOut",
-            onComplete: () => gsap.set(panel, { clearProps: "height" }),
+            duration: 0.45,
+            ease: "power3.out",
+            onComplete: () => {
+              isAnimating = false;
+              gsap.set(panel, { clearProps: "height,overflow" });
+            },
           },
         );
       }
