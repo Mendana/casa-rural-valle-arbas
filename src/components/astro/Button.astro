@@ -12,7 +12,7 @@ const { href, target, class: className = "" } = Astro.props;
   href={href}
   target={target}
   rel={target === "_blank" ? "noopener noreferrer" : undefined}
-  class={`px-8 py-4 text-sm text-onwood uppercase tracking-widest bg-wood hover:bg-wood/90 hover:cursor-pointer hover:scale-105 focus-visible:bg-wood/90 focus-visible:scale-105 transition duration-300 md:text-base ${className}`}
+  class={`px-8 py-4 text-sm text-onwood uppercase tracking-widest bg-wood hover:bg-wood/90 hover:cursor-pointer hover:scale-105 focus-visible:bg-wood/90 focus-visible:scale-105 focus-visible:outline-onwood transition duration-300 md:text-base ${className}`}
 >
   <slot />
 </a>

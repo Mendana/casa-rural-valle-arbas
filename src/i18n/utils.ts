@@ -19,7 +19,7 @@ export function useTranslations(lang: Lang) {
   };
 }
 
-function normalizePath(path: string): string {
+export function normalizePath(path: string): string {
   const trimmed = path.length > 1 && path.endsWith("/") ? path.slice(0, -1) : path;
   return trimmed === "" ? "/" : trimmed;
 }
@@ -53,6 +53,8 @@ export function getAlternatePath(
     [tFrom("path.book"), tTo("path.book")],
     [tFrom("path.legal"), tTo("path.legal")],
     [tFrom("path.faq"), tTo("path.faq")],
+    [tFrom("path.privacy"), tTo("path.privacy")],
+    [tFrom("path.bookingTerms"), tTo("path.bookingTerms")],
   ];
 
   const match = routeMap.find(([from]) => normalizePath(from) === stripped);

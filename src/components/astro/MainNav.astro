@@ -1,6 +1,6 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { getLang, useTranslations, getAlternatePath } from "../../i18n/utils";
+import { getLang, useTranslations, getAlternatePath, normalizePath } from "../../i18n/utils";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -13,6 +13,9 @@ const alternatePath = getAlternatePath(
   import.meta.env.BASE_URL,
 );
 const switchHref = getRelativeLocaleUrl(otherLang, alternatePath);
+
+const currentPath = normalizePath(Astro.url.pathname);
+const isActive = (path: string) => currentPath === normalizePath(getRelativeLocaleUrl(lang, path));
 ---
 
 <nav
@@ -32,21 +35,25 @@ const switchHref = getRelativeLocaleUrl(otherLang, alternatePath);
   >
     <a
       href={getRelativeLocaleUrl(lang, t("path.home"))}
+      aria-current={isActive(t("path.home")) ? "page" : undefined}
       class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.home")}</a
     >
     <a
       href={getRelativeLocaleUrl(lang, t("path.routes"))}
+      aria-current={isActive(t("path.routes")) ? "page" : undefined}
       class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.routes")}</a
     >
     <a
       href={getRelativeLocaleUrl(lang, t("path.book"))}
+      aria-current={isActive(t("path.book")) ? "page" : undefined}
       class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.book")}</a
     >
     <a
       href={getRelativeLocaleUrl(lang, t("path.faq"))}
+      aria-current={isActive(t("path.faq")) ? "page" : undefined}
       class="hover:underline hover:text-wood focus-visible:underline focus-visible:text-wood underline-offset-4 transition duration-300 md:hover:scale-104 md:focus-visible:scale-104"
       >{t("nav.faq")}</a
     >
@@ -54,6 +61,7 @@ const switchHref = getRelativeLocaleUrl(otherLang, alternatePath);
       href={switchHref}
       lang={otherLang}
       hreflang={otherLang}
+      aria-label={t("a11y.switchLanguage")}
       onclick={`try { localStorage.setItem('lang', '${otherLang}') } catch (e) {}`}
       class="border-l border-ink/20 pl-1 transition-colors hover:text-wood focus-visible:text-wood xs:pl-2 md:pl-4"
       >{otherLang.toUpperCase()}</a

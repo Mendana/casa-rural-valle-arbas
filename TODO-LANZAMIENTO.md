@@ -3,10 +3,10 @@
 ## 1. Legal / cumplimiento (verificar con un gestor o abogado, esto no es asesoría legal)
 
 - [x] **Aviso Legal**: página creada (`/aviso-legal`, `/en/legal-notice`), enlazada desde el footer. Sigue pendiente rellenar los datos reales entre corchetes (titular, NIF/CIF, nº de registro turístico) — ver el aviso al final de la propia página.
-- [ ] **Política de Privacidad**: obligatoria si se trata cualquier dato personal (aunque solo sea por email/teléfono de contacto, o por las llamadas a la API de Google Calendar).
+- [x] **Política de Privacidad**: página creada (`/politica-privacidad`, `/en/privacy-policy`), enlazada desde el footer junto al Aviso Legal. Explica qué datos se tratan (solo los que el usuario da por email/teléfono/WhatsApp, más el idioma en `localStorage`), la llamada a la API de Google Calendar y el hosting en GitHub Pages. Como el Aviso Legal, sigue pendiente revisarla con un profesional antes de publicar.
 - [ ] **Política de Cookies**: hoy la web solo usa `localStorage` para recordar el idioma (no son cookies de terceros ni de tracking, así que probablemente no necesite banner de consentimiento). Si en algún momento añades Google Analytics, píxel de Meta, etc., **sí** necesitarás banner de consentimiento antes de cargarlos.
 - [ ] **Número de registro de turismo rural** (Junta de Castilla y León): las casas rurales suelen estar obligadas a mostrar su número de registro turístico en cualquier publicidad/web. Revisa si la vuestra ya está registrada y añade el número en el footer o en el Aviso Legal.
-- [ ] **Condiciones de reserva y cancelación**: ya tenéis un resumen en "Cómo funciona" (devolución completa hasta 15 días antes, luego la mitad) — plantéate si conviene una página de condiciones más formal.
+- [x] **Condiciones de reserva y cancelación**: página creada (`/condiciones-reserva`, `/en/booking-terms`), enlazada desde el footer y desde el paso "Cancelación" de "Cómo funciona" en la página de reserva. Todo el contenido está basado en datos ya existentes en la web, salvo la forma de pago y las normas adicionales de la casa (fumar, ruido, vehículos...), que quedan como placeholders entre corchetes por confirmar.
 
 ## 2. Contenido con datos reales (ahora mismo son placeholders)
 
@@ -20,6 +20,7 @@
 - [ ] Revisar que las distancias/duraciones/desniveles de las rutas de montaña sean correctas (son datos reales del terreno, no se pueden inventar).
 - [ ] Aviso Legal (`legal.owner`, `legal.nif`, `legal.touristRegistry` en `src/i18n/es.json`/`en.json`): sustituir los placeholders entre corchetes por los datos reales del titular.
 - [ ] Reseñas del home (`src/content/reviews/es/*.md`): ahora mismo hay 3 fichas de ejemplo con datos entre corchetes (autor, origen, texto) — sustitúyelas por reseñas reales de huéspedes antes de publicar, no dejar las de ejemplo.
+- [ ] Condiciones de reserva (`bookingTerms.section.5.body` y `bookingTerms.section.7.body` en `src/i18n/es.json`/`en.json`): confirmar la forma de pago (¿señal/pago por adelantado?) y añadir cualquier norma adicional de la casa (fumar, ruido, nº máximo de vehículos...), ahora mismo entre corchetes.
 
 ## 3. Imágenes
 
@@ -47,4 +48,4 @@
 ## 6. Opcional / posibles mejoras futuras
 
 - [ ] Galería horizontal "fijada" (scroll-jacking) para la sección de interior — la comentamos y de momento se quedó fuera, decide si la quieres.
-- [ ] Declaración de accesibilidad (no es obligatoria para un negocio privado, pero ya se ha hecho bastante trabajo de accesibilidad y podría ser un plus).
+- [ ] Declaración de accesibilidad (no es obligatoria para un negocio privado, pero ya se ha hecho bastante trabajo de accesibilidad — foco visible consistente, `aria-current` en el menú, etiquetas en el selector de idioma, calendario con `aria-label`/`aria-live` — y podría ser un plus).

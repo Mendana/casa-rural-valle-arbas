@@ -1,4 +1,5 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLang, useTranslations } from "../../i18n/utils";
 import HowItWorksStep from "./HowItWorksStep.astro";
 
@@ -25,7 +26,12 @@ const t = useTranslations(lang);
       {t("book.howItWorks.3.description")}
     </HowItWorksStep>
     <HowItWorksStep index={4} title={t("book.howItWorks.4.title")}>
-      {t("book.howItWorks.4.description")}
+      {t("book.howItWorks.4.description")}{" "}
+      <a
+        href={getRelativeLocaleUrl(lang, t("path.bookingTerms"))}
+        class="text-wood underline decoration-wood/50 underline-offset-4 transition-colors hover:decoration-wood focus-visible:decoration-wood"
+        >{t("book.howItWorks.termsLink")}</a
+      >
     </HowItWorksStep>
   </div>
 </section>
