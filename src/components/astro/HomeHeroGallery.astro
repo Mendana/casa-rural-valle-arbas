@@ -1,5 +1,8 @@
 ---
 import { Image } from "astro:assets";
+import escalerasImg from "../../assets/images/escaleras.avif";
+import salonImg from "../../assets/images/salon-chimenea-1.avif";
+import futbolinImg from "../../assets/images/futbolin-1.avif";
 import casaImg from "../../assets/images/casa-rural.jpg";
 import { getLang, useTranslations } from "../../i18n/utils";
 import PriceBadge from "./PriceBadge.astro";
@@ -12,7 +15,7 @@ const t = useTranslations(lang);
   <figure data-par="-0.1" class="hidden lg:block">
     <div data-reveal-wipe class="flex flex-col gap-4">
       <Image
-        src={casaImg}
+        src={salonImg}
         alt={t("index.photos.left.alt")}
         width={860}
         height={559}
@@ -31,7 +34,7 @@ const t = useTranslations(lang);
     />
     <div data-par="0.02" class="overflow-hidden">
       <Image
-        src={casaImg}
+        src={escalerasImg}
         alt={t("index.photos.main.alt")}
         width={860}
         height={559}
@@ -53,7 +56,7 @@ const t = useTranslations(lang);
   <figure data-par="-0.18" class="hidden lg:block">
     <div data-reveal-wipe class="flex flex-col gap-4">
       <Image
-        src={casaImg}
+        src={futbolinImg}
         alt={t("index.photos.right.alt")}
         width={1200}
         height={800}

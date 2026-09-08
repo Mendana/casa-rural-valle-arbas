@@ -7,6 +7,9 @@ const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 ---
 
-<BasePageLayout title={t("meta.home.title")} description={t("meta.home.description")}>
+<BasePageLayout
+  title={t("meta.home.title")}
+  description={t("meta.home.description")}
+>
   <HomePageContent />
 </BasePageLayout>

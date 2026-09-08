@@ -1,4 +1,4 @@
 ---
 label: "Cocinas"
-value: "2"
+value: "1"
 ---
