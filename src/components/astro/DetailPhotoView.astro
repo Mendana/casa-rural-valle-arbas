@@ -8,11 +8,12 @@ interface Props {
   alt: string;
   title: string;
   description: string;
+  items?: string[];
   index: number;
   alignment: "left" | "right";
 }
 
-const { image, image_description, alt, title, description, index, alignment } =
+const { image, image_description, alt, title, description, items, index, alignment } =
   Astro.props;
 const orderLabel = String(index).padStart(2, "0");
 const isRight = alignment === "right";
@@ -79,5 +80,19 @@ const isRight = alignment === "right";
     <p class="mt-3 text-lg text-muted lg:max-w-150">
       {description}
     </p>
+    {
+      items && items.length > 0 && (
+        <ul class="mt-5 flex flex-col gap-2 border-t border-line pt-4 lg:max-w-150">
+          {items.map((item) => (
+            <li class="flex items-start gap-2 text-base text-muted">
+              <span class="mt-1 text-wood" aria-hidden="true">
+                –
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
   </div>
 </article>

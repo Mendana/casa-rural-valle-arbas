@@ -1,5 +1,5 @@
 ---
-order: 3
+order: 7
 title: "Las vistas"
 description: "Desde las ventanas podrás disfrutar de unas vistas espectaculares del valle y de la montaña, tanto de día como de noche."
 image: "../../../assets/images/vistas-1.avif"

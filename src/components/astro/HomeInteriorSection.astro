@@ -50,58 +50,59 @@ const defaultCycle = ["normal", "raised", "small", "lowered"] as const;
         >{t("interior.title.1")}</span
       >
     </h2>
-    <div class="flex shrink-0 gap-2">
-      <button
-        id="interior-prev"
-        type="button"
-        aria-label={t("interior.prev.alt")}
-        class="flex h-10 w-10 items-center justify-center border border-line text-ink transition-colors hover:border-wood hover:text-wood focus-visible:border-wood focus-visible:text-wood"
-      >
-        ‹
-      </button>
-      <button
-        id="interior-next"
-        type="button"
-        aria-label={t("interior.next.alt")}
-        class="flex h-10 w-10 items-center justify-center border border-line text-ink transition-colors hover:border-wood hover:text-wood focus-visible:border-wood focus-visible:text-wood"
-      >
-        ›
-      </button>
-    </div>
   </div>
 
-  <div
-    id="interior-scroll"
-    tabindex="0"
-    role="group"
-    aria-label={t("interior.title.0") + t("interior.title.1")}
-    class="no-scrollbar mt-12 flex items-start snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden scroll-smooth pt-6 pb-6 focus-visible:outline-2 focus-visible:outline-wood focus-visible:outline-offset-4 md:mt-16 md:gap-8 md:pt-10 md:pb-8"
-  >
-    {
-      entries.map((entry, i) => {
-        const variant =
-          variants[entry.data.layout ?? defaultCycle[i % defaultCycle.length]];
-        return (
-          <div class:list={["shrink-0 snap-start", variant.wrapper]}>
-            <Image
-              src={entry.data.image}
-              alt={entry.data.alt}
-              width={480}
-              height={600}
-              class:list={["object-cover", variant.image]}
-            />
-            <div
-              class:list={["mt-3 flex items-baseline gap-2", variant.caption]}
-            >
-              <span class="font-mono text-sm text-wood tracking-wide">
-                {String(entry.data.order).padStart(2, "0")}
-              </span>
-              <span class="text-sm text-muted">{entry.data.description}</span>
+  <div class="relative mt-12 md:mt-16">
+    <div
+      id="interior-scroll"
+      tabindex="0"
+      role="group"
+      aria-label={t("interior.title.0") + t("interior.title.1")}
+      class="no-scrollbar flex items-start snap-x snap-mandatory gap-6 overflow-x-auto overflow-y-hidden scroll-smooth pt-6 pb-6 focus-visible:outline-2 focus-visible:outline-wood focus-visible:outline-offset-4 md:gap-8 md:pt-10 md:pb-8"
+    >
+      {
+        entries.map((entry, i) => {
+          const variant =
+            variants[entry.data.layout ?? defaultCycle[i % defaultCycle.length]];
+          return (
+            <div class:list={["shrink-0 snap-start", variant.wrapper]}>
+              <Image
+                src={entry.data.image}
+                alt={entry.data.alt}
+                width={480}
+                height={600}
+                class:list={["object-cover", variant.image]}
+              />
+              <div
+                class:list={["mt-3 flex items-baseline gap-2", variant.caption]}
+              >
+                <span class="font-mono text-sm text-wood tracking-wide">
+                  {String(entry.data.order).padStart(2, "0")}
+                </span>
+                <span class="text-sm text-muted">{entry.data.description}</span>
+              </div>
             </div>
-          </div>
-        );
-      })
-    }
+          );
+        })
+      }
+    </div>
+
+    <button
+      id="interior-prev"
+      type="button"
+      aria-label={t("interior.prev.alt")}
+      class="absolute left-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-ink/70 text-lg text-onwood backdrop-blur-sm transition-colors hover:bg-ink focus-visible:bg-ink md:left-4 md:h-12 md:w-12 md:text-xl"
+    >
+      ‹
+    </button>
+    <button
+      id="interior-next"
+      type="button"
+      aria-label={t("interior.next.alt")}
+      class="absolute right-2 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-ink/70 text-lg text-onwood backdrop-blur-sm transition-colors hover:bg-ink focus-visible:bg-ink md:right-4 md:h-12 md:w-12 md:text-xl"
+    >
+      ›
+    </button>
   </div>
 </section>
 

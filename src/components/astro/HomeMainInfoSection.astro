@@ -38,12 +38,19 @@ const amenities = t("index.mainInfo.amenities");
     >
       {t("index.mainInfo.description2")}
     </p>
-    <div class="mt-8 flex flex-row flex-wrap justify-start gap-3 md:mt-12">
+    <div class="mt-8 flex flex-row flex-wrap items-center justify-start gap-x-3 gap-y-2 md:mt-12">
       {
-        amenities.map((amenity) => (
-          <span class="border-[1.5px] border-line px-3 py-2 text-xs uppercase tracking-wider text-muted md:text-sm md:tracking-widest">
-            {amenity}
-          </span>
+        amenities.map((amenity, i) => (
+          <>
+            {i > 0 && (
+              <span class="text-wood" aria-hidden="true">
+                ·
+              </span>
+            )}
+            <span class="text-xs uppercase tracking-wider text-muted md:text-sm md:tracking-widest">
+              {amenity}
+            </span>
+          </>
         ))
       }
     </div>

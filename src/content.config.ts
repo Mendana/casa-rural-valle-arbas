@@ -28,6 +28,7 @@ const homeHighlights = defineCollection({
       order: z.number(),
       title: z.string(),
       description: z.string(),
+      items: z.array(z.string()).optional(),
       image: image(),
       image_description: z.string(),
       alt: z.string(),

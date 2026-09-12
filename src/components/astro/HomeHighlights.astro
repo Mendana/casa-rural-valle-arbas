@@ -19,6 +19,7 @@ const entries = (await getCollection("homeHighlights"))
         alt={entry.data.alt}
         title={entry.data.title}
         description={entry.data.description}
+        items={entry.data.items}
         index={entry.data.order}
         alignment={i % 2 === 0 ? "left" : "right"}
       />
