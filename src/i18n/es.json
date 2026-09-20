@@ -71,10 +71,9 @@
     "Estrellas sin contaminación lumínica"
   ],
   "season.title": "El año en Arbas",
-  "interior.title.0": "La casa",
-  "interior.title.1": " por dentro",
-  "interior.prev.alt": "Anterior",
-  "interior.next.alt": "Siguiente",
+  "video.title.0": "La casa",
+  "video.title.1": " en vídeo",
+  "video.play.alt": "Reproducir vídeo de la casa rural",
   "characteristics.title": "Datos básicos",
   "pagesSection.1.alt": "Vista de sendero de montaña",
   "pagesSection.1.title": "Rutas y actividades",

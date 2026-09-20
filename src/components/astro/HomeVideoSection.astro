@@ -1,0 +1,82 @@
+---
+import { getLang, useTranslations } from "../../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+
+// TODO: sustituir por el ID real del vídeo de YouTube.
+const VIDEO_ID = "aqz-KE-bpKQ";
+const thumbnail = `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
+---
+
+<section
+  data-reveal
+  data-sec={t("video.title.0") + t("video.title.1")}
+  class="mx-auto mt-12 max-w-500 px-4 py-12 md:px-8 md:py-16"
+>
+  <div class="flex items-end justify-between gap-4">
+    <h2
+      class="font-serif text-3xl font-light text-ink md:text-4xl lg:text-5xl"
+    >
+      {t("video.title.0")}
+      <span class="text-wood italic font-medium lg:font-light"
+        >{t("video.title.1")}</span
+      >
+    </h2>
+  </div>
+
+  <div class="relative mt-12 md:mt-16">
+    <div
+      id="home-video"
+      data-video-id={VIDEO_ID}
+      class="video-embed relative aspect-video w-full overflow-hidden border border-line bg-ink"
+    >
+      <button
+        type="button"
+        class="video-embed-play group absolute inset-0 flex h-full w-full cursor-pointer items-center justify-center"
+        aria-label={t("video.play.alt")}
+      >
+        <img
+          src={thumbnail}
+          alt={t("video.play.alt")}
+          class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
+          loading="lazy"
+        />
+        <span
+          class="pointer-events-none absolute inset-0 bg-ink/20 transition-colors group-hover:bg-ink/10"
+        />
+        <span
+          class="relative flex h-16 w-16 items-center justify-center border border-onwood bg-bg/90 transition-colors group-hover:border-wood md:h-20 md:w-20"
+        >
+          <span
+            class="ml-1 border-y-10 border-l-16 border-y-transparent border-l-wood md:border-y-12 md:border-l-20"
+          />
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".video-embed").forEach((root) => {
+    const playBtn = root.querySelector<HTMLButtonElement>(".video-embed-play");
+    const videoId = root.dataset.videoId;
+    if (!playBtn || !videoId) return;
+
+    playBtn.addEventListener(
+      "click",
+      () => {
+        const iframe = document.createElement("iframe");
+        iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+        iframe.title = playBtn.getAttribute("aria-label") ?? "YouTube video";
+        iframe.className = "absolute inset-0 h-full w-full";
+        iframe.allow =
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        iframe.allowFullscreen = true;
+        iframe.style.border = "0";
+        root.replaceChildren(iframe);
+      },
+      { once: true },
+    );
+  });
+</script>
