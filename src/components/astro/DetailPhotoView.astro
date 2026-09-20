@@ -70,14 +70,14 @@ const hasMultiple = images.length > 1;
           <>
             <button
               type="button"
-              class="detail-carousel-prev absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-ink/60 text-onwood backdrop-blur-sm transition-colors hover:bg-ink focus-visible:bg-ink md:h-9 md:w-9"
+              class="detail-carousel-prev absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center border border-line bg-bg text-ink transition-colors hover:border-wood hover:text-wood focus-visible:border-wood focus-visible:text-wood md:h-9 md:w-9"
               aria-label="Foto anterior"
             >
               ‹
             </button>
             <button
               type="button"
-              class="detail-carousel-next absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-ink/60 text-onwood backdrop-blur-sm transition-colors hover:bg-ink focus-visible:bg-ink md:h-9 md:w-9"
+              class="detail-carousel-next absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center border border-line bg-bg text-ink transition-colors hover:border-wood hover:text-wood focus-visible:border-wood focus-visible:text-wood md:h-9 md:w-9"
               aria-label="Foto siguiente"
             >
               ›
@@ -87,7 +87,7 @@ const hasMultiple = images.length > 1;
                 {images.map((_, i) => (
                   <button
                     type="button"
-                    class="detail-carousel-dot pointer-events-auto h-1.5 w-1.5 rounded-full bg-onwood/60 transition-all data-active:w-4 data-active:bg-onwood"
+                    class="detail-carousel-dot pointer-events-auto h-1.5 w-1.5 cursor-pointer rounded-full bg-onwood/60 transition-all data-active:w-4 data-active:bg-onwood"
                     data-index={i}
                     aria-label={`Foto ${i + 1}`}
                   />
