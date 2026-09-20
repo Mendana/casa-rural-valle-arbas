@@ -14,9 +14,7 @@ const entries = (await getCollection("homeHighlights"))
   {
     entries.map((entry, i) => (
       <DetailPhotoView
-        image={entry.data.image}
-        image_description={entry.data.image_description}
-        alt={entry.data.alt}
+        images={entry.data.images}
         title={entry.data.title}
         description={entry.data.description}
         items={entry.data.items}

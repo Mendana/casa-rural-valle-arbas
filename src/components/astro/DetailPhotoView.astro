@@ -2,10 +2,14 @@
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 
-interface Props {
+interface HighlightImage {
   image: ImageMetadata;
-  image_description: string;
   alt: string;
+  caption?: string;
+}
+
+interface Props {
+  images: HighlightImage[];
   title: string;
   description: string;
   items?: string[];
@@ -13,10 +17,10 @@ interface Props {
   alignment: "left" | "right";
 }
 
-const { image, image_description, alt, title, description, items, index, alignment } =
-  Astro.props;
+const { images, title, description, items, index, alignment } = Astro.props;
 const orderLabel = String(index).padStart(2, "0");
 const isRight = alignment === "right";
+const hasMultiple = images.length > 1;
 ---
 
 <article
@@ -29,23 +33,70 @@ const isRight = alignment === "right";
     data-row-photo={isRight ? "right" : "left"}
     class:list={["relative", isRight && "lg:order-2"]}
   >
-    <Image
-      data-wipe
-      src={image}
-      alt={alt}
-      width={860}
-      height={640}
-      class="h-100 w-full object-cover lg:h-150 xl:h-175 2xl:h-200"
-    />
     <div
-      class:list={[
-        "absolute -bottom-2 -left-2 border border-wood bg-bg px-3 py-1.5 lg:-bottom-4 lg:px-4 lg:py-2",
-        isRight && "lg:left-auto lg:-right-2",
-      ]}
+      class="detail-carousel relative h-100 w-full overflow-hidden lg:h-150 xl:h-175 2xl:h-200"
     >
-      <span class="font-serif text-sm text-wood lg:text-base 2xl:text-lg"
-        >{image_description}</span
-      >
+      <div class="detail-carousel-track flex h-full w-full transition-transform duration-500 ease-out">
+        {
+          images.map((img) => (
+            <div class="relative h-full w-full shrink-0">
+              <Image
+                data-wipe
+                src={img.image}
+                alt={img.alt}
+                width={860}
+                height={640}
+                class="h-full w-full object-cover"
+              />
+              {img.caption && (
+                <div
+                  class:list={[
+                    "absolute -bottom-2 -left-2 border border-wood bg-bg px-3 py-1.5 lg:-bottom-4 lg:px-4 lg:py-2",
+                    isRight && "lg:left-auto lg:-right-2",
+                  ]}
+                >
+                  <span class="font-serif text-sm text-wood lg:text-base 2xl:text-lg">
+                    {img.caption}
+                  </span>
+                </div>
+              )}
+            </div>
+          ))
+        }
+      </div>
+
+      {
+        hasMultiple && (
+          <>
+            <button
+              type="button"
+              class="detail-carousel-prev absolute left-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-ink/60 text-onwood backdrop-blur-sm transition-colors hover:bg-ink focus-visible:bg-ink md:h-9 md:w-9"
+              aria-label="Foto anterior"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              class="detail-carousel-next absolute right-2 top-1/2 z-10 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-ink/60 text-onwood backdrop-blur-sm transition-colors hover:bg-ink focus-visible:bg-ink md:h-9 md:w-9"
+              aria-label="Foto siguiente"
+            >
+              ›
+            </button>
+            <div class="pointer-events-none absolute inset-x-0 bottom-3 flex items-center justify-center">
+              <div class="flex items-center gap-2 rounded-full bg-ink/50 px-2.5 py-1.5 backdrop-blur-sm">
+                {images.map((_, i) => (
+                  <button
+                    type="button"
+                    class="detail-carousel-dot pointer-events-auto h-1.5 w-1.5 rounded-full bg-onwood/60 transition-all data-active:w-4 data-active:bg-onwood"
+                    data-index={i}
+                    aria-label={`Foto ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </>
+        )
+      }
     </div>
   </div>
 
@@ -96,3 +147,60 @@ const isRight = alignment === "right";
     }
   </div>
 </article>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".detail-carousel").forEach((root) => {
+    const track = root.querySelector<HTMLElement>(".detail-carousel-track");
+    if (!track) return;
+
+    const slides = Array.from(track.children) as HTMLElement[];
+    const dots = Array.from(
+      root.querySelectorAll<HTMLElement>(".detail-carousel-dot"),
+    );
+    const prevBtn = root.querySelector<HTMLButtonElement>(
+      ".detail-carousel-prev",
+    );
+    const nextBtn = root.querySelector<HTMLButtonElement>(
+      ".detail-carousel-next",
+    );
+    const count = slides.length;
+    let active = 0;
+
+    function render() {
+      track!.style.transform = `translateX(-${active * 100}%)`;
+      dots.forEach((dot, i) => {
+        if (i === active) dot.setAttribute("data-active", "");
+        else dot.removeAttribute("data-active");
+      });
+    }
+
+    function goTo(index: number) {
+      active = ((index % count) + count) % count;
+      render();
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener("click", () => goTo(i)));
+    prevBtn?.addEventListener("click", () => goTo(active - 1));
+    nextBtn?.addEventListener("click", () => goTo(active + 1));
+
+    root.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") goTo(active - 1);
+      if (e.key === "ArrowRight") goTo(active + 1);
+    });
+
+    let startX = 0;
+    let dragging = false;
+    root.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      startX = e.clientX;
+    });
+    root.addEventListener("pointerup", (e) => {
+      if (!dragging) return;
+      dragging = false;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 40) goTo(active + (dx < 0 ? 1 : -1));
+    });
+
+    render();
+  });
+</script>

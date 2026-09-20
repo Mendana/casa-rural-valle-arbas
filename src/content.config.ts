@@ -29,9 +29,15 @@ const homeHighlights = defineCollection({
       title: z.string(),
       description: z.string(),
       items: z.array(z.string()).optional(),
-      image: image(),
-      image_description: z.string(),
-      alt: z.string(),
+      images: z
+        .array(
+          z.object({
+            image: image(),
+            alt: z.string(),
+            caption: z.string().optional(),
+          }),
+        )
+        .min(1),
     }),
 });
 
