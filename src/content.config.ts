@@ -45,6 +45,17 @@ const seasons = defineCollection({
   }),
 });
 
+const heroGallery = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/hero-gallery" }),
+  schema: ({ image }) =>
+    z.object({
+      order: z.number(),
+      image: image(),
+      alt: z.string(),
+      caption: z.string().optional(),
+    }),
+});
+
 const interior = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/interior" }),
   schema: ({ image }) =>
@@ -89,6 +100,7 @@ export const collections = {
   activities,
   homeHighlights,
   seasons,
+  heroGallery,
   interior,
   characteristics,
   itemsInHouse,
