@@ -1,0 +1,31 @@
+---
+order: 3
+title: "The bedrooms"
+description: "We know a good rest is the foundation of a good holiday, so we've taken care over every bedroom to make you feel at home. The house has 5 bedrooms and a sofa bed:"
+items:
+  - "Bedroom with a double bed and a cot"
+  - "Bedroom with two single beds"
+  - "Bedroom with two double beds"
+  - "Bedroom with two double beds and a bunk bed"
+  - "Attic sleeping 6 (with the option of an extra mattress)"
+  - "120 cm sofa bed"
+images:
+  - image: "../../../assets/images/habitacion-3.jpg"
+    alt: "Bedroom with two double beds and a bunk bed"
+    caption: "Bedroom with two double beds and a bunk bed"
+  - image: "../../../assets/images/habitacion-1.jpg"
+    alt: "Bedroom with a double bed and a cot"
+    caption: "Bedroom with a double bed and a cot"
+  - image: "../../../assets/images/habitacion-2.jpg"
+    alt: "Bedroom with a double bed and a cot"
+    caption: "Bedroom with a double bed and a cot"
+  - image: "../../../assets/images/habitacion-4.jpg"
+    alt: "Bedroom with two double beds"
+    caption: "Bedroom with two double beds"
+  - image: "../../../assets/images/habitacion-5.jpg"
+    alt: "Attic sleeping 6"
+    caption: "Attic sleeping 6"
+  - image: "../../../assets/images/habitacion-6.jpg"
+    alt: "Attic sleeping 6"
+    caption: "Attic sleeping 6"
+---

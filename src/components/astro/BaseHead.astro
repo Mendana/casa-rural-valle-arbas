@@ -52,6 +52,21 @@ const jsonLd = {
         latitude: 42.928722,
         longitude: -5.80608,
       },
+      checkinTime: "17:00",
+      checkoutTime: "12:00",
+      numberOfRooms: 5,
+      amenityFeature: [
+        "Wifi",
+        "Parrilla",
+        "Ping-Pong",
+        "Futbolín",
+        "Proyector con PlayStation",
+        "Estufa de Pellets",
+      ].map((name) => ({
+        "@type": "LocationFeatureSpecification",
+        name,
+        value: true,
+      })),
     },
     {
       "@type": "WebSite",
@@ -104,11 +119,17 @@ const jsonLd = {
 	<meta name="geo.position" content="42.928722;-5.806080" />
 
 	<!-- Global Metadata -->
-	<link rel="icon" href={`${base}/favicon.ico`} sizes="32x32" />
-	<link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+	<link rel="icon" href={`${base}/favicon/favicon.ico`} sizes="32x32" />
+	<link rel="icon" type="image/svg+xml" href={`${base}/favicon/favicon.svg`} />
+	<link rel="icon" type="image/png" sizes="16x16" href={`${base}/favicon/favicon-16x16.png`} />
+	<link rel="icon" type="image/png" sizes="32x32" href={`${base}/favicon/favicon-32x32.png`} />
+	<link rel="icon" type="image/png" sizes="96x96" href={`${base}/favicon/favicon-96x96.png`} />
+	<link rel="apple-touch-icon" sizes="180x180" href={`${base}/favicon/apple-icon-180x180.png`} />
 	<link rel="manifest" href={`${base}/manifest.webmanifest`} />
 	<meta name="google" content="notranslate" />
 	<meta name="theme-color" content="#f8f1e7" />
+	<meta name="msapplication-TileColor" content="#8c543f" />
+	<meta name="msapplication-TileImage" content={`${base}/favicon/ms-icon-144x144.png`} />
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:locale" content={locales[lang]} />

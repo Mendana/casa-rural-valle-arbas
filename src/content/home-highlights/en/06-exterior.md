@@ -1,0 +1,22 @@
+---
+order: 6
+title: "Garden and outdoor area"
+description: "You'll have 400 m² of outdoor space with mountain views at your disposal. Sofas, a grill, tables and chairs, a shaded area with trees, parking, a basketball hoop, darts and a size S bike to enjoy the valley."
+images:
+  - image: "../../../assets/images/exterior-1.jpg"
+    alt: "Seating and table area of the rural house in the Valle de Arbas"
+    caption: "Seating and table area"
+  - image: "../../../assets/images/exterior-2.jpg"
+    alt: "Darts area of the rural house in the Valle de Arbas"
+    caption: "Dartboard"
+    focus: "top"
+  - image: "../../../assets/images/exterior-3.jpg"
+    alt: "Outdoor dining area of the rural house in the Valle de Arbas"
+    caption: "Outdoor dining area and garden"
+  - image: "../../../assets/images/exterior-4.jpg"
+    alt: "Grill at the rural house in the Valle de Arbas"
+    caption: "The grill"
+  - image: "../../../assets/images/exterior-5.jpg"
+    alt: "Basketball hoop area of the rural house in the Valle de Arbas"
+    caption: "Basketball hoop"
+---

@@ -65,18 +65,6 @@ const heroGallery = defineCollection({
     }),
 });
 
-const interior = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/interior" }),
-  schema: ({ image }) =>
-    z.object({
-      order: z.number(),
-      image: image(),
-      alt: z.string(),
-      description: z.string(),
-      layout: z.enum(["normal", "raised", "lowered", "small"]).optional(),
-    }),
-});
-
 const characteristics = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/characteristics" }),
   schema: z.object({
@@ -110,7 +98,6 @@ export const collections = {
   homeHighlights,
   seasons,
   heroGallery,
-  interior,
   characteristics,
   itemsInHouse,
   reviews,
