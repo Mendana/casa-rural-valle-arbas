@@ -5,14 +5,10 @@ description: "Cuatro baños repartidos por la casa, para que nadie tenga que hac
 images:
   - image: "../../../assets/images/bano-2.jpg"
     alt: "Baño de la casa rural en el Valle de Arbas"
-    caption: "Baño reformado, con ducha de obra"
   - image: "../../../assets/images/bano-3.jpg"
     alt: "Baño de la casa rural en el Valle de Arbas"
-    caption: "Baño reformado, con ducha de obra"
   - image: "../../../assets/images/bano-4.jpg"
     alt: "Baño de la casa rural en el Valle de Arbas"
-    caption: "Baño reformado, con ducha de obra"
   - image: "../../../assets/images/bano-1.jpg"
     alt: "Baño de la casa rural en el Valle de Arbas"
-    caption: "Baño reformado, con ducha de obra"
 ---

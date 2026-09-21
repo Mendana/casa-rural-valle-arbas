@@ -28,16 +28,8 @@ const t = useTranslations(lang);
             <dd>{t("legal.owner")}</dd>
           </div>
           <div class="flex flex-col gap-1 sm:flex-row sm:gap-2">
-            <dt class="shrink-0 font-medium text-ink sm:w-56">{t("legal.section.1.nif")}</dt>
-            <dd>{t("legal.nif")}</dd>
-          </div>
-          <div class="flex flex-col gap-1 sm:flex-row sm:gap-2">
             <dt class="shrink-0 font-medium text-ink sm:w-56">{t("legal.section.1.address")}</dt>
             <dd>{t("footer.location.street")}, {t("footer.location.cityLine")}</dd>
-          </div>
-          <div class="flex flex-col gap-1 sm:flex-row sm:gap-2">
-            <dt class="shrink-0 font-medium text-ink sm:w-56">{t("legal.section.1.registry")}</dt>
-            <dd>{t("legal.touristRegistry")}</dd>
           </div>
           <div class="flex flex-col gap-1 sm:flex-row sm:gap-2">
             <dt class="shrink-0 font-medium text-ink sm:w-56">{t("legal.section.1.email")}</dt>
@@ -104,9 +96,5 @@ const t = useTranslations(lang);
         </p>
       </article>
     </div>
-
-    <p class="mt-12 border-t border-t-line pt-6 font-sans text-sm text-muted/70 italic">
-      {t("legal.placeholderNotice")}
-    </p>
   </section>
 </main>

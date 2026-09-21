@@ -2,7 +2,7 @@
 import { Font, getImage } from "astro:assets";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLang, getAlternatePath, useTranslations } from "../../i18n/utils";
-import casaImg from "../../assets/images/casa-rural.jpg";
+import casaImg from "../../assets/images/carrousel-inicial-3.jpg";
 
 const { title, description } = Astro.props;
 
@@ -61,7 +61,8 @@ const jsonLd = {
         "Ping-Pong",
         "Futbolín",
         "Proyector con PlayStation",
-        "Estufa de Pellets",
+        "Calefacción",
+        "Estufas de Pellet",
       ].map((name) => ({
         "@type": "LocationFeatureSpecification",
         name,
