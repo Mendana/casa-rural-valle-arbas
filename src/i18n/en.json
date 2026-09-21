@@ -199,7 +199,7 @@
   "bookingTerms.title": "Booking and cancellation terms",
   "bookingTerms.intro": "A clear summary of how a booking at Casa Rural Valle de Arbas works, from start to finish. If you have any questions, contact us before confirming.",
   "bookingTerms.section.1.title": "1. How to book",
-  "bookingTerms.section.1.body": "The whole house is rented as one unit, with a minimum stay of two nights. We don't work with intermediaries: simulate your dates on the availability calendar, then message or call us (WhatsApp works too) to confirm the booking directly with us.",
+  "bookingTerms.section.1.body": "The whole house is rented as one unit, with a minimum stay of two nights. We don't work with intermediaries: watch your dates on the availability calendar, then message or call us (WhatsApp works too) to confirm the booking directly with us.",
   "bookingTerms.section.2.title": "2. Check-in and check-out",
   "bookingTerms.section.2.body": "Check-in is from 17:00 and check-out before 12:00. We'll meet you at the door with the keys. Checking out later than 12:00 carries a €50 surcharge.",
   "bookingTerms.section.3.title": "3. Occupancy",
@@ -235,5 +235,5 @@
   "faq.q7.question": "Is there a fireplace in the house?",
   "faq.q7.answer": "Yes, the house has two pellet stoves in the common areas, lit during the colder months.",
   "faq.q8.question": "How do I book, and what's the cancellation policy?",
-  "faq.q8.answer": "We book with no intermediaries: simulate your dates on the calendar, then message or call us (WhatsApp works too) to confirm. If you cancel more than a month before the check-in date, we'll refund the amount; less than a month before, the €300 deposit is withheld."
+  "faq.q8.answer": "We book with no intermediaries: look for your dates on the calendar, then message or call us (WhatsApp works too) to confirm. If you cancel more than a month before the check-in date, we'll refund the amount; less than a month before, the €300 deposit is withheld."
 }

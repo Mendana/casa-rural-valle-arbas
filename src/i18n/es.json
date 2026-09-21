@@ -199,7 +199,7 @@
   "bookingTerms.title": "Condiciones de reserva y cancelación",
   "bookingTerms.intro": "Un resumen claro de cómo funciona una reserva en Casa Rural Valle de Arbas, de principio a fin. Ante cualquier duda, contacta con nosotros antes de confirmar.",
   "bookingTerms.section.1.title": "1. Cómo se reserva",
-  "bookingTerms.section.1.body": "La casa se alquila entera, con un mínimo de dos noches. No trabajamos con intermediarios: simulas tus fechas en el calendario de disponibilidad y nos escribes o llamas (también por WhatsApp) para confirmar la reserva directamente con nosotros.",
+  "bookingTerms.section.1.body": "La casa se alquila entera, con un mínimo de dos noches. No trabajamos con intermediarios: miras tus fechas en el calendario de disponibilidad y nos escribes o llamas (también por WhatsApp) para confirmar la reserva directamente con nosotros.",
   "bookingTerms.section.2.title": "2. Entrada y salida",
   "bookingTerms.section.2.body": "La entrada es a partir de las 17:00 y la salida antes de las 12:00. Nos vemos en la puerta con las llaves. Salir más tarde de las 12:00 tiene un suplemento de 50€.",
   "bookingTerms.section.3.title": "3. Ocupación",
@@ -235,5 +235,5 @@
   "faq.q7.question": "¿Hay chimenea en la casa?",
   "faq.q7.answer": "Sí, la casa cuenta con dos chimeneas de pellet en las zonas comunes, encendidas en los meses más fríos.",
   "faq.q8.question": "¿Cómo reservo y cuál es la política de cancelación?",
-  "faq.q8.answer": "Reservamos sin intermediarios: simulas tus fechas en el calendario y nos escribes o llamas (también por WhatsApp) para confirmar. Si cancelas con más de un mes de antelación a la fecha de entrada, te devolvemos el importe; con menos de un mes, se retienen los 300€ de la fianza."
+  "faq.q8.answer": "Reservamos sin intermediarios: miras tus fechas en el calendario y nos escribes o llamas (también por WhatsApp) para confirmar. Si cancelas con más de un mes de antelación a la fecha de entrada, te devolvemos el importe; con menos de un mes, se retienen los 300€ de la fianza."
 }
