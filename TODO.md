@@ -1,2 +1,0 @@
-OTROS:
-- Contenido en inglés
