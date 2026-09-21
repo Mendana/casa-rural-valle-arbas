@@ -1,11 +1,27 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
-import { getLang, useTranslations } from "../../i18n/utils";
+import { getLang, useTranslations, normalizePath } from "../../i18n/utils";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
 const currentYear = new Date().getFullYear();
+
+const currentPath = normalizePath(Astro.url.pathname);
+const isActive = (path: string) => currentPath === normalizePath(getRelativeLocaleUrl(lang, path));
+
+const sectionLinks = [
+  { path: t("path.home"), label: t("nav.home") },
+  { path: t("path.routes"), label: t("pagesSection.1.title") },
+  { path: t("path.book"), label: t("pagesSection.2.title") },
+  { path: t("path.faq"), label: t("footer.faq.link") },
+  { path: t("path.bookingTerms"), label: t("footer.bookingTerms.link") },
+].filter((link) => !isActive(link.path));
+
+const legalLinks = [
+  { path: t("path.legal"), label: t("footer.legal.link") },
+  { path: t("path.privacy"), label: t("footer.privacy.link") },
+].filter((link) => !isActive(link.path));
 ---
 
 <footer class="bg-bg text-ink">
@@ -55,30 +71,16 @@ const currentYear = new Date().getFullYear();
         {t("footer.sections.title")}
       </h3>
       <div class="mt-4 flex flex-col gap-2 font-sans text-base">
-        <a
-          href={getRelativeLocaleUrl(lang, t("path.home"))}
-          class="transition-colors hover:text-wood focus-visible:text-wood"
-        >
-          {t("nav.home")}
-        </a>
-        <a
-          href={getRelativeLocaleUrl(lang, t("path.routes"))}
-          class="transition-colors hover:text-wood focus-visible:text-wood"
-        >
-          {t("pagesSection.1.title")}
-        </a>
-        <a
-          href={getRelativeLocaleUrl(lang, t("path.faq"))}
-          class="transition-colors hover:text-wood focus-visible:text-wood"
-        >
-          {t("footer.faq.link")}
-        </a>
-        <a
-          href={getRelativeLocaleUrl(lang, t("path.bookingTerms"))}
-          class="transition-colors hover:text-wood focus-visible:text-wood"
-        >
-          {t("footer.bookingTerms.link")}
-        </a>
+        {
+          sectionLinks.map((link) => (
+            <a
+              href={getRelativeLocaleUrl(lang, link.path)}
+              class="transition-colors hover:text-wood focus-visible:text-wood"
+            >
+              {link.label}
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>
@@ -92,18 +94,16 @@ const currentYear = new Date().getFullYear();
   >
     <span>&copy; {currentYear} {t("footer.copyright")}</span>
     <div class="flex flex-col gap-2 sm:flex-row sm:gap-4">
-      <a
-        href={getRelativeLocaleUrl(lang, t("path.legal"))}
-        class="transition-colors hover:text-wood focus-visible:text-wood"
-      >
-        {t("footer.legal.link")}
-      </a>
-      <a
-        href={getRelativeLocaleUrl(lang, t("path.privacy"))}
-        class="transition-colors hover:text-wood focus-visible:text-wood"
-      >
-        {t("footer.privacy.link")}
-      </a>
+      {
+        legalLinks.map((link) => (
+          <a
+            href={getRelativeLocaleUrl(lang, link.path)}
+            class="transition-colors hover:text-wood focus-visible:text-wood"
+          >
+            {link.label}
+          </a>
+        ))
+      }
     </div>
   </div>
 </footer>

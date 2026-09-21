@@ -109,9 +109,9 @@
   "book.howItWorks.2.description.link": "correo o teléfono",
   "book.howItWorks.2.description.suffix": " para indicarnos el periodo y lo que necesites.",
   "book.howItWorks.3.title": "Llegada",
-  "book.howItWorks.3.description": "Entrada desde las 17:00, salida antes de las 12:00. Nos vemos en la puerta con las llaves.",
+  "book.howItWorks.3.description": "Entrada desde las 17:00, salida antes de las 12:00 (50€ de suplemento si es más tarde). Nos vemos en la puerta con las llaves.",
   "book.howItWorks.4.title": "Cancelación",
-  "book.howItWorks.4.description": "Devolución completa hasta 15 días antes. Después, la mitad.",
+  "book.howItWorks.4.description": "Devolución completa si cancelas con más de un mes de antelación. Si es menos, se retienen los 300€ de la fianza.",
   "book.contact.title": "Contacto",
   "book.contact.description": "Escríbenos o llámanos y te confirmamos la disponibilidad al momento.",
   "routes.suptitle": "Sección 01 · Alrededores",
@@ -227,7 +227,7 @@
   "faq.title": "Preguntas frecuentes",
   "faq.intro": "Resolvemos aquí las dudas más habituales antes de reservar. Si tienes cualquier otra pregunta, escríbenos y te contestamos encantados.",
   "faq.q1.question": "¿Cuál es el horario de entrada y salida?",
-  "faq.q1.answer": "La entrada es a partir de las 17:00 y la salida antes de las 12:00. Nos vemos en la puerta con las llaves.",
+  "faq.q1.answer": "La entrada es a partir de las 17:00 y la salida antes de las 12:00. Nos vemos en la puerta con las llaves. Salir más tarde de las 12:00 tiene un suplemento de 50€.",
   "faq.q2.question": "¿Cuántas noches mínimo hay que reservar?",
   "faq.q2.answer": "La casa se alquila entera, con un mínimo de dos noches.",
   "faq.q3.question": "¿Cuántas personas caben en la casa?",
@@ -241,5 +241,5 @@
   "faq.q7.question": "¿Incluye la leña para la chimenea?",
   "faq.q7.answer": "La leña es un extra opcional que puedes añadir al simular tu estancia; se cobra aparte de la casa y la limpieza final.",
   "faq.q8.question": "¿Cómo reservo y cuál es la política de cancelación?",
-  "faq.q8.answer": "Reservamos sin intermediarios: simulas tus fechas en el calendario y nos escribes o llamas (también por WhatsApp) para confirmar. Devolución completa hasta 15 días antes de la llegada; después, la mitad."
+  "faq.q8.answer": "Reservamos sin intermediarios: simulas tus fechas en el calendario y nos escribes o llamas (también por WhatsApp) para confirmar. Si cancelas con más de un mes de antelación a la fecha de entrada, te devolvemos el importe; con menos de un mes, se retienen los 300€ de la fianza."
 }
