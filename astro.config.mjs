@@ -6,8 +6,8 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://mendana.github.io",
-  base: "/casa-rural-valle-arbas",
+  site: "https://ruralvalledearbas.es",
+  base: "/",
   output: "static",
   integrations: [react(), sitemap()],
   vite: {

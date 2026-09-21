@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mendana.github.io/casa-rural-valle-arbas/sitemap-index.xml
+Sitemap: https://ruralvalledearbas.es/sitemap-index.xml
