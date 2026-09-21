@@ -1,7 +1,7 @@
 ---
 import { getLang, useTranslations } from "../../i18n/utils";
 import SplitWords from "./SplitWords.astro";
-import BookingSimulator from "../react/BookingSimulator";
+import BookingAvailability from "../react/BookingAvailability";
 import ItemsSection from "./ItemsSection.astro";
 import HowItWorksSection from "./HowItWorksSection.astro";
 import ContactSection from "./ContactSection.astro";
@@ -35,7 +35,7 @@ const t = useTranslations(lang);
       {t("book.description")}
     </p>
     <div data-reveal class="mt-12">
-      <BookingSimulator lang={lang} client:load />
+      <BookingAvailability lang={lang} client:load />
     </div>
   </section>
   <ItemsSection />

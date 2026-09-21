@@ -2,5 +2,5 @@
 order: 3
 title: "Otoño"
 dates: "SEP-DIC"
-description: "El valle se tiñe de colores cálidos y las temperaturas comienzan a descender. Es la época ideal para disfrutar de paseos por los bosques cercanos y preparar la chimenea para las noches más frescas."
+description: "Acércate al Valle de Gordón, vecino del Valle de Arbas, y disfruta de los tonos ocres y rojos del otoño en los hayedos y bosques de la zona. Disfruta de rutas de senderismo, mountain bike y otras actividades al aire libre en un entorno natural único."
 ---

@@ -1,12 +1,15 @@
 ---
 order: 5
 title: "Buhardilla"
-description: "Para las horas de relax, la buhardilla cuenta con un billar, un futbolín, mesa de ping-pong y una pantalla de proyección para ver películas o series."
+description: "Para las horas de relax, en la tercera planta tendrás una buhardilla de 50m2 con un billar, un futbolín, mesa de ping-pong y una pantalla de proyección para ver películas o jugar a la PlayStation."
 images:
-  - image: "../../../assets/images/buhardilla-2.avif"
-    alt: "Buhardilla con billar, futbolín y mesa de ping-pong"
-    caption: "Buhardilla con billar, futbolín y mesa de ping-pong"
-  - image: "../../../assets/images/buhardilla.avif"
-    alt: "Buhardilla abuhardillada de la casa rural en el Valle de Arbas"
-    caption: "La buhardilla, la habitación con más luz"
+  - image: "../../../assets/images/buhardilla-1.jpg"
+    alt: "Buhardilla mesa de ping-pong y proyector"
+    caption: "Mesa de ping-pong y proyector"
+  - image: "../../../assets/images/buhardilla-2.jpg"
+    alt: "Buhardilla con billar"
+    caption: "Billar"
+  - image: "../../../assets/images/buhardilla-3.jpg"
+    alt: "Buhardilla con futbolín"
+    caption: "Futbolín"
 ---

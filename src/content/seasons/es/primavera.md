@@ -2,5 +2,5 @@
 order: 1
 title: "Primavera"
 dates: "MAR-JUN"
-description: "El valle se llena de color y flores. Los días se alargan y la temperatura es más agradable para disfrutar del entorno."
+description: "El manto de los prados de alta montaña se convierte en un impresionante tapiz multicolor de flores silvestres, mientras los ríos y arroyos se llenan de agua proveniente del deshielo."
 ---

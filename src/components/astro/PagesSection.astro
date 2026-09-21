@@ -3,6 +3,7 @@ import { getLang, useTranslations } from "../../i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Image } from "astro:assets";
 import casaImg from "../../assets/images/casa-rural.jpg";
+import valleImg from "../../assets/images/valle-arbas.avif";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -27,7 +28,7 @@ const t = useTranslations(lang);
           <div class="overflow-hidden">
             <Image
               data-wipe
-              src={casaImg}
+              src={valleImg}
               alt={t("pagesSection.1.alt")}
               width={860}
               height={559}

@@ -1,12 +1,10 @@
-import { useMemo, useState } from "react";
-import AvailabilityCalendar, { type DateRange } from "./AvailabilityCalendar";
+import { useState } from "react";
+import AvailabilityCalendar from "./AvailabilityCalendar";
 import { useTranslations, type Lang } from "../../i18n/utils";
 
 interface Props {
   lang: Lang;
 }
-
-const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
 interface StepperProps {
   value: number;
@@ -55,7 +53,7 @@ function NumberStepper({
   );
 }
 
-export default function BookingSimulator({ lang }: Props) {
+export default function BookingAvailability({ lang }: Props) {
   const t = useTranslations(lang);
 
   const pricePerNight = Number(import.meta.env.PUBLIC_PRICE_PER_NIGHT);
@@ -65,21 +63,8 @@ export default function BookingSimulator({ lang }: Props) {
   const hasCleaningFee = Number.isFinite(cleaningFee) && cleaningFee > 0;
   const hasWoodPrice = Number.isFinite(woodPricePerKg) && woodPricePerKg > 0;
 
-  const [range, setRange] = useState<DateRange | null>(null);
-  const [guests, setGuests] = useState(2);
   const [woodKg, setWoodKg] = useState(0);
-
-  const nights = useMemo(() => {
-    if (!range?.end) return 0;
-    const start = new Date(range.start);
-    const end = new Date(range.end);
-    return Math.round((end.getTime() - start.getTime()) / MS_PER_DAY);
-  }, [range]);
-
-  const total =
-    nights * pricePerNight +
-    (hasCleaningFee && nights > 0 ? cleaningFee : 0) +
-    (hasWoodPrice ? woodKg * woodPricePerKg : 0);
+  const woodTotal = hasWoodPrice ? woodKg * woodPricePerKg : 0;
 
   function formatPrice(value: number): string {
     return new Intl.NumberFormat(lang === "es" ? "es-ES" : "en-US", {
@@ -92,59 +77,38 @@ export default function BookingSimulator({ lang }: Props) {
   return (
     <div className="flex flex-col gap-8 md:gap-12 lg:flex-row lg:items-start">
       <div className="lg:flex-1">
-        <AvailabilityCalendar
-          lang={lang}
-          selectable
-          selectedRange={range}
-          onSelectedRangeChange={setRange}
-        />
+        <AvailabilityCalendar lang={lang} />
       </div>
 
       <div className="border border-line bg-bg2 px-6 py-8 md:px-10 md:py-12 lg:w-96 lg:shrink-0 xl:w-md 2xl:w-lg">
         <p className="text-xs uppercase tracking-widest text-muted md:text-sm">
-          {t("book.simulator.eyebrow")}
+          {t("book.info.eyebrow")}
         </p>
         <h2 className="mt-2 font-serif text-2xl font-light text-ink md:text-3xl">
-          {t("book.simulator.chooseDates")}
+          {t("book.info.title")}
         </h2>
-        <p className="mt-1 text-sm text-muted">
-          {t("book.simulator.disclaimer")}
-        </p>
+        <p className="mt-1 text-sm text-muted">{t("book.info.disclaimer")}</p>
 
         <div className="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-sm md:text-base">
-          <div className="flex items-center justify-between">
-            <span className="text-xs uppercase tracking-widest text-muted md:text-sm">
-              {t("book.simulator.guests")}
-            </span>
-            <NumberStepper
-              value={guests}
-              onChange={setGuests}
-              min={1}
-              max={10}
-              decreaseLabel={t("book.simulator.decreaseGuests")}
-              increaseLabel={t("book.simulator.increaseGuests")}
-            />
-          </div>
-
           {hasPrice && (
             <div className="flex items-center justify-between text-ink">
-              <span>{t("book.simulator.lineHouse")}</span>
+              <span>{t("book.info.lineHouse")}</span>
               <span>
-                {formatPrice(pricePerNight)} / {t("book.simulator.night")}
+                {formatPrice(pricePerNight)} / {t("book.info.night")}
               </span>
             </div>
           )}
 
           {hasCleaningFee && (
             <div className="flex items-center justify-between text-ink">
-              <span>{t("book.simulator.lineCleaning")}</span>
+              <span>{t("book.info.lineCleaning")}</span>
               <span>{formatPrice(cleaningFee)}</span>
             </div>
           )}
 
           {hasWoodPrice && (
             <div className="flex items-center justify-between text-ink">
-              <span>{t("book.simulator.lineWood")}</span>
+              <span>{t("book.info.lineWood")}</span>
               <div className="flex items-center gap-4">
                 <span>{formatPrice(woodPricePerKg)} / kg</span>
                 <NumberStepper
@@ -153,41 +117,26 @@ export default function BookingSimulator({ lang }: Props) {
                   min={0}
                   max={50}
                   step={1}
-                  decreaseLabel={t("book.simulator.decreaseWood")}
-                  increaseLabel={t("book.simulator.increaseWood")}
+                  decreaseLabel={t("book.info.decreaseWood")}
+                  increaseLabel={t("book.info.increaseWood")}
                 />
               </div>
             </div>
           )}
-        </div>
 
-        {hasPrice && (
-          <div className="mt-6 border-t border-line pt-6">
-            {nights > 0 && (
-              <p className="text-sm text-muted">
-                {nights}{" "}
-                {nights === 1
-                  ? t("book.simulator.night")
-                  : t("book.simulator.nights")}
-              </p>
-            )}
-            <div className="mt-1 flex items-center justify-between font-serif text-2xl text-ink md:text-3xl">
-              <span>{t("book.simulator.total")}</span>
-              <span>{nights > 0 ? formatPrice(total) : "—"}</span>
+          {hasWoodPrice && woodKg > 0 && (
+            <div className="flex items-center justify-between text-ink">
+              <span>{t("book.info.woodTotal")}</span>
+              <span>{formatPrice(woodTotal)}</span>
             </div>
-            {nights === 0 && (
-              <p className="mt-2 text-sm text-muted">
-                {t("book.simulator.selectDates")}
-              </p>
-            )}
-          </div>
-        )}
+          )}
+        </div>
 
         <a
           href="#contacto"
           className="mt-8 inline-flex items-center gap-2 text-sm uppercase tracking-widest text-wood transition-colors hover:text-wood/95 focus-visible:text-wood/95 md:text-base"
         >
-          {t("book.simulator.goToContact")}
+          {t("book.info.goToContact")}
           <span>→</span>
         </a>
       </div>
