@@ -6,10 +6,11 @@ const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
 const distances = [
-  { label: t("routes.map.distance.leon"), value: "50 km" },
   { label: t("routes.map.distance.pajares"), value: "25 km" },
-  { label: t("routes.map.distance.colegiata"), value: "5 min" },
-  { label: t("routes.map.distance.station"), value: "30 min" },
+  { label: t("routes.map.distance.leon"), value: "50 km" },
+  { label: t("routes.map.distance.geras"), value: "15 km" },
+  { label: t("routes.map.distance.valporquero"), value: "25 km" },
+  { label: t("routes.map.distance.embalseLuna"), value: "20 km" },
 ];
 
 const lat = 42.928722;
@@ -50,13 +51,20 @@ const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${lat
       }
     </div>
 
-    <div class="mt-10 border border-line/20">
+    <div class="relative mt-10 border border-line/20">
       <iframe
         src={mapEmbedSrc}
         title={t("routes.map.iframeTitle")}
         loading="lazy"
         class="aspect-video w-full"
       ></iframe>
+      <button
+        type="button"
+        data-map-guard
+        class="absolute inset-0 z-10 flex cursor-pointer items-center justify-center bg-ink/40 text-center font-sans text-sm uppercase tracking-widest text-onwood transition-colors hover:bg-ink/30 md:text-base"
+      >
+        {t("routes.map.activateHint")}
+      </button>
     </div>
 
     <div class="mt-6 flex justify-center md:justify-start">
@@ -66,3 +74,11 @@ const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${lat
     </div>
   </div>
 </section>
+
+<script>
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-map-guard]")
+    .forEach((guard) => {
+      guard.addEventListener("click", () => guard.remove(), { once: true });
+    });
+</script>

@@ -1,5 +1,5 @@
 ---
-order: 7
+order: 8
 title: "Brazosa y Peña Esquina"
 category: "route"
 group: "Ascensiones"

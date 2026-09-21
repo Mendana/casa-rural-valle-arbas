@@ -1,5 +1,5 @@
 ---
-order: 6
+order: 7
 title: "Subida Barragana"
 category: "route"
 group: "Ascensiones"

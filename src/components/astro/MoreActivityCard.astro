@@ -4,7 +4,7 @@ import type { ImageMetadata } from "astro";
 
 interface Props {
   title: string;
-  type: string;
+  type?: string;
   description: string;
   image?: ImageMetadata;
   alt?: string;
@@ -49,11 +49,13 @@ const meta = [
   {
     image && (
       <div class="relative overflow-hidden">
-        <div class="pointer-events-none absolute top-0 right-0 z-10 bg-wood px-2 py-1">
-          <span class="font-sans text-sm uppercase tracking-widest text-onwood">
-            {type}
-          </span>
-        </div>
+        {type && (
+          <div class="pointer-events-none absolute top-0 right-0 z-10 bg-wood px-2 py-1">
+            <span class="font-sans text-sm uppercase tracking-widest text-onwood">
+              {type}
+            </span>
+          </div>
+        )}
         <Image
           data-wipe
           src={image}
@@ -68,7 +70,7 @@ const meta = [
   }
   <div class="flex flex-col gap-2">
     {
-      !image && (
+      !image && type && (
         <span class="text-xs uppercase tracking-widest text-wood md:text-sm">
           {type}
         </span>

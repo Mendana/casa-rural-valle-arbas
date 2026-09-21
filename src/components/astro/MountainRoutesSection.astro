@@ -34,15 +34,12 @@ const labels = {
 ---
 
 <section class="mx-auto max-w-600 px-4 pb-12 md:px-8 md:pb-16">
-  <h2 class="font-sans text-xs font-semibold uppercase tracking-widest text-muted md:text-sm">
-    {t("routes.mountainSection.title")}
-  </h2>
-  <div class="mt-6 flex flex-col gap-10">
+  <div class="flex flex-col gap-10">
     {
       [...groups.entries()].map(([groupName, entries]) => (
         <div>
           {groupName && (
-            <h3 class="font-serif text-xl font-light text-ink md:text-2xl">
+            <h3 class="font-sans text-xs font-semibold uppercase tracking-widest text-muted md:text-sm">
               {groupLinks[groupName] ? (
                 <a
                   href={groupLinks[groupName]}
@@ -51,16 +48,14 @@ const labels = {
                   class="inline-flex items-center gap-2 transition-colors hover:text-wood focus-visible:text-wood"
                 >
                   {groupName}
-                  <span class="text-sm" aria-hidden="true">
-                    ↗
-                  </span>
+                  <span aria-hidden="true">↗</span>
                 </a>
               ) : (
                 groupName
               )}
             </h3>
           )}
-          <div class="mt-2 flex flex-col">
+          <div class="mt-4 flex flex-col">
             {entries.map((entry) => (
               <ActivityView
                 title={entry.data.title}

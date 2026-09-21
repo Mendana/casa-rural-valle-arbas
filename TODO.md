@@ -30,30 +30,11 @@ Pagina prinicipal:
 
     En la parte de las secciones en el de rutas y demás ya puse una imagen del valle. Para la de disponibilidad habría que poner otra. Se me ocrre un calendario o una captura de la página de disponibilida por ejemplo.
 
-Página de rutas:
-
-    En la parte de el mapa de la zona quieren poner:
-    Puerto de Pajares a 25 km
-    León 50 km
-    Geras 15 km
-    Cueva Valporquero 25 km
-    Embalse de Luna 20 km
-
-
-    En la zona de después quieren añadir solo gastronomía:
-    Restaurante Rio Viejo: comida tradicional en el mismo pueblo
-    Restaurante Ezequiel: el famoso restaurante a 15 minutos
-    Restaurante El Embrujo: menú degustación de calidad a 10 minutos
-    Restaurante la Collada de Aralla: menú familiar a 8 minutos
-    Restaurante Entre Peñas en Geras a 15km (se puede llegar andando por ruta de senderismo
-    desde el emblase)
-    Si eso busco una foto de cada uno y la pongo?
-
-
 DISPONIBILIDAD:
 - Cuando tenga info: revisar cancelación + horas de entrada/salida.
 
 
 OTROS:
+- Revisar footers porque algunos quizá no tiene sentido que los enlaces que tienen repitan la sección en la que están pero no pongan una en la que no están y ver si los links apuntan todos a donde deberían.
 - Revisar SEO de la página principal y de la página de la casa rural. Poner bien los metadatos, descripciones, etc. para que se vea bien en Google y demás.
 - Revisar robots.txt y el sitemap.xml para que se indexe bien la página y no haya problemas con Google.

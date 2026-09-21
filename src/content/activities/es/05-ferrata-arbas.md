@@ -2,6 +2,6 @@
 order: 5
 title: "Vía ferrata Valle de Arbas"
 category: "route"
-group: "Vía ferrata Valle de Arbas"
-description: "Se sale desde el pueblo con opciones K3 (media), K4 (media-alta) y K6 (alta). En el albergue te alquilan el material y te hacen de guía."
+group: "Vía ferrata y escalada"
+description: "Vía ferrata K4 con un paso opcional de K6 recién habilitado. En el albergue te alquilan el material y te hacen de guía."
 ---

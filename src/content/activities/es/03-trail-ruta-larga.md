@@ -1,6 +1,6 @@
 ---
 order: 3
-title: "Ruta larga"
+title: "Arbas Infinito"
 category: "route"
 group: "Trail Valle de Arbas"
 distance: "22 km"
