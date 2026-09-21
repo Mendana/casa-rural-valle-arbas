@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import { getLang, useTranslations } from "../../i18n/utils";
-import PriceBadge from "./PriceBadge.astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -83,12 +82,6 @@ function slideStyle(distance: number) {
         </figure>
       ))
     }
-
-    <div
-      class="pointer-events-none absolute top-0 left-1/2 h-full w-88 -ml-44 sm:w-104 sm:-ml-52 md:w-136 md:-ml-68 lg:w-160 lg:-ml-80 2xl:w-176 2xl:-ml-88"
-    >
-      <PriceBadge subtitle={t("index.photos.card.subtitle")} />
-    </div>
   </div>
 
   {

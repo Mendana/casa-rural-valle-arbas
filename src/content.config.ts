@@ -37,6 +37,7 @@ const homeHighlights = defineCollection({
             image: image(),
             alt: z.string(),
             caption: z.string().optional(),
+            focus: z.string().optional(),
           }),
         )
         .min(1),

@@ -21,6 +21,9 @@ const entries = (await getCollection("seasons"))
     >
       {t("season.title")}
     </h2>
+    <p class="mt-3 max-w-2xl font-serif text-lg italic leading-6 text-muted md:text-xl">
+      {t("season.subtitle")}
+    </p>
     <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
       {
         entries.map((entry) => (

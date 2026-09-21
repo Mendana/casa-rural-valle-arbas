@@ -2,11 +2,12 @@
 import { getLang, useTranslations } from "../../i18n/utils";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Image } from "astro:assets";
-import casaImg from "../../assets/images/casa-rural.jpg";
 import valleImg from "../../assets/images/valle-arbas.avif";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
+
+const CALENDAR_HIGHLIGHT_CELL = 16;
 ---
 
 <section class="border-y border-line">
@@ -71,15 +72,38 @@ const t = useTranslations(lang);
       >
         <div class="flex flex-col gap-2">
           <div class="overflow-hidden">
-            <Image
+            <div
               data-wipe
-              src={casaImg}
-              alt={t("pagesSection.2.alt")}
-              width={860}
-              height={559}
-              loading="lazy"
-              class="h-65 w-full object-cover transition duration-300 group-hover:scale-105 group-hover:brightness-75 group-focus-visible:scale-105 group-focus-visible:brightness-75"
-            />
+              role="img"
+              aria-label={t("pagesSection.2.alt")}
+              class="flex h-65 w-full flex-col bg-bg2 p-6 transition duration-300 group-hover:scale-105 group-hover:brightness-75 group-focus-visible:scale-105 group-focus-visible:brightness-75"
+            >
+              <div class="flex items-center justify-between border-b border-line pb-3">
+                <span class="font-serif text-lg italic text-ink">
+                  {t("pagesSection.2.calendarMonth")}
+                </span>
+                <span
+                  class="font-sans text-xs uppercase tracking-widest text-muted"
+                >
+                  {t("pagesSection.2.calendarYear")}
+                </span>
+              </div>
+              <div class="mt-4 grid flex-1 grid-cols-7 gap-1.5">
+                {
+                  Array.from({ length: 35 }).map((_, i) => (
+                    <span
+                      class={`flex items-center justify-center font-sans text-[0.6rem] ${
+                        i === CALENDAR_HIGHLIGHT_CELL
+                          ? "bg-wood text-onwood"
+                          : "bg-line/40 text-transparent"
+                      }`}
+                    >
+                      {i === CALENDAR_HIGHLIGHT_CELL ? "24" : ""}
+                    </span>
+                  ))
+                }
+              </div>
+            </div>
           </div>
           <h2
             class="mt-6 text-3xl font-serif font-light text-ink md:text-4xl lg:text-5xl"

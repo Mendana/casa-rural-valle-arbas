@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import { getLang, useTranslations } from "../../i18n/utils";
+import valleImg from "../../assets/images/valle-arbas.avif";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+---
+
+<section data-reveal class="mx-auto max-w-600 px-4 pt-12 md:px-8 md:pt-16">
+  <div class="pb-12 md:pb-16">
+    <div class="relative overflow-hidden border border-line">
+      <Image
+        src={valleImg}
+        alt={t("index.valle.alt")}
+        width={1600}
+        height={900}
+        loading="lazy"
+        class="aspect-video w-full object-cover"
+      />
+      <div
+        class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/70 via-black/20 to-transparent"
+      >
+      </div>
+      <p
+        class="absolute bottom-4 left-4 font-serif text-2xl italic text-onwood text-shadow-sm md:bottom-8 md:left-8 md:text-3xl lg:text-4xl"
+      >
+        {t("index.valle.caption")}
+      </p>
+    </div>
+  </div>
+  <div class="mx-2 border-b-[1.5px] border-b-line md:border-b-2"></div>
+</section>

@@ -1,4 +1,4 @@
 ---
-label: "Cocinas"
+label: "Cocina comedor"
 value: "1"
 ---

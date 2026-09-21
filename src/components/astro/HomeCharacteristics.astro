@@ -25,16 +25,18 @@ const characteristics = (await getCollection("characteristics")).filter(
       Arbas
     </span>
   </div>
-  <h2
-    class="font-sans text-xs font-semibold uppercase tracking-widest text-line/70 md:text-sm lg:text-base"
-  >
-    {t("characteristics.title")}
-  </h2>
-  <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-8 pt-8">
-    {
-      characteristics.map((entry) => (
-        <CharacteristicView label={entry.data.label} value={entry.data.value} />
-      ))
-    }
+  <div class="mx-auto max-w-600">
+    <h2
+      class="font-sans text-xs font-semibold uppercase tracking-widest text-line/70 md:text-sm lg:text-base"
+    >
+      {t("characteristics.title")}
+    </h2>
+    <div class="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-8 pt-8">
+      {
+        characteristics.map((entry) => (
+          <CharacteristicView label={entry.data.label} value={entry.data.value} />
+        ))
+      }
+    </div>
   </div>
 </section>

@@ -9,6 +9,7 @@ images:
   - image: "../../../assets/images/exterior-2.jpg"
     alt: "Zona de dardos de la casa rural en el Valle de Arbas"
     caption: "Diana y dardos"
+    focus: "top"
   - image: "../../../assets/images/exterior-3.jpg"
     alt: "Zona de mesas para comer de la casa rural en el Valle de Arbas"
     caption: "Zona de mesas para comer y jardín"

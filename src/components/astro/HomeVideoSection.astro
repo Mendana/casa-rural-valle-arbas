@@ -4,14 +4,14 @@ import { getLang, useTranslations } from "../../i18n/utils";
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
-const VIDEO_ID = "aqz-KE-bpKQ";
+const VIDEO_ID = "pYAva-njyCU";
 const thumbnail = `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
 ---
 
 <section
   data-reveal
   data-sec={t("video.title.0") + t("video.title.1")}
-  class="mx-auto mt-12 max-w-500 px-4 py-12 md:px-8 md:py-16"
+  class="mx-auto max-w-600 px-4 py-12 md:px-8 md:py-16"
 >
   <div class="flex items-end justify-between gap-4">
     <h2
@@ -28,7 +28,7 @@ const thumbnail = `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
     <div
       id="home-video"
       data-video-id={VIDEO_ID}
-      class="video-embed relative aspect-video w-full overflow-hidden border border-line bg-ink"
+      class="video-embed relative mx-auto aspect-video w-[min(100%,calc(80vh*16/9))] overflow-hidden border border-line bg-ink"
     >
       <button
         type="button"
@@ -38,11 +38,11 @@ const thumbnail = `https://i.ytimg.com/vi/${VIDEO_ID}/maxresdefault.jpg`;
         <img
           src={thumbnail}
           alt={t("video.play.alt")}
-          class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity group-hover:opacity-100"
+          class="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-105"
           loading="lazy"
         />
         <span
-          class="pointer-events-none absolute inset-0 bg-ink/20 transition-colors group-hover:bg-ink/10"
+          class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/70 via-black/20 to-transparent"
         />
         <span
           class="relative flex h-16 w-16 items-center justify-center border border-onwood bg-bg/90 transition-colors group-hover:border-wood md:h-20 md:w-20"
