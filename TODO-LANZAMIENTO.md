@@ -13,7 +13,7 @@
 - [ ] Teléfono: `+34 600 000 000` → número real (también alimenta el botón de WhatsApp del footer/contacto, que se genera a partir del mismo valor).
 - [ ] Email: `info@valledearbas.com` → confirmar si es el real.
 - [ ] Dirección: `Calle Real, 12 · 24916 Valle de Arbas, León` → confirmar/corregir.
-- [ ] Precios del simulador de reserva (`PUBLIC_PRICE_PER_NIGHT`, `PUBLIC_CLEANING_FEE`, `PUBLIC_WOOD_PRICE_PER_KG`) → variables de entorno reales.
+- [ ] Precios de la página de reserva (`book.info.*` en `src/i18n/es.json`/`en.json`): confirmar que las tarifas de fin de semana/semana/quincena y el extra de carga eléctrica siguen vigentes.
 - [ ] Calendario de disponibilidad: configurar `PUBLIC_GOOGLE_CALENDAR_KEY` y `PUBLIC_GOOGLE_CALENDAR_ID` en el entorno de producción, y comprobar que:
   - la API key tiene restricción de referrer al **origen** del sitio (sin ruta, ver nota más abajo);
   - cada evento del calendario tiene visibilidad **Público**, no la de por defecto (si no, no aparece).
@@ -35,14 +35,14 @@
 
 ## 4. Configuración técnica antes de publicar
 
-- [ ] Variables de entorno en producción (GitHub Actions / secrets del repo): `PUBLIC_GOOGLE_CALENDAR_KEY`, `PUBLIC_GOOGLE_CALENDAR_ID`, `PUBLIC_PRICE_PER_NIGHT`, `PUBLIC_CLEANING_FEE`, `PUBLIC_WOOD_PRICE_PER_KG`.
+- [ ] Variables de entorno en producción (GitHub Actions / secrets del repo): `PUBLIC_GOOGLE_CALENDAR_KEY`, `PUBLIC_GOOGLE_CALENDAR_ID`.
 - [ ] Confirmar que el dominio final es `https://mendana.github.io/casa-rural-valle-arbas/` o, si vais a usar un dominio propio, actualizar `site`/`base` en `astro.config.mjs` y el `Sitemap` en `robots.txt`.
 
 ## 5. Después de publicar
 
 - [ ] Dar de alta el sitio en Google Search Console y enviar el sitemap (`/sitemap-index.xml`).
 - [ ] Probar cómo se ve el enlace al compartirlo en WhatsApp/Facebook/Twitter (que salga bien la imagen y el título).
-- [ ] Probar el flujo completo en móvil real: cambio de idioma, calendario, simulador de precio, todos los enlaces.
+- [ ] Probar el flujo completo en móvil real: cambio de idioma, calendario, precios, todos los enlaces.
 - [ ] Si más adelante queréis medir visitas, mirar una opción respetuosa con la privacidad (Plausible, Fathom) para evitar tener que montar un banner de cookies solo por eso.
 
 ## 6. Opcional / posibles mejoras futuras

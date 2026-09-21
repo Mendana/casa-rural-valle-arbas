@@ -31,27 +31,6 @@ Pagina prinicipal:
     En la parte de las secciones en el de rutas y demás ya puse una imagen del valle. Para la de disponibilidad habría que poner otra. Se me ocrre un calendario o una captura de la página de disponibilida por ejemplo.
 
 Página de rutas:
-    Quieren cambiarlo un poco y que sea algo así:
-    TRAIL VALLE DE ARBAS (haz link):
-    Arbas Luna: 12 km 800m desnivel (dificultad media). Enlace: https://es.wikiloc.com/rutas-
-    carrera-por-montana/arbas-luna-by-trail-valle-de-arbas-2025-209373354
-    Ruta larga: 22 km 2000m de desnivel (dificultada alta). Enlace: https://es.wikiloc.com/rutas-
-    carrera-por-montana/arbas-infinito-by-trail-valle-de-arbas-2025-207258275
-    Ruta familar: 6 km 325m desnivel (dificultad baja). Enlace: https://es.wikiloc.com/rutas-
-    carrera-por-montana/trail-valle-de-arbas-cadete-263857322
-    VIA FERRATA VALLE DE ARBAS
-    Se sale desde el pueblo con opciones k3 (media), k4 (media alta) y k6 (alta). En el albergue te
-    alquilan material y te hacen de guía.
-    ASCENSIONES:
-    Subida Barragana: 7 km y 600m desnivel(dificultad media-alta). Enlace:
-    https://es.wikiloc.com/rutas-senderismo/cubillas-de-arbas-pena-barragana-1-863-m-
-    15282975
-    Brazosa y Peña Esquina: 13km y 800m desnivel (dificultad media)
-    https://loc.wiki/t/133488923?wa=sc
-    Meloita: 4km 400m desnivel (dificultada media)
-    https://loc.wiki/t/186855722?wa=sc
-    RUTAS EN BICI:
-    Multiples opciones para todos los públicos. Consulta y te informaremos
 
     En la parte de el mapa de la zona quieren poner:
     Puerto de Pajares a 25 km
@@ -70,18 +49,9 @@ Página de rutas:
     desde el emblase)
     Si eso busco una foto de cada uno y la pongo?
 
-Disponibilidad
-    Quieren quitar lo de calcular el precio y meter los pasos ahí ahí. Y luego quieren poner esto:
-    Disponibilidad
-    La casa se alquila entera, con un mínimo de dos noches. Sin intermediarios: nos escribes o
-    llamas y te confirmamos la reserva.
-    Fin de semana 14 o más plazas: 1000€
-    Semana completa 14 o más plazas: 2600€
-    Quincena para 14 o más plazas: 4800€
-    Extra: carga eléctrica de coche 5€/noche
-    Para otras opciones o menos ocupación ponerse en contacto.
 
-
+DISPONIBILIDAD:
+- Cuando tenga info: revisar cancelación + horas de entrada/salida.
 
 
 OTROS:

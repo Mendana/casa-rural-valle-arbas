@@ -1,7 +1,7 @@
 ---
 import { getLang, useTranslations } from "../../i18n/utils";
 import SplitWords from "./SplitWords.astro";
-import BookingAvailability from "../react/BookingAvailability";
+import AvailabilityCalendar from "../react/AvailabilityCalendar";
 import ItemsSection from "./ItemsSection.astro";
 import HowItWorksSection from "./HowItWorksSection.astro";
 import ContactSection from "./ContactSection.astro";
@@ -34,11 +34,54 @@ const t = useTranslations(lang);
     >
       {t("book.description")}
     </p>
-    <div data-reveal class="mt-12">
-      <BookingAvailability lang={lang} client:load />
+    <div
+      data-reveal
+      class="mt-12 flex flex-col gap-8 md:gap-12 lg:flex-row lg:items-start"
+    >
+      <div class="lg:flex-1">
+        <AvailabilityCalendar lang={lang} client:load />
+      </div>
+
+      <div
+        class="border border-line bg-bg2 px-6 py-8 md:px-10 md:py-12 lg:w-96 lg:shrink-0 xl:w-md 2xl:w-lg"
+      >
+        <p class="text-xs uppercase tracking-widest text-muted md:text-sm">
+          {t("book.info.eyebrow")}
+        </p>
+        <h2 class="mt-2 font-serif text-2xl font-light text-ink md:text-3xl">
+          {t("book.info.title")}
+        </h2>
+
+        <div
+          class="mt-8 flex flex-col gap-3 border-t border-line pt-6 text-sm md:text-base"
+        >
+          <div class="flex items-center justify-between gap-4 text-ink">
+            <span>{t("book.info.weekendLabel")}</span>
+            <span>{t("book.info.weekendPrice")}</span>
+          </div>
+          <div class="flex items-center justify-between gap-4 text-ink">
+            <span>{t("book.info.weekLabel")}</span>
+            <span>{t("book.info.weekPrice")}</span>
+          </div>
+          <div class="flex items-center justify-between gap-4 text-ink">
+            <span>{t("book.info.fortnightLabel")}</span>
+            <span>{t("book.info.fortnightPrice")}</span>
+          </div>
+        </div>
+
+        <p class="mt-6 text-sm text-muted">{t("book.info.otherOptions")}</p>
+
+        <a
+          href="#contacto"
+          class="mt-8 inline-flex items-center gap-2 text-sm uppercase tracking-widest text-wood transition-colors hover:text-wood/95 focus-visible:text-wood/95 md:text-base"
+        >
+          {t("book.info.goToContact")}
+          <span>→</span>
+        </a>
+      </div>
     </div>
   </section>
-  <ItemsSection />
   <HowItWorksSection />
+  <ItemsSection />
   <ContactSection />
 </main>

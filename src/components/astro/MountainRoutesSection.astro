@@ -12,6 +12,18 @@ const routes = (await getCollection("activities"))
   )
   .sort((a, b) => a.data.order - b.data.order);
 
+const groups = new Map<string, typeof routes>();
+for (const entry of routes) {
+  const groupName = entry.data.group ?? "";
+  const existing = groups.get(groupName);
+  if (existing) existing.push(entry);
+  else groups.set(groupName, [entry]);
+}
+
+const groupLinks: Record<string, string> = {
+  "Trail Valle de Arbas": "https://valledearbas.es/",
+};
+
 const labels = {
   distance: t("routes.field.distance"),
   duration: t("routes.field.duration"),
@@ -25,22 +37,49 @@ const labels = {
   <h2 class="font-sans text-xs font-semibold uppercase tracking-widest text-muted md:text-sm">
     {t("routes.mountainSection.title")}
   </h2>
-  <div class="mt-6 flex flex-col">
+  <div class="mt-6 flex flex-col gap-10">
     {
-      routes.map((entry) => (
-        <ActivityView
-          title={entry.data.title}
-          type={entry.data.type}
-          description={entry.data.description}
-          image={entry.data.image}
-          alt={entry.data.alt}
-          distance={entry.data.distance}
-          duration={entry.data.duration}
-          elevationGain={entry.data.elevationGain}
-          travelTime={entry.data.travelTime}
-          difficulty={entry.data.difficulty}
-          labels={labels}
-        />
+      [...groups.entries()].map(([groupName, entries]) => (
+        <div>
+          {groupName && (
+            <h3 class="font-serif text-xl font-light text-ink md:text-2xl">
+              {groupLinks[groupName] ? (
+                <a
+                  href={groupLinks[groupName]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 transition-colors hover:text-wood focus-visible:text-wood"
+                >
+                  {groupName}
+                  <span class="text-sm" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              ) : (
+                groupName
+              )}
+            </h3>
+          )}
+          <div class="mt-2 flex flex-col">
+            {entries.map((entry) => (
+              <ActivityView
+                title={entry.data.title}
+                type={entry.data.type}
+                description={entry.data.description}
+                image={entry.data.image}
+                alt={entry.data.alt}
+                distance={entry.data.distance}
+                duration={entry.data.duration}
+                elevationGain={entry.data.elevationGain}
+                travelTime={entry.data.travelTime}
+                difficulty={entry.data.difficulty}
+                link={entry.data.link}
+                linkLabel={t("routes.activity.viewRoute")}
+                labels={labels}
+              />
+            ))}
+          </div>
+        </div>
       ))
     }
   </div>
