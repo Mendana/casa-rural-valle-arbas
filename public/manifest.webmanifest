@@ -10,12 +10,6 @@
   "theme_color": "#8c543f",
   "icons": [
     {
-      "src": "/casa-rural-valle-arbas/favicon/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
       "src": "/casa-rural-valle-arbas/favicon/android-icon-36x36.png",
       "sizes": "36x36",
       "type": "image/png",
